@@ -10,6 +10,14 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
+/Solvarg_Framework/[Ll]ibrary/
+/Solvarg_Framework/[Tt]emp/
+/Solvarg_Framework/[Oo]bj/
+/Solvarg_Framework/[Bb]uild/
+/Solvarg_Framework/[Bb]uilds/
+/Solvarg_Framework/[Ll]ogs/
+/Solvarg_Framework/[Mm]emoryCaptures/
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 

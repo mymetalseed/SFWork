@@ -41,6 +41,8 @@ public class SingletonManager : MonoBehaviour
     #region 单例集
     MessageDispatcher messageDispatcher;
     TimerManager timerManager;
+    ResManager resManager;
+    UIManager uiManager;
     #endregion
     /// <summary>
     /// 在这里进行所有单例的初始化
@@ -50,6 +52,8 @@ public class SingletonManager : MonoBehaviour
     {
         messageDispatcher = MessageDispatcher.Instance.InitSingleton(this);
         timerManager = TimerManager.Instance.InitSingleton(this);
+        resManager = ResManager.Instance.InitSingleton(this);
+        uiManager = UIManager.Instance.InitSingleton(this);
 
         OnInit();
         _singletonReleaseList.Add(delegate ()

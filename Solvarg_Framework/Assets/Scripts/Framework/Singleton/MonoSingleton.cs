@@ -24,4 +24,9 @@ public class MonoSingleton<T> : MonoBehaviour where T: MonoSingleton<T>
             return _instance;
         }
     }
+
+    private void OnApplicationQuit()
+    {
+        _instance = null;
+    }
 }

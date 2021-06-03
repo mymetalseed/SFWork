@@ -97,11 +97,11 @@ public abstract class FsmBase
     /// </summary>
     /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
     /// <param name="realElapseSeconds">当前已流逝时间，以秒为单位。</param>
-    internal abstract void Update(float elapseSeconds, float realElapseSeconds);
+    public abstract void Update(float elapseSeconds, float realElapseSeconds);
 
     /// <summary>
     /// 关闭并清理有限状态机。
     /// </summary>
-    internal abstract void Shutdown();
+    public abstract void Shutdown();
 }
 

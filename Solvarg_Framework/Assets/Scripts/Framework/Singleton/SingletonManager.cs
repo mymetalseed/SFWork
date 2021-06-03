@@ -10,16 +10,18 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
 
     private static List<Action> _singletonReleaseList = new List<Action>();
 
+    private bool isDone = false;
+    public bool IsDone => (isDone);
+
     public void Awake()
     {
+        isDone = false;
 #if UNITY_EDITOR
         Debuger.debugerEnable = true;
 #endif
         singltonList = new List<IMonoBehaviour>();
         _rootObj = gameObject;
         GameObject.DontDestroyOnLoad(_rootObj);
-
-        InitSingletons();
     }
 
     /// <summary>
@@ -44,19 +46,22 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     ResManager resManager;
     UIManager uiManager;
     AssetManager assetManager;
+    FsmManager fsmManager;
+    ProcedureManager procedureManager;
     #endregion
     /// <summary>
     /// 在这里进行所有单例的初始化
     /// </summary>
     /// <returns></returns>
-    private void InitSingletons()
+    public void InitSingletons()
     {
         messageDispatcher = MessageDispatcher.Instance.InitSingleton(this);
         timerManager = TimerManager.Instance.InitSingleton(this);
         resManager = ResManager.Instance.InitSingleton(this);
         uiManager = UIManager.Instance.InitSingleton(this);
         assetManager = AssetManager.Instance.InitSingleton(this);
-
+        fsmManager = FsmManager.Instance.InitSingleton(this);
+        procedureManager = ProcedureManager.Instance.InitSingleton(this);
 
         OnInit();
         _singletonReleaseList.Add(delegate ()
@@ -70,6 +75,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
                 }
             }
         });
+        isDone = true;
     }
 
     #region Mono调用模块
@@ -92,7 +98,10 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
             foreach (var subManager in singltonList)
             {
                 if (subManager != null)
+                {
                     subManager.Update();
+                    subManager.Update(Time.deltaTime, Time.unscaledDeltaTime);
+                }
             }
         }
     }

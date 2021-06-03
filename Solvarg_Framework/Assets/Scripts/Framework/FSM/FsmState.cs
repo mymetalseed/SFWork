@@ -25,6 +25,15 @@ public abstract class FsmState<T> where T : class
     {
 
     }
+
+    /// <summary>
+    /// 有限状态机状态进入时调用。
+    /// </summary>
+    /// <param name="fsm">有限状态机引用。</param>
+    public virtual void OnEnter(IFsm<T> fsm)
+    {
+    }
+
     /// <summary>
     /// 有限状态机轮询时调用
     /// </summary>

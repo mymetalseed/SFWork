@@ -40,6 +40,8 @@ public abstract class Singleton<T>: IMonoBehaviour where T : class,new()
     public virtual void OnGUI() { }
     public virtual void OnDisable() { }
     public virtual void OnDestroy() { }
+
+    public virtual void Update(float elapseSeconds, float realElapseSeconds){}
 }
 
 

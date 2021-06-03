@@ -6,6 +6,7 @@ public interface IMonoBehaviour
 {
     void Awake();
     void Update();
+    void Update(float elapseSeconds, float realElapseSeconds);
     void FixedUpdate();
     void LateUpdate();
     void OnGUI();

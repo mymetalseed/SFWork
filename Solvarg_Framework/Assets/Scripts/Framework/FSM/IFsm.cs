@@ -83,6 +83,13 @@ public interface IFsm<T> where T :class
     bool HasState<TState>() where TState : FsmState<T>;
 
     /// <summary>
+    /// 是否存在有限状态机状态。
+    /// </summary>
+    /// <param name="stateType">要检查的有限状态机状态类型。</param>
+    /// <returns>是否存在有限状态机状态。</returns>
+    bool HasState(Type stateType);
+
+    /// <summary>
     /// 获取有限状态机状态
     /// </summary>
     /// <typeparam name="State">要获取的有限状态机</typeparam>

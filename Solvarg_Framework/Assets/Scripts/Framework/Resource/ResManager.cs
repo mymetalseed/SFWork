@@ -8,6 +8,8 @@ public class ResManager : Singleton<ResManager>
     private Dictionary<string, AssetInfo> dicAssetInfo = null;
     public override void Awake()
     {
+        Debuger.Log("初始化Resources模块");
+
         dicAssetInfo = new Dictionary<string, AssetInfo>();
     }
 

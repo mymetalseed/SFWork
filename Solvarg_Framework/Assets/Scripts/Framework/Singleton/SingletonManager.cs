@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class SingletonManager : MonoBehaviour
+public partial class SingletonManager : MonoSingleton<SingletonManager>
 {
     private GameObject _rootObj;
     private List<IMonoBehaviour> singltonList;
@@ -43,6 +43,7 @@ public class SingletonManager : MonoBehaviour
     TimerManager timerManager;
     ResManager resManager;
     UIManager uiManager;
+    AssetManager assetManager;
     #endregion
     /// <summary>
     /// 在这里进行所有单例的初始化
@@ -54,6 +55,8 @@ public class SingletonManager : MonoBehaviour
         timerManager = TimerManager.Instance.InitSingleton(this);
         resManager = ResManager.Instance.InitSingleton(this);
         uiManager = UIManager.Instance.InitSingleton(this);
+        assetManager = AssetManager.Instance.InitSingleton(this);
+
 
         OnInit();
         _singletonReleaseList.Add(delegate ()

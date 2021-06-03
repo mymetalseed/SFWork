@@ -10,7 +10,7 @@ using System.Collections.Generic;
 /// <param name="kParam"></param>
 public delegate void MessageHandler(Message message);
 
-public class MessageDispatcher : Singleton<MessageDispatcher>,IMonoBehaviour
+public class MessageDispatcher : Singleton<MessageDispatcher>
 {
     Dictionary<string, List<MessageHandler>> m_kMessageTable;
     Queue<Message> _receiveMessageQueue;

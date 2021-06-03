@@ -12,6 +12,7 @@ public class UIManager : Singleton<UIManager>
     private Stack<UIInfoData> stackOpenUIs = null;
     public override void Awake()
     {
+        Debuger.Log("初始化UI模块");
         dicOpenUIs = new Dictionary<Defines.EnumUIType, GameObject>();
         stackOpenUIs = new Stack<UIInfoData>();
     }

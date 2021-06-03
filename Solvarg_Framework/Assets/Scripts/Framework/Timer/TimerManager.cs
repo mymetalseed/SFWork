@@ -25,6 +25,8 @@ public class TimerManager : Singleton<TimerManager>
 
     public override void Awake()
     {
+        Debuger.Log("初始化Timer模块");
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.playModeStateChanged += (UnityEditor.PlayModeStateChange state) =>
         {

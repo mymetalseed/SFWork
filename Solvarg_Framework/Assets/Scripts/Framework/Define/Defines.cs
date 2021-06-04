@@ -71,6 +71,8 @@ public class Defines
         Initial,
         Loading,
         Ready,
+        Paused,
+        Resume,
         Disabled,
         Closing
     }

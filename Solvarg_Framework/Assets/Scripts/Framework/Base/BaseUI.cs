@@ -68,9 +68,19 @@ public abstract class  BaseUI : MonoBehaviour
 
     private void Update()
     {
+        if (this._state == EnumObjectState.Paused || this._state==EnumObjectState.Closing) return;
         if (this._state == EnumObjectState.Ready) {
             OnUpdate(Time.deltaTime);
         }
+    }
+
+    public void Pause()
+    {
+        OnPause();
+    }
+
+    public void Resume() {
+        OnResume();
     }
 
     public void Release()
@@ -89,7 +99,19 @@ public abstract class  BaseUI : MonoBehaviour
         //播放音乐
         this.OnPlayOpenUIAudio();
     }
-    protected virtual void OnUpdate(float deltaTime) { }
+
+    protected virtual void OnPause() {
+        this.State = EnumObjectState.Paused;
+    }
+
+    protected virtual void OnResume()
+    {
+        this.State = EnumObjectState.Resume;
+    }
+
+    protected virtual void OnUpdate(float deltaTime) {
+        
+    }
     protected virtual void OnRelease()
     {
         this.State = EnumObjectState.None;

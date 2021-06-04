@@ -26,6 +26,14 @@ public class AssetManager : Singleton<AssetManager>
         Addressables.InstantiateAsync(assetPath).Completed += complete;
     }
 
+    public async Task<GameObject> InstantiateAsync(string assetPath)
+    {
+        AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(assetPath);
+        GameObject Result = await handle.Task;
+        ReleaseAsset(handle);
+        return Result;
+    }
+
     /// <summary>
     /// 释放句柄
     /// </summary>

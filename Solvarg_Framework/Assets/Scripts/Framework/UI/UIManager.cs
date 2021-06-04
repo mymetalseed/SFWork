@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using static Defines;
 
@@ -83,7 +84,7 @@ public class UIManager : Singleton<UIManager>
         if (stackOpenUIs.Count > 0)
         {
             //打开UI
-            singletonManager.StartCoroutine(AsyncLoadData());
+            AsyncLoadData();
         }
     }
     public void CloseUI(EnumUIType _uiType)
@@ -148,7 +149,7 @@ public class UIManager : Singleton<UIManager>
     /// 实例化UI
     /// </summary>
     /// <returns></returns>
-    private IEnumerator<int> AsyncLoadData()
+    private async Task<int> AsyncLoadData()
     {
         UIInfoData _uiInfoData = null;
 
@@ -160,7 +161,7 @@ public class UIManager : Singleton<UIManager>
             do
             {
                 _uiInfoData = stackOpenUIs.Pop();
-                _prefab = Resources.Load(_uiInfoData.Path);
+                _prefab = await singletonManager.InstantiateAsync(_uiInfoData.Path);
                 if (_prefab != null)
                 {
                     _uiObj = MonoBehaviour.Instantiate(_prefab) as GameObject;
@@ -178,9 +179,24 @@ public class UIManager : Singleton<UIManager>
             } while (stackOpenUIs.Count > 0);
         }
 
-        yield return 0;
+        return 0;
     }
 
+    public void PauseOther(EnumUIType _uiType)
+    {
+        foreach(var tp in dicOpenUIs)
+        {
+            if (tp.Key != _uiType)
+            {
+                tp.Value.GetComponent<BaseUI>().Pause();
+            }
+        }
+    }
+
+    public void Resume(EnumUIType _uiType)
+    {
+        dicOpenUIs[_uiType].GetComponent<BaseUI>().Resume();
+    }
 
     #region 预加载
     public void PreLoadUI(EnumUIType[] _uiTypes)
@@ -193,7 +209,7 @@ public class UIManager : Singleton<UIManager>
     public void PreLoadUI(EnumUIType _uiType)
     {
         string path = UIPathDefines.GetUIPrefabsPathByType(_uiType);
-        Resources.Load(path);
+        singletonManager.InstantiateAsync(path);
     }
     #endregion
 

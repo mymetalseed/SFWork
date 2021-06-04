@@ -14,15 +14,21 @@ using UnityEngine;
 /// 约定: 
 /// 以类名为Router名+Action
 /// 以类名中的Router为Action名,且不能一样
+/// 需求: 一个string作为router,这个router的格式是 ROUTE.ACTION
+/// 然后这个router内部有很多Params
+/// 约定 2021/6/4
+/// Params自己订,但是为了找到Router的引用,需要在这里写Handler
 /// </summary>
 public static class MessageRouter
 {
-    public static class TestAction
-    {
-        public static string ROUTE = "TEST";
-        public static class Params
-        {
-            public static string TEST1 = "TEST1";
-        }
-    }
+    #region 配置Handler
+    public static string LoadApplicationConfigSuccess = "config.loadApplicationConfigSuccess";
+    public static string LoadApplicationConfigFailure = "config.loadApplicationConfigFailure";
+    #endregion
+
+    #region 测试
+    public static string TestHandler = "test.test1";
+    #endregion
+
+
 }

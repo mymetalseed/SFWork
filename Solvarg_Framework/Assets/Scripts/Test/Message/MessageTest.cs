@@ -7,9 +7,16 @@ public class MessageTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Message message = new Message(MessageRouter.TestAction.ROUTE, this);
-        message.Add(MessageRouter.TestAction.Params.TEST1, "Hello Message");
-        message.Send();
+
     }
-    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Message message = new Message(MessageRouter.TestHandler, this);
+            message.Add("Hello", "Hello Message");
+            message.Send();
+        }
+    }
+
 }

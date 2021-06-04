@@ -18,6 +18,13 @@ public class PreloadProcedure : ProcedureBase
         base.OnEnter(fsm);
         Debuger.Log("进入预加载流程,进入菜单前的检查流程");
 
+
+    }
+
+    public override void OnLeave(ProcedureOwner fsm, bool isShutDown)
+    {
+        base.OnLeave(fsm, isShutDown);
+        Debuger.LogError("离开预加载流程");
     }
 
     public override void OnUpdate(ProcedureOwner fsm, float elapseSeconds, float realElapseSeconds)

@@ -32,7 +32,7 @@ public class ProcedureManager : Singleton<ProcedureManager>
         //在这里加流程注册
         procedures = new List<ProcedureBase>();
         AddProcedure(typeof(PreloadProcedure));
-
+        AddProcedure(typeof(LoadConfigProcedure));
 
         singletonManager.Procedure_Initialize(procedures.ToArray());
     }

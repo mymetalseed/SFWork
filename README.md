@@ -18,14 +18,14 @@
 
 目前功能模块见下
 
-> Singleton -> SingletonManager(管理Singleton的Unity生命周期)
-> Procedure(控制整个游戏的流程-基于有限状态机)
-> UI(管理UI - 基于有限状态机和Asset管理模块)
-> Asset(基于Addressable 管理资源的AB与加载)
-> MessageDispatcher(消息分发,用MessageRouter进行接口调用的查找)
-> Fsm(有限状态机)
-> Timer(延时执行时的模块,通常用于冷却之类的)
-> excel与Json的转换 - 基于此延伸出的配置数据库方案
+- Singleton -> SingletonManager(管理Singleton的Unity生命周期)
+- Procedure(控制整个游戏的流程-基于有限状态机)
+- UI(管理UI - 基于有限状态机和Asset管理模块)
+- Asset(基于Addressable 管理资源的AB与加载)
+- MessageDispatcher(消息分发,用MessageRouter进行接口调用的查找)
+- Fsm(有限状态机)
+- Timer(延时执行时的模块,通常用于冷却之类的)
+- excel与Json的转换 - 基于此延伸出的配置数据库方案
 
 demo入口: Scenes/Loading 这个场景下!
 

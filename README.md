@@ -26,6 +26,7 @@
 - Fsm(有限状态机)
 - Timer(延时执行时的模块,通常用于冷却之类的)
 - excel与Json的转换 - 基于此延伸出的配置数据库方案
+- Dialog(运行时全局提示)
 
 demo入口: Scenes/Loading 这个场景下!
 

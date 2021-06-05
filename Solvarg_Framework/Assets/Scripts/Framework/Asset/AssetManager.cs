@@ -17,7 +17,7 @@ public class AssetManager : Singleton<AssetManager>
     {
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(assetPath);
         T Result = await handle.Task;
-        ReleaseAsset(handle);
+        //ReleaseAsset(handle);
         return Result;
     }
 
@@ -30,7 +30,7 @@ public class AssetManager : Singleton<AssetManager>
     {
         AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(assetPath);
         GameObject Result = await handle.Task;
-        ReleaseAsset(handle);
+        //ReleaseAsset(handle);
         return Result;
     }
 

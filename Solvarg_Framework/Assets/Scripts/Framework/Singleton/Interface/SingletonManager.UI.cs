@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using static Defines;
 
 public partial class SingletonManager
@@ -71,6 +72,9 @@ public partial class SingletonManager
 
     #endregion
 
+    #region 停止所有UI
+    #endregion
+
     #region 获取UI
     public T GetUI<T>(Defines.EnumUIType _uiType) where T : BaseUI
     {
@@ -79,6 +83,34 @@ public partial class SingletonManager
     public GameObject GetUIObject(Defines.EnumUIType _uiType)
     {
         return GetUIObject(_uiType);
+    }
+    #endregion
+
+    #region 全局提示UI - Dialog
+    private UIDialog dialogUI;
+    /// <summary>
+    /// 打开提示框
+    /// </summary>
+    /// <param name="title"></param>
+    /// <param name="content"></param>
+    /// <param name="button1Txt"></param>
+    /// <param name="button2Txt"></param>
+    /// <param name="closeAction"></param>
+    /// <param name="btn1Action"></param>
+    /// <param name="btn2Action"></param>
+    public void OpenDialog(string title, string content, string button1Txt = "", string button2Txt = "", UnityAction closeAction = null, UnityAction btn1Action = null, UnityAction btn2Action = null)
+    {
+        dialogUI.Open(title, content, button1Txt, button2Txt, closeAction, btn1Action, btn2Action);
+    }
+    /// <summary>
+    /// 预加载阶段配置Dialog
+    /// </summary>
+    /// <param name="dialog"></param>
+    public void SetDialog(UIDialog dialog)
+    {
+        dialog.gameObject.transform.parent = uiManager.UIParent.transform;
+        dialog.gameObject.SetActive(false);
+        this.dialogUI = dialog;
     }
     #endregion
 

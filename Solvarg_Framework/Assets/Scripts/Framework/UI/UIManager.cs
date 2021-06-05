@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 using static Defines;
 
 public class UIManager : Singleton<UIManager>
@@ -11,11 +12,20 @@ public class UIManager : Singleton<UIManager>
     private Dictionary<Defines.EnumUIType, GameObject> dicOpenUIs = null;
 
     private Stack<UIInfoData> stackOpenUIs = null;
-    public override void Awake()
+
+    private GameObject _UIParent;
+    public GameObject UIParent => (_UIParent);
+
+    public async override void Awake()
     {
         Debuger.Log("初始化UI模块");
         dicOpenUIs = new Dictionary<Defines.EnumUIType, GameObject>();
         stackOpenUIs = new Stack<UIInfoData>();
+
+        //创建UI全局界面
+        _UIParent = await singletonManager.InstantiateAsync(UIPathDefines.UI_MAIN);
+        _UIParent.transform.parent = singletonManager.transform;
+        await singletonManager.InstantiateAsync(UIPathDefines.EVENTSYSTEM);
     }
 
     public T GetUI<T>(Defines.EnumUIType _uiType) where T:BaseUI

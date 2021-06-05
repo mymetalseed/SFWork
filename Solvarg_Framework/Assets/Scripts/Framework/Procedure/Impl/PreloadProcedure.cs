@@ -17,7 +17,9 @@ public class PreloadProcedure : ProcedureBase
     {
         base.OnEnter(fsm);
         Debuger.Log("进入预加载流程,进入菜单前的检查流程");
-
+        //加载DialogUI
+        GameObject dialog = await SingletonManager.Instance.InstantiateAsync(UIPathDefines.UI_DIALOG_PREFAB);
+        SingletonManager.Instance.SetDialog(dialog.GetComponent<UIDialog>());
 
     }
 
@@ -30,6 +32,12 @@ public class PreloadProcedure : ProcedureBase
     public override void OnUpdate(ProcedureOwner fsm, float elapseSeconds, float realElapseSeconds)
     {
         base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
-        Debuger.Log("预加载流程在更新呢");
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SingletonManager.Instance.OpenDialog("测试","测试啦","关闭","打开",()=> { Debuger.LogError("测试关闭"); });
+        }
     }
+
+
+
 }

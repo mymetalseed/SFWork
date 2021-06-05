@@ -10,24 +10,30 @@ public delegate void StateChangeEvent(Object ui,Defines.EnumObjectState newState
 #endregion
 
 #region
-public class UIPathDefines
+public static class UIPathDefines
 {
     /// <summary>
     /// UI预设
     /// </summary>
-    public const string UI_PREFAB = "UIPrefab/";
+    public static string UI_PREFAB = "UIPrefab/";
     /// <summary>
     /// UI小控件预设
     /// </summary>
-    public const string UI_CONTROLS_PREFAB = "UIPrefab/Control/";
+    public static string UI_CONTROLS_PREFAB = "UIPrefab/Control/";
     /// <summary>
     /// UI子页面预设
     /// </summary>
-    public const string UI_SUBUI_PREFAB = "UIPrefab/SubUI/";
+    public static string UI_SUBUI_PREFAB = "UIPrefab/SubUI/";
     /// <summary>
     /// ICON路径
     /// </summary>
-    public const string UI_ICON_PATH = "UI/Icon/";
+    public static string UI_ICON_PATH = "UI/Icon/";
+    /// <summary>
+    /// DIALOG路径
+    /// </summary>
+    public static string UI_DIALOG_PREFAB = "Assets/AssetPackage/UI/Dialog/Dialog.prefab";
+    public static string UI_MAIN = "Assets/AssetPackage/UI/UIMain.prefab";
+    public static string EVENTSYSTEM = "Assets/AssetPackage/UI/EventSystem.prefab";
 
     public static string GetUIPrefabsPathByType(EnumUIType _uiType)
     {
@@ -86,7 +92,8 @@ public class Defines
     public enum EnumUIType
     {
         None,
-        TestOne
+        TestOne,
+        Dialog
     }
     #endregion
 }

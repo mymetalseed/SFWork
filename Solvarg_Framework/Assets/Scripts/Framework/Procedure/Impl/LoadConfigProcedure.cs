@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ProcedureOwner = IFsm<ProcedureManager>;
+using Newtonsoft;
+using Newtonsoft.Json;
 
 public class LoadConfigProcedure : ProcedureBase
 {
     private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
 
-
+    
     public override void OnEnter(ProcedureOwner fsm)
     {
         base.OnEnter(fsm);
@@ -20,8 +22,8 @@ public class LoadConfigProcedure : ProcedureBase
     public override void OnInit(ProcedureOwner fsm)
     {
         base.OnInit(fsm);
-                
         Debuger.LogError("初始化配置流程");
+        m_LoadedFlag.Add("Config",false);
     }
 
     public override void OnLeave(ProcedureOwner fsm, bool isShutDown)
@@ -41,7 +43,11 @@ public class LoadConfigProcedure : ProcedureBase
         {
             ChangeState<PreloadProcedure>(fsm);
         }
-
+        foreach (var k in m_LoadedFlag.Values)
+        {
+            if (k == false) return;
+        }
+        ChangeState<PreloadProcedure>(fsm);
     }
 
     private async void PreloadResources()
@@ -52,15 +58,27 @@ public class LoadConfigProcedure : ProcedureBase
     private async void LoadConfig() {
         //加载配置
         Debuger.Log("加载配置文件");
-        Message message = new Message(MessageRouter.LoadApplicationConfigSuccess,this);
-        message.Add("msg","加载完毕");
-        SingletonManager.Instance.Message_FireAsync(message);
+        List<Config> co = await JsonHelper.DeserializeFromPath<List<Config>>
+            ("Assets/AssetPackage/database/json_database/ApplicationConfig.json");
+        if (co != null)
+        {
+            Message message = new Message(MessageRouter.LoadApplicationConfigSuccess, this);
+            message.Add("msg", "Config加载完毕");
+            SingletonManager.Instance.Message_FireAsync(message);
+        }
+        else
+        {
+            Message message = new Message(MessageRouter.LoadApplicationConfigFailure, this);
+            message.Add("msg", "Config加载失败");
+            SingletonManager.Instance.Message_FireAsync(message);
+        }
     }
 
     private void OnLoadConfigSuccess(Message message)
     {
         //配置文件加载完毕
         Debuger.Log("配置文件加载完毕" + message["msg"]);
+        m_LoadedFlag["Config"] = true;
 
     }
     private void OnLoadConfigFailure(Message message)

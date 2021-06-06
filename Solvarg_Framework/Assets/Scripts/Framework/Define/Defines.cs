@@ -13,53 +13,28 @@ public delegate void StateChangeEvent(Object ui,Defines.EnumObjectState newState
 public static class UIPathDefines
 {
     /// <summary>
-    /// UI预设
-    /// </summary>
-    public static string UI_PREFAB = "UIPrefab/";
-    /// <summary>
-    /// UI小控件预设
-    /// </summary>
-    public static string UI_CONTROLS_PREFAB = "UIPrefab/Control/";
-    /// <summary>
-    /// UI子页面预设
-    /// </summary>
-    public static string UI_SUBUI_PREFAB = "UIPrefab/SubUI/";
-    /// <summary>
-    /// ICON路径
-    /// </summary>
-    public static string UI_ICON_PATH = "UI/Icon/";
-    /// <summary>
     /// DIALOG路径
     /// </summary>
-    public static string UI_DIALOG_PREFAB = "Assets/AssetPackage/UI/Dialog/Dialog.prefab";
     public static string UI_MAIN = "Assets/AssetPackage/UI/UIMain.prefab";
     public static string EVENTSYSTEM = "Assets/AssetPackage/UI/EventSystem.prefab";
 
-    public static string GetUIPrefabsPathByType(EnumUIType _uiType)
-    {
-        string _path = string.Empty;
-        switch (_uiType)
-        {
-            case EnumUIType.TestOne:
-                _path = UI_PREFAB + "TestOne";
-                break;
-            default:
-                Debuger.Log("Not Find EnumUIType: " + _uiType.ToString());
-                break;
-        }
-        return _path;
-    }
 
-    public static System.Type GetUIScriptByType(EnumUIType _uiType)
+    public static System.Type GetUIScriptByType(EnumUIName _uiType)
     {
         System.Type _scriptType = null;
         switch (_uiType)
         {
-            case EnumUIType.TestOne:
+            case EnumUIName.TestOne:
                 _scriptType = typeof(TestOne);
                 break;
+            case EnumUIName.Dialog:
+                _scriptType = typeof(UIDialog);
+                break;
+            case EnumUIName.Menu:
+                _scriptType = typeof(UIMenu);
+                break;
             default:
-                Debuger.Log("Not Find EnumUIType: " + _uiType.ToString());
+                Debuger.Log("Not Find EnumUIName: " + _uiType.ToString());
                 break;
         }
         return _scriptType;
@@ -69,7 +44,7 @@ public static class UIPathDefines
 #endregion
 
 
-public class Defines
+public static class Defines
 {
     #region Global全剧枚举
     public enum EnumObjectState { 
@@ -83,17 +58,25 @@ public class Defines
         Closing
     }
     #endregion
-    public Defines()
-    {
-
-    }
 
     #region UIDefine
-    public enum EnumUIType
+    public enum EnumUIName
     {
         None,
         TestOne,
-        Dialog
+        Dialog,
+        Menu
+    }
+
+    public enum EnumSceneName
+    {
+        None,
+        Menu
+    }
+
+    public enum EnumApplicationLocallization
+    {
+        CH,//中国
     }
     #endregion
 }

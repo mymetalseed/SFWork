@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using static Defines;
@@ -11,52 +12,52 @@ public partial class SingletonManager
     /// 预加载UI
     /// </summary>
     /// <param name="_uiType"></param>
-    public void PreloadUI(EnumUIType _uiType)
+    public async Task<GameObject> PreloadUI(EnumUIName _uiType)
     {
-        uiManager.PreLoadUI(_uiType);
+        return await uiManager.PreLoadUI(_uiType);
     }
     /// <summary>
     /// 预加载UI组
     /// </summary>
     /// <param name="_uiType"></param>
-    public void PreloadUI(EnumUIType[] _uiType)
+    public async Task PreloadUI(EnumUIName[] _uiType)
     {
-        uiManager.PreLoadUI(_uiType);
+        await uiManager.PreLoadUI(_uiType);
     }
     #endregion
 
     #region 打开UI
-    public void OpenUI(EnumUIType _uiType)
+    public async Task OpenUI(EnumUIName _uiType)
     {
-        uiManager.OpenUI(_uiType,null);
+        await uiManager.OpenUI(_uiType,null);
     }
-    public void OpenUI(EnumUIType _uiType,params object[] _uiParams)
+    public async Task OpenUI(EnumUIName _uiType,params object[] _uiParams)
     {
-        uiManager.OpenUI(_uiType, _uiParams);
+        await uiManager.OpenUI(_uiType, _uiParams);
     }
-    public void OpenUI(EnumUIType[] _uiTypes)
+    public async Task OpenUI(EnumUIName[] _uiTypes)
     {
-        uiManager.OpenUI(_uiTypes);
+        await uiManager.OpenUI(_uiTypes);
     }
-    public void OpenUI(bool isClosethers,EnumUIType[] _uiTypes,params object[] _uiParams)
+    public void OpenUI(bool isClosethers,EnumUIName[] _uiTypes,params object[] _uiParams)
     {
         uiManager.OpenUI(isClosethers,_uiTypes, _uiParams);
     }
 
-    public void OpenUICloseOthers(EnumUIType[] _uiTypes)
+    public void OpenUICloseOthers(EnumUIName[] _uiTypes)
     {
         OpenUI(true, _uiTypes, null);
     }
-    public void OpenUICloseOthers(EnumUIType _uiType, params object[] _uiParams)
+    public void OpenUICloseOthers(EnumUIName _uiType, params object[] _uiParams)
     {
-        EnumUIType[] _uiTypes = new EnumUIType[1];
+        EnumUIName[] _uiTypes = new EnumUIName[1];
         _uiTypes[0] = _uiType;
         OpenUI(true, _uiTypes, _uiParams);
     }
     #endregion
 
     #region 关闭UI
-    public void CloseUI(EnumUIType _uiType)
+    public void CloseUI(EnumUIName _uiType)
     {
         uiManager.CloseUI(_uiType);
     }
@@ -65,7 +66,7 @@ public partial class SingletonManager
     {
         uiManager.CloseUIAll();
     }
-    public void CloseUI(EnumUIType[] _uiTypes)
+    public void CloseUI(EnumUIName[] _uiTypes)
     {
         uiManager.CloseUI(_uiTypes);
     }
@@ -76,11 +77,11 @@ public partial class SingletonManager
     #endregion
 
     #region 获取UI
-    public T GetUI<T>(Defines.EnumUIType _uiType) where T : BaseUI
+    public T GetUI<T>(Defines.EnumUIName _uiType) where T : BaseUI
     {
         return uiManager.GetUI<T>(_uiType);
     }
-    public GameObject GetUIObject(Defines.EnumUIType _uiType)
+    public GameObject GetUIObject(Defines.EnumUIName _uiType)
     {
         return GetUIObject(_uiType);
     }

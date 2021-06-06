@@ -54,7 +54,7 @@ public abstract class  BaseUI : MonoBehaviour
         }
     }
 
-    public abstract EnumUIType GetUIType();
+    public abstract EnumUIName GetUIType();
     #endregion
 
     private void Start()
@@ -115,6 +115,7 @@ public abstract class  BaseUI : MonoBehaviour
     protected virtual void OnRelease()
     {
         this.State = EnumObjectState.None;
+        OnClose();
         this.OnPlayCloseUIAudio();
     }
     protected virtual void OnLoadData() { }
@@ -131,7 +132,13 @@ public abstract class  BaseUI : MonoBehaviour
     {
         this.State = EnumObjectState.Loading;
     }
+    protected virtual void OnOpen() { }
+    protected virtual void OnClose() { }
 
+    /// <summary>
+    /// 打开UI时触发
+    /// </summary>
+    /// <param name="uiParams"></param>
     public void SetUIWhenOpening(params object[] uiParams)
     {
         SetUI(uiParams);
@@ -146,5 +153,6 @@ public abstract class  BaseUI : MonoBehaviour
             this.OnLoadData();
             this.State = EnumObjectState.Ready;
         }
+        OnOpen();
     }
 }

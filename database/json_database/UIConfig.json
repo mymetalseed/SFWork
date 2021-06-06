@@ -6,5 +6,13 @@
     "ClickSoundID": "NULL",
     "CloseSoundID": "NULL",
     "OpenSoundID": "NULL"
+  },
+  {
+    "ID": 1001,
+    "Name": "Menu",
+    "Path": "Assets/AssetPackage/UI/UIMenu.prefab",
+    "ClickSoundID": "NULL",
+    "CloseSoundID": "NULL",
+    "OpenSoundID": "NULL"
   }
 ]

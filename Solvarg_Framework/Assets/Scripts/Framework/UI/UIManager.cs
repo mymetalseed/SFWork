@@ -9,7 +9,7 @@ using static Defines;
 public class UIManager : Singleton<UIManager>
 {
 
-    private Dictionary<Defines.EnumUIType, GameObject> dicOpenUIs = null;
+    private Dictionary<Defines.EnumUIName, GameObject> dicOpenUIs = null;
 
     private Stack<UIInfoData> stackOpenUIs = null;
 
@@ -19,16 +19,17 @@ public class UIManager : Singleton<UIManager>
     public async override void Awake()
     {
         Debuger.Log("初始化UI模块");
-        dicOpenUIs = new Dictionary<Defines.EnumUIType, GameObject>();
+        dicOpenUIs = new Dictionary<Defines.EnumUIName, GameObject>();
         stackOpenUIs = new Stack<UIInfoData>();
 
         //创建UI全局界面
         _UIParent = await singletonManager.InstantiateAsync(UIPathDefines.UI_MAIN);
         _UIParent.transform.parent = singletonManager.transform;
-        await singletonManager.InstantiateAsync(UIPathDefines.EVENTSYSTEM);
+        GameObject eventSystem =  await singletonManager.InstantiateAsync(UIPathDefines.EVENTSYSTEM);
+        eventSystem.transform.parent = singletonManager.transform;
     }
 
-    public T GetUI<T>(Defines.EnumUIType _uiType) where T:BaseUI
+    public T GetUI<T>(Defines.EnumUIName _uiType) where T:BaseUI
     {
         GameObject _retObj = GetUIObject(_uiType);
         if (_retObj != null)
@@ -38,7 +39,7 @@ public class UIManager : Singleton<UIManager>
         return null;
     }
 
-    public GameObject GetUIObject(Defines.EnumUIType _uiType)
+    public GameObject GetUIObject(Defines.EnumUIName _uiType)
     {
         GameObject _retObj=null;
         if(!dicOpenUIs.TryGetValue(_uiType,out _retObj))
@@ -48,31 +49,31 @@ public class UIManager : Singleton<UIManager>
         return _retObj;
     }
 
-    public void OpenUI(EnumUIType[] _uiTypes)
+    public async Task OpenUI(EnumUIName[] _uiTypes)
     {
-        OpenUI(false, _uiTypes, null);
+        await OpenUI(false, _uiTypes, null);
     }
 
-    public void OpenUI(EnumUIType _uiType,params object[] _uiParams)
+    public async Task OpenUI(EnumUIName _uiType,params object[] _uiParams)
     {
-        EnumUIType[] _uiTypes = new EnumUIType[1];
+        EnumUIName[] _uiTypes = new EnumUIName[1];
         _uiTypes[0] = _uiType;
-        OpenUI(false, _uiTypes, _uiParams);
+        await OpenUI(false, _uiTypes, _uiParams);
     }
 
-    public void OpenUICloseOthers(EnumUIType[] _uiTypes)
+    public void OpenUICloseOthers(EnumUIName[] _uiTypes)
     {
         OpenUI(true, _uiTypes, null);
     }
 
-    public void OpenUICloseOthers(EnumUIType _uiType,params object[] _uiParams)
+    public void OpenUICloseOthers(EnumUIName _uiType,params object[] _uiParams)
     {
-        EnumUIType[] _uiTypes = new EnumUIType[1];
+        EnumUIName[] _uiTypes = new EnumUIName[1];
         _uiTypes[0] = _uiType;
         OpenUI(true, _uiTypes, _uiParams);
     }
 
-    public void OpenUI(bool _isCloseOthers,EnumUIType[] _uiTypes,params object[] _uiParams)
+    public async Task OpenUI(bool _isCloseOthers,EnumUIName[] _uiTypes,params object[] _uiParams)
     {
         if (_isCloseOthers)
         {
@@ -83,10 +84,10 @@ public class UIManager : Singleton<UIManager>
         //push _uiTypes in stack.
         for(int i = 0; i < _uiTypes.Length; ++i)
         {
-            EnumUIType _uiType = _uiTypes[i];
+            EnumUIName _uiType = _uiTypes[i];
             if (!dicOpenUIs.ContainsKey(_uiType))
             {
-                string _path = UIPathDefines.GetUIPrefabsPathByType(_uiType);
+                string _path = singletonManager.GetUIConfig(_uiType).Path;
                 stackOpenUIs.Push(new UIInfoData(_uiType,_path,_uiParams));
             }
         }
@@ -94,10 +95,10 @@ public class UIManager : Singleton<UIManager>
         if (stackOpenUIs.Count > 0)
         {
             //打开UI
-            AsyncLoadData();
+            await AsyncLoadData();
         }
     }
-    public void CloseUI(EnumUIType _uiType)
+    public void CloseUI(EnumUIName _uiType)
     {
         GameObject _uiObj = GetUIObject(_uiType);
         if (_uiObj == null)
@@ -122,7 +123,7 @@ public class UIManager : Singleton<UIManager>
 
     public void CloseUIAll()
     {
-        List<EnumUIType> _listKey =new List<EnumUIType>(dicOpenUIs.Keys);
+        List<EnumUIName> _listKey =new List<EnumUIName>(dicOpenUIs.Keys);
         foreach(var _uiType in _listKey)
         {
             CloseUI(_uiType);
@@ -131,11 +132,11 @@ public class UIManager : Singleton<UIManager>
         dicOpenUIs.Clear();
     }
 
-    public void CloseUI(EnumUIType[] _uiTypes)
+    public void CloseUI(EnumUIName[] _uiTypes)
     {
-        foreach(EnumUIType _uiType in _uiTypes)
+        foreach(EnumUIName _uiType in _uiTypes)
         {
-            CloseUI(_uiTypes);
+            CloseUI(_uiType);
         }
     }
 
@@ -175,6 +176,9 @@ public class UIManager : Singleton<UIManager>
                 if (_prefab != null)
                 {
                     _uiObj = MonoBehaviour.Instantiate(_prefab) as GameObject;
+                    _uiObj.transform.parent = UIParent.transform;
+                    _uiObj.transform.localPosition = Vector3.zero;
+                    _uiObj.transform.localScale = Vector3.one;
                     BaseUI _baseUI = _uiObj.GetComponent<BaseUI>();
                     if (_baseUI == null)
                     {
@@ -192,7 +196,7 @@ public class UIManager : Singleton<UIManager>
         return 0;
     }
 
-    public void PauseOther(EnumUIType _uiType)
+    public void PauseOther(EnumUIName _uiType)
     {
         foreach(var tp in dicOpenUIs)
         {
@@ -203,23 +207,27 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public void Resume(EnumUIType _uiType)
+    public void Resume(EnumUIName _uiType)
     {
         dicOpenUIs[_uiType].GetComponent<BaseUI>().Resume();
     }
 
     #region 预加载
-    public void PreLoadUI(EnumUIType[] _uiTypes)
+    public async Task PreLoadUI(EnumUIName[] _uiTypes)
     {
         foreach (var _uiType in _uiTypes)
         {
-            PreLoadUI(_uiType);
+            await PreLoadUI(_uiType);
         }
     }
-    public void PreLoadUI(EnumUIType _uiType)
+    public async Task<GameObject> PreLoadUI(EnumUIName _uiType)
     {
-        string path = UIPathDefines.GetUIPrefabsPathByType(_uiType);
-        singletonManager.InstantiateAsync(path);
+        string path = singletonManager.GetUIConfig(_uiType).Path;
+        GameObject obj =  await singletonManager.InstantiateAsync(path);
+        obj.transform.parent = UIParent.transform;
+        obj.transform.localPosition = Vector3.zero;
+        obj.transform.localScale = Vector3.one;
+        return obj;
     }
     #endregion
 

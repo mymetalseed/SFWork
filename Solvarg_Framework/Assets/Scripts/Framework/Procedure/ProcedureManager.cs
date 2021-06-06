@@ -33,6 +33,7 @@ public class ProcedureManager : Singleton<ProcedureManager>
         procedures = new List<ProcedureBase>();
         AddProcedure(typeof(PreloadProcedure));
         AddProcedure(typeof(LoadConfigProcedure));
+        AddProcedure(typeof(MenuProcedure));
 
         singletonManager.Procedure_Initialize(procedures.ToArray());
     }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TestOne : BaseUI
 {
-    public override Defines.EnumUIType GetUIType()
+    public override Defines.EnumUIName GetUIType()
     {
-        return Defines.EnumUIType.TestOne;
+        return Defines.EnumUIName.TestOne;
     }
 }

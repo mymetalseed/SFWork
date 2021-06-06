@@ -19,9 +19,15 @@ public class PreloadProcedure : ProcedureBase
         base.OnEnter(fsm);
         Debuger.Log("进入预加载流程,进入菜单前的检查流程");
         //加载DialogUI
-        GameObject dialog = await SingletonManager.Instance.InstantiateAsync(UIPathDefines.UI_DIALOG_PREFAB);
+        UIConfig dialogUI = SingletonManager.Instance.GetUIConfig(Defines.EnumUIName.Dialog);
+        GameObject dialog = await SingletonManager.Instance.InstantiateAsync(dialogUI.Path);
         SingletonManager.Instance.SetDialog(dialog.GetComponent<UIDialog>());
 
+        await SingletonManager.Instance.OpenUI(Defines.EnumUIName.Menu);
+
+        await Addressables.LoadSceneAsync(SingletonManager.Instance.GetSceneConfig()[0].Path).Task;
+
+        ChangeState<MenuProcedure>(fsm);
     }
 
     public override void OnLeave(ProcedureOwner fsm, bool isShutDown)
@@ -36,11 +42,6 @@ public class PreloadProcedure : ProcedureBase
         if (Input.GetKeyDown(KeyCode.O))
         {
             SingletonManager.Instance.OpenDialog("测试","测试啦","关闭","打开",()=> { Debuger.LogError("测试关闭"); });
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Addressables.LoadSceneAsync(SingletonManager.Instance.GetSceneConfig().Path);
         }
 
         

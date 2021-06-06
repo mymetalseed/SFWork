@@ -19,6 +19,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
 #if UNITY_EDITOR
         Debuger.debugerEnable = true;
 #endif
+        Debuger.debugerEnable = true;
         singltonList = new List<IMonoBehaviour>();
         _rootObj = gameObject;
         GameObject.DontDestroyOnLoad(_rootObj);

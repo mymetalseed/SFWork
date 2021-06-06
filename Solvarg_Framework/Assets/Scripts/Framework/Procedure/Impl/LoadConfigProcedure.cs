@@ -53,7 +53,6 @@ public class LoadConfigProcedure : ProcedureBase
         {
             if (k.Value == false)
             {
-                Debuger.LogError(k.Key);
                 return;
             }
         }
@@ -77,7 +76,7 @@ public class LoadConfigProcedure : ProcedureBase
         {
             Message message = new Message(MessageRouter.LoadApplicationConfigSuccess, this);
             message.Add("msg", "Config加载完毕");
-            message.Add("data",co[0]);
+            message.Add("data", co);
             SingletonManager.Instance.Message_FireAsync(message);
         }
         else
@@ -92,9 +91,9 @@ public class LoadConfigProcedure : ProcedureBase
     {
         //配置文件加载完毕
         Debuger.Log("配置文件加载完毕" + message["msg"]);
-        Config co = message["data"] as Config;
+        List<Config> co = message["data"] as List<Config>;
         SingletonManager.Instance.SetApllicationConfig(co);
-        Debuger.Log("游戏语言版本： " + co.Language);
+        Debuger.Log("游戏语言版本： " + co[0].Language);
         m_LoadedFlag["Config"] = true;
     }
     #endregion
@@ -110,7 +109,7 @@ public class LoadConfigProcedure : ProcedureBase
         {
             Message message = new Message(MessageRouter.LoadUIConfigSuccess, this);
             message.Add("msg", "UIConfig加载完毕");
-            message.Add("data", co[0]);
+            message.Add("data", co);
             SingletonManager.Instance.Message_FireAsync(message);
         }
         else
@@ -126,7 +125,7 @@ public class LoadConfigProcedure : ProcedureBase
     {
         //配置文件加载完毕
         Debuger.Log("配置文件加载完毕" + message["msg"]);
-        UIConfig co = message["data"] as UIConfig;
+        List<UIConfig> co = message["data"] as List<UIConfig>;
         SingletonManager.Instance.SetUIConfig(co);
         m_LoadedFlag["UIConfig"] = true;
     }
@@ -143,7 +142,7 @@ public class LoadConfigProcedure : ProcedureBase
         {
             Message message = new Message(MessageRouter.LoadSceneConfigSuccess, this);
             message.Add("msg", "SceneConfig加载完毕");
-            message.Add("data", co[0]);
+            message.Add("data", co);
             SingletonManager.Instance.Message_FireAsync(message);
         }
         else
@@ -158,7 +157,7 @@ public class LoadConfigProcedure : ProcedureBase
     {
         //配置文件加载完毕
         Debuger.Log("配置文件加载完毕" + message["msg"]);
-        SceneConfig co = message["data"] as SceneConfig;
+        List<SceneConfig> co = message["data"] as List<SceneConfig>;
         SingletonManager.Instance.SetSceneConfig(co);
         m_LoadedFlag["SceneConfig"] = true;
     }

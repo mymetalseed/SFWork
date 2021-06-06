@@ -4,13 +4,33 @@ using UnityEngine;
 
 public class DatabaseManager : Singleton<DatabaseManager>
 {
-    #region config
-    private ConfigDatabase config;
-    public ConfigDatabase Config => (config);
-
-    public void SetConfig(ConfigDatabase co)
+    public override void Awake()
     {
-        config = co;
+        base.Awake();
+    }
+    #region 参数
+    private Config config;
+    public Config Config => (config);
+
+    private UIConfig uiConfig;
+    public UIConfig UIConfig => (uiConfig);
+
+    private SceneConfig sceneConfig;
+    public SceneConfig SceneCofnig => (sceneConfig);
+
+    #endregion
+    #region Set
+    public void SetApllicationConfig(Config co)
+    {
+        this.config = co;
+    }
+    public void SetUIConfig(UIConfig co)
+    {
+        this.uiConfig = co;
+    }
+    public void SetSceneConfig(SceneConfig co)
+    {
+        this.sceneConfig = co;
     }
     #endregion
 }

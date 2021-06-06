@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class UIDialog : MonoBehaviour
 {
+	bool isOpened = false;
+
     Animator m_Animator = null;
 	private Text titleText;
 	private Text contentText;
@@ -31,11 +33,13 @@ public class UIDialog : MonoBehaviour
 		closeBtn = transform.Find("Window/Close").GetComponent<Button>();
 		button1 = transform.Find("Window/Button1").GetComponent<Button>();
 		button2 = transform.Find("Window/Button2").GetComponent<Button>();
-
+		isOpened = false;
 	}
 
     public void Open(string title,string content,string button1Txt = "",string button2Txt = "", UnityAction closeAction =null,UnityAction btn1Action = null, UnityAction btn2Action =null) 
 	{
+		if (isOpened) return;
+		isOpened = true;
 		titleText.text = title;
 		contentText.text = content;
 		button1Text.text = button1Txt;
@@ -68,6 +72,7 @@ public class UIDialog : MonoBehaviour
 
 	private void Closed()
 	{
+		isOpened = false;
 		gameObject.SetActive(false);
         if (closeAction!=null)
         {

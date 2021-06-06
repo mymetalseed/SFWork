@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using ProcedureOwner = IFsm<ProcedureManager>;
 
 public class PreloadProcedure : ProcedureBase
@@ -36,6 +37,13 @@ public class PreloadProcedure : ProcedureBase
         {
             SingletonManager.Instance.OpenDialog("测试","测试啦","关闭","打开",()=> { Debuger.LogError("测试关闭"); });
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Addressables.LoadSceneAsync(SingletonManager.Instance.GetSceneConfig().Path);
+        }
+
+        
     }
 
 

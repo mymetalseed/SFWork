@@ -3,6 +3,10 @@
     "ID": "T01",
     "MenuTitle": "Solvarg",
     "Author": "冬狼 @ QQ_834930269",
-    "CreateTime": "6/5/2021"
+    "CreateTime": "2021/06/05",
+    "StartGame": "开始游戏",
+    "ExitGame": "离开游戏",
+    "ContinueGame": "继续游戏",
+    "Language": "CH(中文)"
   }
 ]

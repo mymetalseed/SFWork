@@ -109,6 +109,7 @@ public partial class SingletonManager
     public void SetDialog(UIDialog dialog)
     {
         dialog.gameObject.transform.parent = uiManager.UIParent.transform;
+        dialog.transform.localPosition = Vector3.zero;
         dialog.gameObject.SetActive(false);
         this.dialogUI = dialog;
     }

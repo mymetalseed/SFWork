@@ -24,6 +24,12 @@ public static class MessageRouter
     #region 配置Handler
     public static string LoadApplicationConfigSuccess = "config.loadApplicationConfigSuccess";
     public static string LoadApplicationConfigFailure = "config.loadApplicationConfigFailure";
+
+    public static string LoadUIConfigSuccess = "config.loadUIConfigSuccess";
+    public static string LoadUIConfigFailure = "config.loadUIConfigFailure";
+
+    public static string LoadSceneConfigSuccess = "config.loadSceneConfigSuccess";
+    public static string LoadSceneConfigFailure = "config.loadSceneConfigFailure";
     #endregion
 
     #region 测试

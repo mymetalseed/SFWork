@@ -1,0 +1,10 @@
+[
+  {
+    "ID": 1000,
+    "Name": "Dialog",
+    "Path": "Assets/AssetPackage/UI/Dialog/Dialog.prefab",
+    "ClickSoundID": "NULL",
+    "CloseSoundID": "NULL",
+    "OpenSoundID": "NULL"
+  }
+]

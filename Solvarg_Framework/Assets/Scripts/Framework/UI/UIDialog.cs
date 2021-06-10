@@ -20,7 +20,6 @@ public class UIDialog : MonoBehaviour
 
 	private UnityAction closeAction;
 	private UnityAction button1Action;
-	private UnityAction button2Action;
 
     private void Awake()
     {
@@ -36,7 +35,7 @@ public class UIDialog : MonoBehaviour
 		isOpened = false;
 	}
 
-    public void Open(string title,string content,string button1Txt = "",string button2Txt = "", UnityAction closeAction =null,UnityAction btn1Action = null, UnityAction btn2Action =null) 
+    public void Open(string title,string content,string button1Txt = "确定",string button2Txt = "取消", UnityAction closeAction =null,UnityAction btn1Action = null) 
 	{
 		if (isOpened) return;
 		isOpened = true;
@@ -46,21 +45,11 @@ public class UIDialog : MonoBehaviour
 		button2Text.text = button2Txt;
 		this.closeAction = closeAction;
 		this.button1Action = btn1Action;
-		this.button2Action = btn2Action;
-		if(!(btn1Action!=null && btn2Action != null))
-        {
-            if (btn1Action != null)
-            {
-				//只有BTN1,调整布局
-            }
-			if (btn2Action!=null)
-            {
-				//只有BTN2,调整布局
-			}
-		}
+
 		closeBtn.onClick.AddListener(Close);
 		button1.onClick.AddListener(Btn1Click);
 		button2.onClick.AddListener(Btn2Click);
+		this.transform.SetAsLastSibling();
 		gameObject.SetActive(true);
 	}
 
@@ -92,9 +81,6 @@ public class UIDialog : MonoBehaviour
 	}
 	private void Btn2Click()
 	{
-		if (button2Action != null)
-		{
-			button2Action();
-		}
+		Close();
 	}
 }

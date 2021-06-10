@@ -27,17 +27,21 @@
 - Timer(延时执行时的模块,通常用于冷却之类的)
 - excel与Json的转换 - 基于此延伸出的配置数据库方案
 - Dialog(运行时全局提示)
+- Google Poly Shader 特效集
 
 demo入口: Scenes/Loading 这个场景下!
 
 
 ## 暂时计划添加功能
 
+- 独立实现Postprocessing 和 转场集
+- Camera Effect
 - 移植技能系统到这里(基于动画状态机)  
 - 搭建成长系统   
 - UI动效集
 - 背包系统
 - 对话系统
+- 任务系统
 - 玩法流程(基于Procedure,实现多种玩法可以在一个项目下)
 - 基于 URP的部分效果Shader
 

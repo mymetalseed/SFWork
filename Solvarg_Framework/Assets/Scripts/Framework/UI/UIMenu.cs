@@ -29,6 +29,13 @@ public class UIMenu : BaseUI
         startGameBtn = transform.Find("StartGame").GetComponent<Button>();
         continueGameBtn = transform.Find("Continue").GetComponent<Button>();
         QuitGameBtn = transform.Find("QuitGame").GetComponent<Button>();
+
+        QuitGameBtn.onClick.AddListener(QuitGameBtnClick);
+
+        Config appConfig = SingletonManager.Instance.GetApllicationConfig()[0];
+        startGameTxt.text = appConfig.StartGame;
+        continueGameTxt.text = appConfig.ContinueGame;
+        QuitGameTxt.text = appConfig.ExitGame;
     }
 
     protected override void OnOpen()
@@ -36,5 +43,14 @@ public class UIMenu : BaseUI
         base.OnOpen();
         Debuger.Log("打开菜单UI");
     }
+    #endregion
+
+    #region 功能
+
+    private void QuitGameBtnClick()
+    {
+        SingletonManager.Instance.OpenDialog("退出游戏","确定退出游戏?","确定","取消",null,()=>ApplicationTools.QuitApp());
+    }
+
     #endregion
 }

@@ -99,9 +99,9 @@ public partial class SingletonManager
     /// <param name="closeAction"></param>
     /// <param name="btn1Action"></param>
     /// <param name="btn2Action"></param>
-    public void OpenDialog(string title, string content, string button1Txt = "", string button2Txt = "", UnityAction closeAction = null, UnityAction btn1Action = null, UnityAction btn2Action = null)
+    public void OpenDialog(string title, string content, string button1Txt = "", string button2Txt = "", UnityAction closeAction = null, UnityAction btn1Action = null)
     {
-        dialogUI.Open(title, content, button1Txt, button2Txt, closeAction, btn1Action, btn2Action);
+        dialogUI.Open(title, content, button1Txt, button2Txt, closeAction, btn1Action);
     }
     /// <summary>
     /// 预加载阶段配置Dialog

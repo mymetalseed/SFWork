@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
@@ -7,8 +8,8 @@ using UnityEngine;
 /// </summary>
 public interface IScene
 {
-    void EnterScene();
+    Task EnterScene();
     void LeaveScene();
     void UnloadAsset();
-    void LoadAsset();
+    Task LoadAsset();
 }

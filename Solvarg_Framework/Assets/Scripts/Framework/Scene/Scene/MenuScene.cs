@@ -1,26 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class MenuScene : IScene
 {
-    public void EnterScene()
+    public async Task EnterScene()
     {
-        throw new System.NotImplementedException();
+        ModelConfig modelConfig = SingletonManager.Instance.GetModelConfig("WolfWithMoon");
+        GameObject scRoot =  await SingletonManager.Instance.InstantiateAsync(modelConfig.Path);
+        scRoot.name = modelConfig.Name;
     }
 
     public void LeaveScene()
     {
-        throw new System.NotImplementedException();
     }
 
-    public void LoadAsset()
+    public async Task LoadAsset()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void UnloadAsset()
     {
-        throw new System.NotImplementedException();
     }
 }

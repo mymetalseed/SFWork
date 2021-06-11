@@ -4,6 +4,7 @@ using UnityEngine;
 using ProcedureOwner = IFsm<ProcedureManager>;
 using Newtonsoft;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 public class LoadConfigProcedure : ProcedureBase
 {
@@ -69,13 +70,14 @@ public class LoadConfigProcedure : ProcedureBase
 
     private async void PreloadResources()
     {
-        LoadApplicationConfig();
-        LoadUIConfig();
-        LoadSceneConfig();
+        await LoadApplicationConfig();
+        await LoadUIConfig();
+        await LoadSceneConfig();
+        await LoadModelConfig();
     }
 
     #region 加载ApplicationCfonig
-    private async void LoadApplicationConfig() {
+    private async Task LoadApplicationConfig() {
         //加载配置
         Debuger.Log("加载配置文件");
         List<Config> co = await JsonHelper.DeserializeFromPath<List<Config>>
@@ -109,7 +111,7 @@ public class LoadConfigProcedure : ProcedureBase
     #endregion
 
     #region 加载UIConfig
-    private async void LoadUIConfig()
+    private async Task LoadUIConfig()
     {
         //加载配置
         Debuger.Log("加载UI配置文件");
@@ -142,7 +144,7 @@ public class LoadConfigProcedure : ProcedureBase
     #endregion
 
     #region 加载SceneConfig
-    private async void LoadSceneConfig()
+    private async Task LoadSceneConfig()
     {
         //加载配置
         Debuger.Log("加载Scene配置文件");
@@ -174,7 +176,7 @@ public class LoadConfigProcedure : ProcedureBase
     #endregion
 
     #region 加载ModelConfig
-    private async void LoadModelConfig()
+    private async Task LoadModelConfig()
     {
         //加载配置
         Debuger.Log("加载Model配置文件");

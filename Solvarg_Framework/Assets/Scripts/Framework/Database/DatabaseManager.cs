@@ -71,6 +71,7 @@ public class DatabaseManager : Singleton<DatabaseManager>
                 Debuger.LogError("配置模型错误");
                 return;
             }
+            Debuger.Log(mo.Name.ToString()+"加载完毕");
             modelDict[mo.Name] = mo;
         }
     }

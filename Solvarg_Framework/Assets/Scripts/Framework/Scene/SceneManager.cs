@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using static Defines;
 
 public class SceneManager : Singleton<SceneManager>
 {
     private IScene currentScene;
-    public void EnterScene(Defines.EnumSceneName sceneName)
+    public async Task EnterScene(Defines.EnumSceneName sceneName)
     {
         if (sceneName == EnumSceneName.Menu)
         {
@@ -18,25 +19,27 @@ public class SceneManager : Singleton<SceneManager>
             Debuger.LogError("错误的场景");
         }
 
-        EnterScene();
+        await EnterScene();
+        await LoadAsset();
     }
 
-    private void EnterScene()
+    private async Task EnterScene()
     {
         if (currentScene == null) return;
-        currentScene.EnterScene();
+        await currentScene.EnterScene();
     }
 
     public void LeaveScene()
     {
         if (currentScene == null) return;
         currentScene.LeaveScene();
+        UnLoadAsset();
     }
 
-    public void LoadAsset()
+    public async Task LoadAsset()
     {
         if (currentScene == null) return;
-        currentScene.LoadAsset();
+        await currentScene.LoadAsset();
     }
 
     public void UnLoadAsset()

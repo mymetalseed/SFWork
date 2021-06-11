@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-
+using System;
 public static class JsonHelper 
 {
     /// <summary>
@@ -15,6 +15,11 @@ public static class JsonHelper
     public static T Deserialize<T>(string json)
     {
         return JsonConvert.DeserializeObject<T>(json);
+    }
+
+    public static object Deserialize(Type type,string json)
+    {
+        return JsonConvert.DeserializeObject(json, type);
     }
 
     /// <summary>
@@ -29,7 +34,10 @@ public static class JsonHelper
         return Deserialize<T>(jsonText);
     }
 
-
+    public static string SerializeObjectToJson(object obj)
+    {
+        return JsonConvert.SerializeObject(obj); 
+    }
 
 
 

@@ -20,6 +20,10 @@ public class LoadConfigProcedure : ProcedureBase
         SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadUIConfigFailure, OnLoadConfigFailure);
         SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadSceneConfigSuccess, OnLoadSceneConfigSuccess);
         SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadSceneConfigFailure, OnLoadConfigFailure);
+        SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadModelConfigSuccess, OnModelConfigSuccess);
+        SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadModelConfigFailure, OnLoadConfigFailure);
+
+
 
         PreloadResources();
     }
@@ -30,6 +34,7 @@ public class LoadConfigProcedure : ProcedureBase
         m_LoadedFlag.Add("Config",false);
         m_LoadedFlag.Add("UIConfig",false);
         m_LoadedFlag.Add("SceneConfig",false);
+        m_LoadedFlag.Add("ModelConfig",false);
     }
 
     public override void OnLeave(ProcedureOwner fsm, bool isShutDown)
@@ -41,6 +46,9 @@ public class LoadConfigProcedure : ProcedureBase
         SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadUIConfigFailure, OnLoadConfigFailure);
         SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadSceneConfigSuccess, OnLoadSceneConfigSuccess);
         SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadSceneConfigFailure, OnLoadConfigFailure);
+        SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadModelConfigSuccess, OnModelConfigSuccess);
+        SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadModelConfigFailure, OnLoadConfigFailure);
+
 
         Debuger.LogError("离开配置流程");
     }
@@ -96,6 +104,8 @@ public class LoadConfigProcedure : ProcedureBase
         Debuger.Log("游戏语言版本： " + co[0].Language);
         m_LoadedFlag["Config"] = true;
     }
+
+
     #endregion
 
     #region 加载UIConfig
@@ -160,6 +170,38 @@ public class LoadConfigProcedure : ProcedureBase
         List<SceneConfig> co = message["data"] as List<SceneConfig>;
         SingletonManager.Instance.SetSceneConfig(co);
         m_LoadedFlag["SceneConfig"] = true;
+    }
+    #endregion
+
+    #region 加载ModelConfig
+    private async void LoadModelConfig()
+    {
+        //加载配置
+        Debuger.Log("加载Model配置文件");
+        List<ModelConfig> co = await JsonHelper.DeserializeFromPath<List<ModelConfig>>
+            ("Assets/AssetPackage/database/json_database/ModelConfig.json");
+        if (co != null)
+        {
+            Message message = new Message(MessageRouter.LoadModelConfigSuccess, this);
+            message.Add("msg", "ModelConfig加载完毕");
+            message.Add("data", co);
+            SingletonManager.Instance.Message_FireAsync(message);
+        }
+        else
+        {
+            Message message = new Message(MessageRouter.LoadModelConfigFailure, this);
+            message.Add("msg", "ModelConfig加载失败");
+            SingletonManager.Instance.Message_FireAsync(message);
+        }
+    }
+
+    private void OnModelConfigSuccess(Message message)
+    {
+        //配置文件加载完毕
+        Debuger.Log("资源配置文件加载完毕" + message["msg"]);
+        List<ModelConfig> co = message["data"] as List<ModelConfig>;
+        SingletonManager.Instance.SetModelConfig(co);
+        m_LoadedFlag["ModelConfig"] = true;
     }
     #endregion
 

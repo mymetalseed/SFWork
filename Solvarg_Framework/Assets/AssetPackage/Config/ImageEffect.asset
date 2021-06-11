@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c0180b691295941903630346f97657, type: 3}
+  m_Name: ImageEffect
+  m_EditorClassIdentifier: 
+  imageEffect:
+  - effectType: 0
+    shader: {fileID: 4800000, guid: 03506d09c84720a4fb680ad2cbfa038f, type: 3}
+    name: "\u949F\u5F62\u53D8\u63621"
+  - effectType: 1
+    shader: {fileID: 4800000, guid: 9cb2b1ac0f2a4ce4594da17816eaed34, type: 3}
+    name: "\u949F\u5F62\u53D8\u63622"
+  - effectType: 2
+    shader: {fileID: 4800000, guid: a5c2a7eab30353f4eae853012234266a, type: 3}
+    name: "\u949F\u5F62\u53D8\u63623"
+  - effectType: 3
+    shader: {fileID: 4800000, guid: a15c805899e26934c84c3480d01348a9, type: 3}
+    name: "\u906E\u7F69\u6E10\u53D8"
+  - effectType: 4
+    shader: {fileID: 4800000, guid: 07c64ccccc8d01943b5d03a733c62827, type: 3}
+    name: "\u767E\u53F6\u7A971"
+  - effectType: 5
+    shader: {fileID: 4800000, guid: 24436c99f4b28704e9ebfe6209c8a52f, type: 3}
+    name: "\u767E\u53F6\u7A972"
+  - effectType: 6
+    shader: {fileID: 4800000, guid: a1eaa358fc1221d48a433ac455631d1d, type: 3}
+    name: "\u767E\u53F6\u7A973"
+  - effectType: 7
+    shader: {fileID: 4800000, guid: 00bc081e46de8ad4392c7795f999606f, type: 3}
+    name: "\u767E\u53F6\u7A974"
+  - effectType: 8
+    shader: {fileID: 4800000, guid: 68bdbd73e54863c4a8877c45d759998d, type: 3}
+    name: "\u767E\u53F6\u7A975"
+  - effectType: 9
+    shader: {fileID: 4800000, guid: c28e00d8aabf96e47a3bbfbb64a38a53, type: 3}
+    name: "\u6EB6\u89E3"
+  - effectType: 10
+    shader: {fileID: 4800000, guid: d93472db887242e4a87defe42e899298, type: 3}
+    name: "\u4E2D\u5FC3\u5207\u52061"
+  - effectType: 11
+    shader: {fileID: 4800000, guid: 116fb3bdbb1ade84fadc5331570d7c50, type: 3}
+    name: "\u4E2D\u5FC3\u5207\u52062"
+  - effectType: 12
+    shader: {fileID: 4800000, guid: cfddb0ac2f45e8045b5e4049e2d73fdb, type: 3}
+    name: "\u4E2D\u5FC3\u5408\u5E76"
+  - effectType: 13
+    shader: {fileID: 4800000, guid: 18f0c3d1f3b1be943b45bf6a93670102, type: 3}
+    name: "\u5207\u52061"
+  - effectType: 14
+    shader: {fileID: 4800000, guid: 61dfd7bd01f251b4795428be4be93159, type: 3}
+    name: "\u5207\u52062"
+  - effectType: 15
+    shader: {fileID: 4800000, guid: 264a4fe8098b0d945abb17e83cdf1805, type: 3}
+    name: "\u5706\u5F62\u6E10\u53D8"
+  - effectType: 16
+    shader: {fileID: 4800000, guid: bb080a6c9d99f3a4ba37148ad8ff4b61, type: 3}
+    name: "\u968F\u673A\u5757\u72B61"
+  - effectType: 17
+    shader: {fileID: 4800000, guid: 855a219322e8396448736863001915d3, type: 3}
+    name: "\u968F\u673A\u5757\u72B62"
+  - effectType: 18
+    shader: {fileID: 4800000, guid: 53fd1c363ada2da4fb29753f74cad478, type: 3}
+    name: "3D\u5E7F\u544A\u724C\u6548\u679C"

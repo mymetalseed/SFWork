@@ -50,6 +50,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     FsmManager fsmManager;
     ProcedureManager procedureManager;
     DatabaseManager databaseManager;
+    SceneManager sceneManager;
     #endregion
     /// <summary>
     /// 在这里进行所有单例的初始化
@@ -65,6 +66,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
         fsmManager = FsmManager.Instance.InitSingleton(this);
         procedureManager = ProcedureManager.Instance.InitSingleton(this);
         databaseManager = DatabaseManager.Instance.InitSingleton(this);
+        sceneManager = SceneManager.Instance.InitSingleton(this);
 
         OnInit();
         _singletonReleaseList.Add(delegate ()

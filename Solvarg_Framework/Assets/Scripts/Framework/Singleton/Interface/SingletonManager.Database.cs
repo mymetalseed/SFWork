@@ -76,4 +76,35 @@ public partial class SingletonManager
     }
     #endregion
 
+    #region 资源配置
+    public void SetModelConfig(List<ModelConfig> co)
+    {
+        databaseManager.SetModelConfig(co);
+    }
+    /// <summary>
+    /// 根据资源名获取资源
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    public ModelConfig GetModelConfig(string name)
+    {
+        ModelConfig res;
+        if(databaseManager.ModelDict.TryGetValue(name,out res))
+        {
+            return res;
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// 获取场景配置
+    /// </summary>
+    /// <returns></returns>
+    public List<ModelConfig> GetModelConfig()
+    {
+        return databaseManager.ModelConfigs;
+    }
+
+    #endregion
+
 }

@@ -30,6 +30,9 @@ public static class MessageRouter
 
     public static string LoadSceneConfigSuccess = "config.loadSceneConfigSuccess";
     public static string LoadSceneConfigFailure = "config.loadSceneConfigFailure";
+
+    public static string LoadModelConfigSuccess = "config.loadModelConfigSuccess";
+    public static string LoadModelConfigFailure = "config.loadModelConfigFailure";
     #endregion
 
     #region 测试

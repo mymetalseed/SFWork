@@ -24,6 +24,11 @@ public class DatabaseManager : Singleton<DatabaseManager>
     private Dictionary<EnumSceneName, SceneConfig> sceneDict;
     public Dictionary<EnumSceneName, SceneConfig> SceneDict => (sceneDict);
 
+    private List<ModelConfig> modelConfig;
+    public List<ModelConfig> ModelConfigs => (modelConfig);
+    private Dictionary<string, ModelConfig> modelDict;
+    public Dictionary<string, ModelConfig> ModelDict => (modelDict);
+
     #endregion
     #region Set
     public void SetApllicationConfig(List<Config> co)
@@ -52,6 +57,21 @@ public class DatabaseManager : Singleton<DatabaseManager>
             {
                 sceneDict.Add((EnumSceneName)Enum.Parse(typeof(EnumSceneName), c.Name), c);
             }
+        }
+    }
+
+    public void SetModelConfig(List<ModelConfig> co)
+    {
+        this.modelConfig = co;
+        modelDict = new Dictionary<string, ModelConfig>();
+        foreach(ModelConfig mo in ModelConfigs)
+        {
+            if (modelDict.ContainsKey(mo.Name))
+            {
+                Debuger.LogError("配置模型错误");
+                return;
+            }
+            modelDict[mo.Name] = mo;
         }
     }
     #endregion

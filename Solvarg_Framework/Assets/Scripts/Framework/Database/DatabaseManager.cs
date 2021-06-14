@@ -14,20 +14,27 @@ public class DatabaseManager : Singleton<DatabaseManager>
     private List<Config> config;
     public List<Config> Config => (config);
 
+
     private List<UIConfig> uiConfig;
     public List<UIConfig> UIConfig => (uiConfig);
     private Dictionary<EnumUIName, UIConfig> uiDict;
     public Dictionary<EnumUIName, UIConfig> UIDict => (uiDict);
+
 
     private List<SceneConfig> sceneConfig;
     public List<SceneConfig> SceneCofnig => (sceneConfig);
     private Dictionary<EnumSceneName, SceneConfig> sceneDict;
     public Dictionary<EnumSceneName, SceneConfig> SceneDict => (sceneDict);
 
+
     private List<ModelConfig> modelConfig;
     public List<ModelConfig> ModelConfigs => (modelConfig);
     private Dictionary<string, ModelConfig> modelDict;
     public Dictionary<string, ModelConfig> ModelDict => (modelDict);
+
+    //存储方式 - 剧情线类型-[ID,Quest信息]
+    private Dictionary<string, Dictionary<string,QuestInfo>> questDict;
+    public Dictionary<string, Dictionary<string, QuestInfo>> QuestDict => (questDict);
 
     #endregion
     #region Set

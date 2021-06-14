@@ -1,0 +1,36 @@
+{
+  "Main": [
+    {
+      "ID": "Q01",
+      "QuestTitle": "新手教程-移动",
+      "PreID": -1,
+      "QuestDescription": "移动教程",
+      "Abandonable": "false",
+      "QuestType": "Main"
+    },
+    {
+      "ID": "Q02",
+      "QuestTitle": "新手教程-奔跑",
+      "PreID": "Q01",
+      "QuestDescription": "奔跑教程",
+      "Abandonable": "false",
+      "QuestType": "Main"
+    },
+    {
+      "ID": "Q03",
+      "QuestTitle": "新手教程-攻击",
+      "PreID": "Q02",
+      "QuestDescription": "攻击教程",
+      "Abandonable": "false",
+      "QuestType": "Main"
+    },
+    {
+      "ID": "Q04",
+      "QuestTitle": "新手教程-交互",
+      "PreID": "Q03",
+      "QuestDescription": "交互教程",
+      "Abandonable": "false",
+      "QuestType": "Main"
+    }
+  ]
+}

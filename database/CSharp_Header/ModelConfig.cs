@@ -6,7 +6,7 @@
 
 // Generate From E:\Framework\SFWork\database\excel_database\ModelConfig.xlsx.xlsx
 
-public class UIConfig
+public class ModelConfig
 {
 	public string ID; // 编号
 	public string Name; // 资源名称

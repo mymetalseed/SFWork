@@ -14,13 +14,5 @@
     "ClickSoundID": "NULL",
     "CloseSoundID": "NULL",
     "OpenSoundID": "NULL"
-  },
-  {
-    "ID": 1002,
-    "Name": "Progress",
-    "Path": "Assets/AssetPackage/UI/UIProgress.prefab",
-    "ClickSoundID": "NULL",
-    "CloseSoundID": "NULL",
-    "OpenSoundID": "NULL"
   }
 ]

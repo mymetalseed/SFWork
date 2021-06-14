@@ -18,14 +18,18 @@ public class PreloadProcedure : ProcedureBase
     {
         base.OnEnter(fsm);
         Debuger.Log("进入预加载流程,进入菜单前的检查流程");
+        //加载过场面板
+        await SingletonManager.Instance.LoadProgressUI();
+        SingletonManager.Instance.OpenProgressUI();
+        SingletonManager.Instance.ProgressUIInstance.NotifyConfigProgress(1,2);
+
         //加载DialogUI
+        SingletonManager.Instance.ProgressUIInstance.SetProgressToolTip("开始加载配置...");
         UIConfig dialogUI = SingletonManager.Instance.GetUIConfig(Defines.EnumUIName.Dialog);
         GameObject dialog = await SingletonManager.Instance.InstantiateAsync(dialogUI.Path);
         SingletonManager.Instance.SetDialog(dialog.GetComponent<UIDialog>());
+        SingletonManager.Instance.ProgressUIInstance.NotifyConfigProgress(2,2);
 
-        await SingletonManager.Instance.OpenUI(Defines.EnumUIName.Menu);
-
-        await Addressables.LoadSceneAsync(SingletonManager.Instance.GetSceneConfig()[0].Path).Task;
 
         ChangeState<MenuProcedure>(fsm);
     }

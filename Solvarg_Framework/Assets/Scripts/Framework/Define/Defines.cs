@@ -33,6 +33,9 @@ public static class UIPathDefines
             case EnumUIName.Menu:
                 _scriptType = typeof(UIMenu);
                 break;
+            case EnumUIName.Progress:
+                _scriptType = typeof(UIProgress);
+                break;
             default:
                 Debuger.Log("Not Find EnumUIName: " + _uiType.ToString());
                 break;
@@ -65,7 +68,8 @@ public static class Defines
         None,
         TestOne,
         Dialog,
-        Menu
+        Menu,
+        Progress
     }
 
     public enum EnumSceneName

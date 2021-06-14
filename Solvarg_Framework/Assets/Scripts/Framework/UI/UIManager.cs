@@ -175,7 +175,7 @@ public class UIManager : Singleton<UIManager>
                 _prefab = await singletonManager.InstantiateAsync(_uiInfoData.Path);
                 if (_prefab != null)
                 {
-                    _uiObj = MonoBehaviour.Instantiate(_prefab) as GameObject;
+                    _uiObj = _prefab as GameObject;
                     _uiObj.transform.parent = UIParent.transform;
                     _uiObj.transform.localPosition = Vector3.zero;
                     _uiObj.transform.localScale = Vector3.one;

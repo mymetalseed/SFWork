@@ -35,6 +35,11 @@ public static class MessageRouter
     public static string LoadModelConfigFailure = "config.loadModelConfigFailure";
     #endregion
 
+    #region ProgressHandler
+    public static string ProgressClose = "progress.close";
+    public static string ProgressOpen = "progress.open";
+    #endregion
+
     #region 测试
     public static string TestHandler = "test.test1";
     #endregion

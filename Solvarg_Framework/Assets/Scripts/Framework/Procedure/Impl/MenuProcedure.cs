@@ -13,6 +13,7 @@ public class MenuProcedure : ProcedureBase
     {
         base.OnEnter(fsm);
         Debuger.Log("进入菜单流程");
+        
         await SingletonManager.Instance.EnterScene(Defines.EnumSceneName.Menu);
 
     }

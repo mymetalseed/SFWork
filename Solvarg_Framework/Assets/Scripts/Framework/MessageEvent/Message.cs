@@ -61,9 +61,12 @@ public class Message
         this.Name = message.Name;
         this.Sender = message.Sender;
         this.Content = message.Content;
-        foreach (KeyValuePair<string, object> kvp in message.dicDatas)
+        if (message.dicDatas != null)
         {
-            this[kvp.Key] = kvp.Value;
+            foreach (KeyValuePair<string, object> kvp in message.dicDatas)
+            {
+                this[kvp.Key] = kvp.Value;
+            }
         }
     }
     #endregion

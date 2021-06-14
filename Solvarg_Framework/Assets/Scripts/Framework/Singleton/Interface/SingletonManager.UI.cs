@@ -116,4 +116,37 @@ public partial class SingletonManager
     }
     #endregion
 
+    #region 过场UI - Progress
+    private UIProgress progressUI;
+    public UIProgress ProgressUIInstance => (progressUI);
+
+    /// <summary>
+    /// 加载过场UI
+    /// </summary>
+    public async Task LoadProgressUI()
+    {
+        UIConfig uIConfig = SingletonManager.Instance.GetUIConfig(EnumUIName.Progress);
+        progressUI = (await InstantiateAsync(uIConfig.Path)).GetComponent<UIProgress>();
+        SetProgressUI();
+    }
+
+    /// <summary>
+    /// 打开ProgressUI
+    /// </summary>
+    public void OpenProgressUI()
+    {
+        progressUI.Open();
+    }
+
+    /// <summary>
+    /// 配置ProgressUI
+    /// </summary>
+    /// <param name="progress"></param>
+    private void SetProgressUI()
+    {
+        progressUI.gameObject.transform.parent = uiManager.UIParent.transform;
+        progressUI.transform.localPosition = Vector3.zero;
+        progressUI.gameObject.SetActive(false);
+    }
+    #endregion
 }

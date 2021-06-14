@@ -13,7 +13,16 @@ public partial class SingletonManager
 
     public void LeaveScene()
     {
-
+        sceneManager.LeaveScene();
     }
 
+    public async Task LoadAsset()
+    {
+        await sceneManager.LoadAsset();
+    }
+
+    public void UnloadAsset()
+    {
+        sceneManager.UnLoadAsset();
+    }
 }

@@ -12,4 +12,6 @@ public interface IScene
     void LeaveScene();
     void UnloadAsset();
     Task LoadAsset();
+
+    void OnUpdate(float elapseSeconds, float realElapseSeconds);
 }

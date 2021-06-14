@@ -7,6 +7,7 @@ using ProcedureOwner = IFsm<ProcedureManager>;
 public class PreloadProcedure : ProcedureBase
 {
     private bool isDone = false;
+
     public override void OnInit(ProcedureOwner fsm)
     {
         base.OnInit(fsm);
@@ -22,6 +23,9 @@ public class PreloadProcedure : ProcedureBase
         await SingletonManager.Instance.LoadProgressUI();
         SingletonManager.Instance.OpenProgressUI();
         SingletonManager.Instance.ProgressUIInstance.NotifyConfigProgress(1,2);
+
+        //加载MainCamera
+
 
         //加载DialogUI
         SingletonManager.Instance.ProgressUIInstance.SetProgressToolTip("开始加载配置...");

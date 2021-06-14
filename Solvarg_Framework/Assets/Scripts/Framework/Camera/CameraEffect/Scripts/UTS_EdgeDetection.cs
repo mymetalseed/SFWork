@@ -30,7 +30,7 @@ namespace UnityChan.ImageEffects
         public Shader edgeDetectShader;
         private Material edgeDetectMaterial = null;
         private EdgeDetectMode oldMode = EdgeDetectMode.SobelColor; 
-
+         
         public override bool CheckResources ()
 		{
             CheckSupport (true);
@@ -66,7 +66,7 @@ namespace UnityChan.ImageEffects
             SetCameraFlag();
         }
 
-        [ImageEffectOpaque]
+        [ImageEffectAllowedInSceneView]
         void OnRenderImage (RenderTexture source, RenderTexture destination)
 		{
              if (CheckResources () == false)

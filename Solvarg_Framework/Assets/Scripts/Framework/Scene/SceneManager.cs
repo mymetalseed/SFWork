@@ -18,7 +18,7 @@ public class SceneManager : Singleton<SceneManager>
             currentScene = null;
             Debuger.LogError("错误的场景");
         }
-
+        LeaveScene();
         await EnterScene();
         await LoadAsset();
     }
@@ -46,6 +46,15 @@ public class SceneManager : Singleton<SceneManager>
     {
         if (currentScene == null) return;
         currentScene.UnloadAsset();
+    }
+
+    public override void Update(float elapseSeconds, float realElapseSeconds)
+    {
+        base.Update(elapseSeconds, realElapseSeconds);
+        if (currentScene != null)
+        {
+            currentScene.OnUpdate(elapseSeconds, realElapseSeconds);
+        }
     }
 
 }

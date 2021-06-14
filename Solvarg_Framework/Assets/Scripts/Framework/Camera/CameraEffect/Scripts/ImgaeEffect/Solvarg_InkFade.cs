@@ -1,0 +1,34 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityChan.ImageEffects;
+using UnityEngine;
+
+[ExecuteInEditMode]
+[RequireComponent(typeof(Camera))]
+[AddComponentMenu("Solavrg/Image Effects/SolvargInkFade")]
+public class Solvarg_InkFade : PostEffectsBase
+{
+    public Shader inkFadeShader;
+    public Material inkFadeMaterial;
+    public float fadeRate=0.0f;
+
+    public override bool CheckResources()
+    {
+        CheckSupport(true);
+        return true;
+
+    }
+
+    private void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {
+        if (CheckResources() == false)
+        {
+            Graphics.Blit(source, destination);
+            return;
+        }
+
+        inkFadeMaterial.SetFloat("_Blend", fadeRate);
+        Graphics.Blit(source, destination, inkFadeMaterial);
+    }
+
+}

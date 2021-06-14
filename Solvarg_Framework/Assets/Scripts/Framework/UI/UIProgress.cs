@@ -42,7 +42,7 @@ public class UIProgress : BaseUI
         base.OnUpdate(deltaTime);
         if (Mathf.Abs(slider.value - 1.0f) < 1e-6)
         {
-            CloseProgress();
+            ProgressDone();
         }
         //始终位于最上方
         this.transform.SetAsLastSibling();
@@ -54,18 +54,27 @@ public class UIProgress : BaseUI
         this.toolTip.text = txt;
     }
 
-    public void CloseProgress()
+    /// <summary>
+    /// 通知Progress完毕,并暂停Progress
+    /// </summary>
+    public void ProgressDone()
     {
         //TODO: 预处理 清空数据
         this._state = Defines.EnumObjectState.Closing;
         Message message = new Message(MessageRouter.ProgressClose, this);
         SingletonManager.Instance.Message_FireAsync(message);
+    }
+    /// <summary>
+    /// 关闭Progress
+    /// </summary>
+    public void CloseProgress()
+    {
+        //TODO: 预处理 清空数据
+        this._state = Defines.EnumObjectState.Closing;
         this.gameObject.SetActive(false);
         toolTip.text = "";
         slider.value = 0f;
-
     }
-
     /// <summary>
     /// 通知预加载配置文件流程
     /// </summary>

@@ -47,5 +47,6 @@ demo入口: Scenes/Loading 这个场景下!
 - 任务系统
 - 玩法流程(基于Procedure,实现多种玩法可以在一个项目下)
 - 本地化
+- PlayerCenter
 
 # Solvarg...

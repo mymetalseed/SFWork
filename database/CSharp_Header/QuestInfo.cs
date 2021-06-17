@@ -14,6 +14,11 @@ public class Main
 	public string QuestDescription; // 任务描述
 	public bool Abandonable; // 是否可以放弃
 	public string QuestType; // 保留字段(任务类型,说明,按Sheet来划分任务类型)
+	public string PreConditionType; // 先验条件类型
+	public string PreConditionParam; // 先验条件参数
+	public string ProcConditionType; // 进行中验条件类型
+	public string ProcConditionParam; // 进行中验条件参数
+	public string QuestReward; // 任务奖励(格式由迭代后确定,goods传递的是id)
 }
 
 

@@ -84,3 +84,21 @@ public static class Defines
     }
     #endregion
 }
+
+#region RoleDefine
+public enum EnumRoleState
+{
+    Idle,
+    Pause,
+    Hide,
+    Die,
+}
+
+public enum PlayerSide
+{
+    Player,
+    Npc,
+    Dynamic,//动态物体(可交互物体)
+    Enemy
+}
+#endregion

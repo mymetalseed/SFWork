@@ -97,6 +97,21 @@ public partial class SingletonManager
     }
 
     /// <summary>
+    /// 根据资源Id获取资源
+    /// </summary>
+    /// <param name="modelId"></param>
+    /// <returns></returns>
+    public ModelConfig GetModelConfigById(string modelId)
+    {
+        ModelConfig res;
+        if (databaseManager.ModelIDDict.TryGetValue(modelId, out res))
+        {
+            return res;
+        }
+        return null;
+    }
+
+    /// <summary>
     /// 获取场景配置
     /// </summary>
     /// <returns></returns>
@@ -104,6 +119,10 @@ public partial class SingletonManager
     {
         return databaseManager.ModelConfigs;
     }
+
+    #endregion
+
+    #region 任务信息配置
 
     #endregion
 

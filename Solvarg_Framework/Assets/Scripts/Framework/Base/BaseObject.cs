@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Defines;
 
-public class BaseModule
+public class BaseObject
 {
     private EnumObjectState state = EnumObjectState.Initial;
+    public EnumObjectState CurState => (state);
     
-    
-    public BaseModule()
+    public BaseObject()
     {
-
+        state = EnumObjectState.Initial;
     }
 
 }

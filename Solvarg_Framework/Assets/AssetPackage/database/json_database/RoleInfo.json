@@ -1,0 +1,13 @@
+[
+  {
+    "ID": "R01",
+    "DefaultName": "Solvarg",
+    "PlayerSide": "Player",
+    "BaseHP": "200|[1,50]",
+    "BaseActionPower": "100|[1,5]",
+    "BaseMP": "200|[1,50]",
+    "BaseAttack": "50|[1.5,3]",
+    "Description": "斯库尔,北欧神话中追逐太阳的狼",
+    "ModelId": 1001
+  }
+]

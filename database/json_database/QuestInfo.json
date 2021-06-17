@@ -6,7 +6,12 @@
       "PreID": -1,
       "QuestDescription": "移动教程",
       "Abandonable": "false",
-      "QuestType": "Main"
+      "QuestType": "Main",
+      "PreConditionType": "Event",
+      "PreConditionParam": "MoveTutorial",
+      "ProcConditionType": "Event",
+      "ProcConditionParam": "MoveTutorialSuccess",
+      "QuestReward": "exp:200"
     },
     {
       "ID": "Q02",
@@ -14,7 +19,12 @@
       "PreID": "Q01",
       "QuestDescription": "奔跑教程",
       "Abandonable": "false",
-      "QuestType": "Main"
+      "QuestType": "Main",
+      "PreConditionType": "Event",
+      "PreConditionParam": "RunTutorial",
+      "ProcConditionType": "Event",
+      "ProcConditionParam": "RunTutorialSuccess",
+      "QuestReward": "exp:200"
     },
     {
       "ID": "Q03",
@@ -22,7 +32,12 @@
       "PreID": "Q02",
       "QuestDescription": "攻击教程",
       "Abandonable": "false",
-      "QuestType": "Main"
+      "QuestType": "Main",
+      "PreConditionType": "Event",
+      "PreConditionParam": "AttackTutorial",
+      "ProcConditionType": "Event",
+      "ProcConditionParam": "AttackTutorialSuccess",
+      "QuestReward": "exp:200"
     },
     {
       "ID": "Q04",
@@ -30,7 +45,12 @@
       "PreID": "Q03",
       "QuestDescription": "交互教程",
       "Abandonable": "false",
-      "QuestType": "Main"
+      "QuestType": "Main",
+      "PreConditionType": "Event",
+      "PreConditionParam": "InteractionTutorial",
+      "ProcConditionType": "Event",
+      "ProcConditionParam": "InteractionTutorialSuccess",
+      "QuestReward": "exp:200 | goods:1001"
     }
   ]
 }

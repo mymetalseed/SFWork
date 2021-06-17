@@ -33,6 +33,12 @@ public static class MessageRouter
 
     public static string LoadModelConfigSuccess = "config.loadModelConfigSuccess";
     public static string LoadModelConfigFailure = "config.loadModelConfigFailure";
+
+    public static string LoadQuestInfoSuccess = "config.loadQuestInfoSuccess";
+    public static string LoadQuestInfoFailure = "config.loadQuestInfoFailure";
+
+    public static string LoadRoleInfoSuccess = "config.loadRoleInfoSuccess";
+    public static string LoadRoleInfoFailure = "config.loadRoleInfoFailure";
     #endregion
 
     #region ProgressHandler

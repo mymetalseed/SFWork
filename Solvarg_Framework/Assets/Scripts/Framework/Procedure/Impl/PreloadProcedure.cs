@@ -24,7 +24,8 @@ public class PreloadProcedure : ProcedureBase
         SingletonManager.Instance.OpenProgressUI();
         SingletonManager.Instance.ProgressUIInstance.NotifyConfigProgress(1,2);
 
-        //加载MainCamera
+        //加载MainCamera_初始化PlayerManager
+        SingletonManager.Instance.InitPlayer();
 
 
         //加载DialogUI

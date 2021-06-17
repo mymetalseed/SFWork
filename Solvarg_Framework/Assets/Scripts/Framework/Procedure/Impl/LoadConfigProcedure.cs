@@ -5,6 +5,7 @@ using ProcedureOwner = IFsm<ProcedureManager>;
 using Newtonsoft;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.Data;
 
 public class LoadConfigProcedure : ProcedureBase
 {
@@ -23,7 +24,10 @@ public class LoadConfigProcedure : ProcedureBase
         SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadSceneConfigFailure, OnLoadConfigFailure);
         SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadModelConfigSuccess, OnModelConfigSuccess);
         SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadModelConfigFailure, OnLoadConfigFailure);
-
+        SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadQuestInfoSuccess, OnQuestInfoSuccess);
+        SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadQuestInfoFailure, OnLoadConfigFailure);
+        SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadRoleInfoSuccess, OnRoleInfoSuccess);
+        SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadRoleInfoFailure, OnLoadConfigFailure);
 
 
         PreloadResources();
@@ -36,6 +40,9 @@ public class LoadConfigProcedure : ProcedureBase
         m_LoadedFlag.Add("UIConfig",false);
         m_LoadedFlag.Add("SceneConfig",false);
         m_LoadedFlag.Add("ModelConfig",false);
+
+        m_LoadedFlag.Add("QuestInfo", false);
+        m_LoadedFlag.Add("RoleInfo",false);
     }
 
     public override void OnLeave(ProcedureOwner fsm, bool isShutDown)
@@ -49,7 +56,10 @@ public class LoadConfigProcedure : ProcedureBase
         SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadSceneConfigFailure, OnLoadConfigFailure);
         SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadModelConfigSuccess, OnModelConfigSuccess);
         SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadModelConfigFailure, OnLoadConfigFailure);
-
+        SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadQuestInfoSuccess, OnQuestInfoSuccess);
+        SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadQuestInfoFailure, OnLoadConfigFailure);
+        SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadRoleInfoSuccess, OnRoleInfoSuccess);
+        SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadRoleInfoFailure, OnLoadConfigFailure);
 
         Debuger.LogError("离开配置流程");
     }
@@ -74,6 +84,8 @@ public class LoadConfigProcedure : ProcedureBase
         await LoadUIConfig();
         await LoadSceneConfig();
         await LoadModelConfig();
+        await LoadQuestInfo();
+        await LoadRoleInfo();
     }
 
     #region 加载ApplicationCfonig
@@ -207,6 +219,69 @@ public class LoadConfigProcedure : ProcedureBase
     }
     #endregion
 
+    #region 加载QuestInfo
+    private async Task LoadQuestInfo()
+    {
+        //加载配置
+        Debuger.Log("加载任务信息文件");
+        Dictionary<string,List<QuestInfo>> co = await JsonHelper.DeserializeFromPath<Dictionary<string, List<QuestInfo>>>
+            ("Assets/AssetPackage/database/json_database/QuestInfo.json");
+        if (co != null)
+        {
+            Message message = new Message(MessageRouter.LoadQuestInfoSuccess, this);
+            message.Add("msg", "任务信息加载完毕");
+            message.Add("data", co);
+            SingletonManager.Instance.Message_FireAsync(message);
+        }
+        else
+        {
+            Message message = new Message(MessageRouter.LoadQuestInfoFailure, this);
+            message.Add("msg", "任务信息加载失败");
+            SingletonManager.Instance.Message_FireAsync(message);
+        }
+    }
+
+    private void OnQuestInfoSuccess(Message message)
+    {
+        //配置文件加载完毕
+        Debuger.Log("任务信息加载完毕" + message["msg"]);
+        Dictionary<string, List<QuestInfo>> co = message["data"] as Dictionary<string, List<QuestInfo>>;
+        SingletonManager.Instance.SetQuestInfo(co);
+        m_LoadedFlag["QuestInfo"] = true;
+    }
+    #endregion
+
+    #region 加载RoleInfo
+    private async Task LoadRoleInfo()
+    {
+        //加载配置
+        Debuger.Log("加载角色信息文件");
+        List<RoleInfo> co = await JsonHelper.DeserializeFromPath<List<RoleInfo>>
+            ("Assets/AssetPackage/database/json_database/RoleInfo.json");
+        if (co != null)
+        {
+            Message message = new Message(MessageRouter.LoadRoleInfoSuccess, this);
+            message.Add("msg", "角色信息加载完毕");
+            message.Add("data", co);
+            SingletonManager.Instance.Message_FireAsync(message);
+        }
+        else
+        {
+            Message message = new Message(MessageRouter.LoadRoleInfoFailure, this);
+            message.Add("msg", "角色信息加载失敗");
+            SingletonManager.Instance.Message_FireAsync(message);
+        }
+    }
+
+    private void OnRoleInfoSuccess(Message message)
+    {
+        //配置文件加载完毕
+        Debuger.Log("角色信息加载完毕" + message["msg"]);
+        List<RoleInfo> co = message["data"] as List<RoleInfo>;
+        SingletonManager.Instance.InitRoleInfo(co);
+        m_LoadedFlag["RoleInfo"] = true;
+    }
+    #endregion
 
     private void OnLoadConfigFailure(Message message)
     {

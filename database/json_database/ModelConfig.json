@@ -3,5 +3,10 @@
     "ID": 1000,
     "Name": "WolfWithMoon",
     "Path": "Assets/AssetPackage/Model/WolfWithMoon/Prefab/WolfWithMoon.prefab"
+  },
+  {
+    "ID": 1001,
+    "Name": "Player",
+    "Path": "Assets/AssetPackage/Role/DogKnight/Prefab/Player.prefab"
   }
 ]

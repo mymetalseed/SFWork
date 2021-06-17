@@ -30,9 +30,9 @@ public partial class SingletonManager
         assetManager.InstantiateAsync(assetPath, complete);
     }
 
-    public async Task<GameObject> InstantiateAsync(string assetPath)
+    public async Task<GameObject> InstantiateAsync(string assetPath,Transform parent=null)
     {
-        GameObject obj = await assetManager.InstantiateAsync(assetPath);
+        GameObject obj = await assetManager.InstantiateAsync(assetPath, parent);
         return obj;
     }
 

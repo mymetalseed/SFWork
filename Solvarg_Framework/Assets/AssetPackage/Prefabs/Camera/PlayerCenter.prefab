@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8734541465361499213}
   m_Layer: 0
-  m_Name: PlayerCenter 1
+  m_Name: PlayerCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,6 +42,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5959578202615868297, guid: 0e3f4ffca6504b143a61b261da1ef765,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 5959578202615868300, guid: 0e3f4ffca6504b143a61b261da1ef765,
         type: 3}

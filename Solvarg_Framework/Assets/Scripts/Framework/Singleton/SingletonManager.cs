@@ -51,6 +51,9 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     ProcedureManager procedureManager;
     DatabaseManager databaseManager;
     SceneManager sceneManager;
+    QuestManager questManager;
+    RoleManager roleManager;
+    PlayerManager playerManager;
     #endregion
     /// <summary>
     /// 在这里进行所有单例的初始化
@@ -67,6 +70,9 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
         procedureManager = ProcedureManager.Instance.InitSingleton(this);
         databaseManager = DatabaseManager.Instance.InitSingleton(this);
         sceneManager = SceneManager.Instance.InitSingleton(this);
+        questManager = QuestManager.Instance.InitSingleton(this);
+        roleManager = RoleManager.Instance.InitSingleton(this);
+        playerManager = PlayerManager.Instance.InitSingleton(this);
 
         OnInit();
         _singletonReleaseList.Add(delegate ()

@@ -29,13 +29,16 @@ public class DatabaseManager : Singleton<DatabaseManager>
 
     private List<ModelConfig> modelConfig;
     public List<ModelConfig> ModelConfigs => (modelConfig);
+    /// <summary>
+    /// 名字与模型实体对应
+    /// </summary>
     private Dictionary<string, ModelConfig> modelDict;
     public Dictionary<string, ModelConfig> ModelDict => (modelDict);
-
-    //存储方式 - 剧情线类型-[ID,Quest信息]
-    private Dictionary<string, Dictionary<string,QuestInfo>> questDict;
-    public Dictionary<string, Dictionary<string, QuestInfo>> QuestDict => (questDict);
-
+    /// <summary>
+    /// ID与模型实体对应
+    /// </summary>
+    private Dictionary<string, ModelConfig> modelIDDict;
+    public Dictionary<string, ModelConfig> ModelIDDict=>(modelIDDict);
     #endregion
     #region Set
     public void SetApllicationConfig(List<Config> co)
@@ -71,15 +74,18 @@ public class DatabaseManager : Singleton<DatabaseManager>
     {
         this.modelConfig = co;
         modelDict = new Dictionary<string, ModelConfig>();
-        foreach(ModelConfig mo in ModelConfigs)
+        modelIDDict = new Dictionary<string, ModelConfig>();
+        foreach (ModelConfig mo in ModelConfigs)
         {
             if (modelDict.ContainsKey(mo.Name))
             {
                 Debuger.LogError("配置模型错误");
                 return;
             }
-            Debuger.Log(mo.Name.ToString()+"加载完毕");
+            Debuger.Log(mo.Name.ToString() + "加载完毕");
             modelDict[mo.Name] = mo;
+
+            modelIDDict[mo.ID] = mo;
         }
     }
     #endregion

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,6 +24,7 @@ public class UIMenu : BaseUI
     protected override void OnAwake()
     {
         base.OnAwake();
+
         startGameTxt = transform.Find("StartGame/Text").GetComponent<Text>();
         continueGameTxt = transform.Find("Continue/Text").GetComponent<Text>();
         QuitGameTxt = transform.Find("QuitGame/Text").GetComponent<Text>();
@@ -30,6 +32,7 @@ public class UIMenu : BaseUI
         continueGameBtn = transform.Find("Continue").GetComponent<Button>();
         QuitGameBtn = transform.Find("QuitGame").GetComponent<Button>();
 
+        startGameBtn.onClick.AddListener(EnterGameBtnClick);
         QuitGameBtn.onClick.AddListener(QuitGameBtnClick);
 
         Config appConfig = SingletonManager.Instance.GetApllicationConfig()[0];
@@ -40,12 +43,23 @@ public class UIMenu : BaseUI
 
     protected override void OnOpen()
     {
+        gameObject.SetActive(false);
         base.OnOpen();
+
+        this.gameObject.transform.position += new Vector3(1000, 0, 0);
+        gameObject.SetActive(true);
+        this.transform.DOLocalMoveX(0, 1f).SetEase(Ease.InOutQuad);
+        
         Debuger.Log("打开菜单UI");
     }
     #endregion
 
     #region 功能
+
+    private void EnterGameBtnClick()
+    {
+        SettingManager.Instance.SetBool(MessageRouter.Menu_StartTutorial, true);
+    }
 
     private void QuitGameBtnClick()
     {

@@ -142,12 +142,11 @@ public abstract class  BaseUI : MonoBehaviour
     public void SetUIWhenOpening(params object[] uiParams)
     {
         SetUI(uiParams);
-        StartCoroutine(LoadDataAsync());
+        LoadDataAsync();
     }
 
-    private IEnumerator LoadDataAsync()
+    private void LoadDataAsync()
     {
-        yield return new WaitForSeconds(0);
         if(this.State == EnumObjectState.Loading)
         {
             this.OnLoadData();

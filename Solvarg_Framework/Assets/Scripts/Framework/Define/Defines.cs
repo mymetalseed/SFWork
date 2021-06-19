@@ -72,10 +72,24 @@ public static class Defines
         Progress
     }
 
+    /// <summary>
+    /// 这个是所有场景的名称
+    /// </summary>
     public enum EnumSceneName
     {
         None,
-        Menu
+        Menu,
+        Tutorial
+    }
+
+    /// <summary>
+    /// 这个是场景的类型
+    /// </summary>
+    public enum EnumSceneType
+    {
+        None,
+        Menu,
+        Tutorial
     }
 
     public enum EnumApplicationLocallization
@@ -99,6 +113,7 @@ public enum PlayerSide
     Player,
     Npc,
     Dynamic,//动态物体(可交互物体)
-    Enemy
+    Enemy,
+    Boss
 }
 #endregion

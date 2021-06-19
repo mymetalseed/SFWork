@@ -44,6 +44,7 @@ public class MenuScene : IScene
 
     public void UnloadAsset()
     {
+        SingletonManager.Instance.CloseUI(Defines.EnumUIName.Menu);
     }
 
     private void OnProgressDone(Message message)
@@ -57,12 +58,6 @@ public class MenuScene : IScene
 
     public async void OnUpdate(float elapseSeconds, float realElapseSeconds)
     {
-        if (ProgressDone && Input.GetKeyDown(KeyCode.Space))
-        {
-            SingletonManager.Instance.ProgressUIInstance.CloseProgress();
-            await SingletonManager.Instance.OpenUI(Defines.EnumUIName.Menu);
-        }
-
 
         if (scRoot != null && ProgressDone && startFlow)
         {
@@ -92,5 +87,10 @@ public class MenuScene : IScene
 
         startFlow = true;
         SingletonManager.Instance.ProgressUIInstance.NotifyAssetProgress(2, 2);
+    }
+
+    public async Task OnProgressDone()
+    {
+        await SingletonManager.Instance.OpenUI(Defines.EnumUIName.Menu);
     }
 }

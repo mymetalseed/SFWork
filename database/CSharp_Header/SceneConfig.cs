@@ -9,8 +9,10 @@
 public class SceneConfig
 {
 	public string ID; // 场景编号
-	public string Name; // 场景名称
+	public string Type; // 场景类型名称
 	public string Path; // 资源路径
+	public string SceneName; // 场景名称
+	public string Description; // 场景介绍
 }
 
 

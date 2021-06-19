@@ -14,4 +14,10 @@ public interface IScene
     Task LoadAsset();
 
     void OnUpdate(float elapseSeconds, float realElapseSeconds);
+
+    /// <summary>
+    /// 加载完毕触发
+    /// </summary>
+    /// <returns></returns>
+    Task OnProgressDone();
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using static Defines;
 
 public partial class SingletonManager
@@ -24,5 +25,14 @@ public partial class SingletonManager
     public void UnloadAsset()
     {
         sceneManager.UnLoadAsset();
+    }
+
+    /// <summary>
+    /// 通过场景资源的路径进入场景
+    /// </summary>
+    /// <returns></returns>
+    public async Task EnterSceneByPath(string scPath)
+    {
+        await Addressables.LoadSceneAsync(scPath).Task;
     }
 }

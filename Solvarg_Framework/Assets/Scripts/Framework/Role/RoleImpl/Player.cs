@@ -22,4 +22,10 @@ public class Player : BaseCreature
         //比如升级
     }
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+    }
+
 }

@@ -37,6 +37,7 @@
 - PlayerCenter(玩家中心)
 - 成长系统
 - UI画布上的粒子系统(UIParticleSystem)
+- 玩法流程(基于Procedure和场景管理系统,实现多种玩法可以在一个项目下)
 
 demo入口: Scenes/Loading 这个场景下!
 
@@ -47,11 +48,11 @@ demo入口: Scenes/Loading 这个场景下!
 - 背包系统
 - 对话系统
 - 任务系统
-- 玩法流程(基于Procedure,实现多种玩法可以在一个项目下)
 - 战斗系统(仿命运之轮(一个古早手机游戏))
 - 存档系统
 - 本地化
 - 动画系统
+- 武器系统
 
 # Solvarg...
 ![](ProgressDemo.jpg)

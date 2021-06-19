@@ -5,6 +5,10 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
+/// <summary>
+/// 包括所有的可配置项以及
+/// 运行时的配置项
+/// </summary>
 public class SettingManager : Singleton<SettingManager>,ISetting
 {
     private readonly SortedDictionary<string, string> m_Settings = new SortedDictionary<string, string>(StringComparer.Ordinal);

@@ -1,7 +1,16 @@
 [
   {
     "ID": 1000,
-    "Name": "Menu",
-    "Path": "Assets/AssetPackage/Scene/Menu.unity"
+    "Type": "Menu",
+    "Path": "Assets/AssetPackage/Scene/Menu.unity",
+    "SceneName": "Menu",
+    "Description": "主菜单"
+  },
+  {
+    "ID": 1001,
+    "Type": "Tutorial",
+    "Path": "Assets/AssetPackage/Scene/Tutorial.unity",
+    "SceneName": "Tutorial",
+    "Description": "新手引导"
   }
 ]

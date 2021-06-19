@@ -63,9 +63,9 @@ public class DatabaseManager : Singleton<DatabaseManager>
         this.sceneConfig = co;
         foreach (SceneConfig c in co)
         {
-            if (Enum.IsDefined(typeof(EnumSceneName), c.Name))
+            if (Enum.IsDefined(typeof(EnumSceneName), c.SceneName))
             {
-                sceneDict.Add((EnumSceneName)Enum.Parse(typeof(EnumSceneName), c.Name), c);
+                sceneDict.Add((EnumSceneName)Enum.Parse(typeof(EnumSceneName), c.SceneName), c);
             }
         }
     }

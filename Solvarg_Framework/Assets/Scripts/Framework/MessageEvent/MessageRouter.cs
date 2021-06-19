@@ -50,5 +50,13 @@ public static class MessageRouter
     public static string TestHandler = "test.test1";
     #endregion
 
+    #region UI相关
+    public static string Menu_StartTutorial = "StartTutorial";
+    public static string Menu_ContinueGame = "menu.continueGame";
+    #endregion
+
+    #region 场景相关
+    public static string Scene_NextScene = "scene.nextScene";
+    #endregion
 
 }

@@ -1225,6 +1225,8 @@ GameObject:
   - component: {fileID: 2066896392029128874}
   - component: {fileID: 2118211752}
   - component: {fileID: 2118211753}
+  - component: {fileID: -535595501254163058}
+  - component: {fileID: -6718605751467029467}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1297,6 +1299,43 @@ CapsuleCollider:
   m_Height: 1.297204
   m_Direction: 1
   m_Center: {x: 0.005110085, y: 0.64081717, z: -0.023657382}
+--- !u!114 &-535595501254163058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066896392038628118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1a215e4938197498e4045911015579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  CurrentHp: 0
+  CurrentMp: 0
+  CurrentAction: 0
+  CurrentExp: 0
+  AnimPerArray: []
+  AnimSkillPerArray: []
+--- !u!143 &-6718605751467029467
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066896392038628118}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2066896392038628120
 GameObject:
   m_ObjectHideFlags: 0

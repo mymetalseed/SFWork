@@ -12,12 +12,26 @@ public class PlayerManager : Singleton<PlayerManager>
     private GameObject PlayerCenter;
     private Camera MainCamera;
     private RoleInfo playerInfo;
+    private Player player;
 
-    public void InitPlayer()
+    public async void InitPlayer()
     {
         playerInfo = singletonManager.GetPlayerInfo();
         //做角色的初始化
+        ModelConfig mo = singletonManager.GetModelConfigById(playerInfo.ModelId);
+        player = (await singletonManager.InstantiateAsync(mo.Path,PlayerCenter.transform)).GetComponent<Player>();
+        player.gameObject.name = "Solvarg";
+        player.transform.localPosition = Vector3.zero;
+        player.transform.localRotation = Quaternion.identity;
+        player.transform.localScale = Vector3.one;
+        player.gameObject.SetActive(false);
+        player.InitRole(playerInfo);
     }
+
+    #region 功能函数
+
+
+    #endregion
 
     #region Unity CallBack
     public async override void Awake()

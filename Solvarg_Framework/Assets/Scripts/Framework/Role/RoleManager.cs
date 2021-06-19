@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class RoleManager : Singleton<RoleManager>
     private List<RoleInfo> roleInfos;
     private Dictionary<string, RoleInfo> roleInfo_ID;
     private RoleInfo playerInfo;
+
+    private List<BaseRole> currentRoleList;
     #endregion
 
     #region 功能函数
@@ -18,7 +21,7 @@ public class RoleManager : Singleton<RoleManager>
         foreach (RoleInfo role in info)
         {
             roleInfo_ID.Add(role.ID,role);
-            Debuger.Log("添加角色: " + role.DefaultName + " 阵营: " + role.playerSide.ToString());
+            Debuger.Log("添加角色信息(非实例化): " + role.DefaultName + " 阵营: " + role.playerSide.ToString());
             if(role.playerSide == PlayerSide.Player)
             {
                 playerInfo = role;
@@ -31,12 +34,35 @@ public class RoleManager : Singleton<RoleManager>
         return playerInfo;
     }
 
+    /// <summary>
+    /// 角色出生
+    /// </summary>
+    public void AddRole(BaseRole role)
+    {
+        currentRoleList.Add(role);
+    }
+
+    public void RemoveRole(BaseRole role)
+    {
+        currentRoleList.Remove(role);
+    }
+
+    /// <summary>
+    /// 实例化新的角色,这里需要考虑实例化的时候给与什么参数
+    /// 比如等级,位置
+    /// </summary>
+    /// <returns></returns>
+    public BaseRole SpawnRole()
+    {
+        throw new Exception("暂未实现");
+    }
     #endregion
 
     #region Unity Callback
     public override void Awake()
     {
         base.Awake();
+        currentRoleList = new List<BaseRole>();
     }
 
     public override void FixedUpdate()

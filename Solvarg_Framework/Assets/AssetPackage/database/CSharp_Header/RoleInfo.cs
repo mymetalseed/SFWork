@@ -14,6 +14,7 @@ public class RoleInfo
 	public string BaseHP; // 基础血量(Max|成长比率[mul,const])
 	public string BaseActionPower; // 基础行动力(Max|成长比率)
 	public string BaseMP; // 基础蓝量(Max|成长比率)
+	public string BaseExp; // 基础升级所需经验(Max|成长比率)
 	public string BaseAttack; // 基础攻击(Max|成长比率)
 	public string Description; // 介绍
 	public string ModelId; // 对应的模型Id

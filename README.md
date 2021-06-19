@@ -2,7 +2,7 @@
 
 冬狼的游戏堆栈库
 
-这个库是会一直更新到游戏Demo出来(完整的代码)
+这个库是会一直更新到游戏Demo出来(完整的代码),这个公开库内的资源都将会是免费和开源的以及部分自己做的.(真正的效果Demo会用自己买的资源)
 
 设计图在这 - 
 
@@ -33,6 +33,10 @@
 - Image Effect 与仿PR转场特效集
 - Setting (游戏配置)
 - Scene(场景加载与离开管理)
+- RoleManager(角色管理系统)
+- PlayerCenter(玩家中心)
+- 成长系统
+- UI画布上的粒子系统(UIParticleSystem)
 
 demo入口: Scenes/Loading 这个场景下!
 
@@ -40,13 +44,14 @@ demo入口: Scenes/Loading 这个场景下!
 ## 暂时计划添加功能
 
 - 移植技能系统到这里(基于动画状态机)  
-- 搭建成长系统   
-- UI动效集
 - 背包系统
 - 对话系统
 - 任务系统
 - 玩法流程(基于Procedure,实现多种玩法可以在一个项目下)
+- 战斗系统(仿命运之轮(一个古早手机游戏))
+- 存档系统
 - 本地化
-- PlayerCenter
+- 动画系统
 
 # Solvarg...
+![](ProgressDemo.jpg)

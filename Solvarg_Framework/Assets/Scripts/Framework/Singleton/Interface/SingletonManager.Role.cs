@@ -4,6 +4,10 @@ using UnityEngine;
 
 public partial class SingletonManager
 {
+    public GameObject PlayerCenter => (playerManager.GetPlayerCenter);
+    public Player PlayerInst => (playerManager.GetPlayer);
+    public Camera MainCamera => (playerManager.GetCamera);
+
     #region 所有角色相关
     /// <summary>
     /// 初始化角色信息配置

@@ -35,4 +35,5 @@ public partial class SingletonManager
     {
         await Addressables.LoadSceneAsync(scPath).Task;
     }
+
 }

@@ -99,4 +99,17 @@ public class UIProgress : BaseUI
 
         slider.value = curPercent;
     }
+
+
+    /// <summary>
+    /// 默认的Progress方式,以i/count为基准
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="count"></param>
+    public void NotifyProgress(int index, int count)
+    {
+        float curPercent = ((1.0f * index / count));
+
+        slider.value = curPercent;
+    }
 }

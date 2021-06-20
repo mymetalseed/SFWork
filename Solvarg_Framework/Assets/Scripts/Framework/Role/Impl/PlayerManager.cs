@@ -10,9 +10,12 @@ public class PlayerManager : Singleton<PlayerManager>
 {
     private string PlayerCenterPath = "Assets/AssetPackage/Prefabs/Camera/PlayerCenter.prefab";
     private GameObject PlayerCenter;
+    public GameObject GetPlayerCenter => (PlayerCenter);
     private Camera MainCamera;
+    public Camera GetCamera => (MainCamera);
     private RoleInfo playerInfo;
     private Player player;
+    public Player GetPlayer => (player);
 
     public async void InitPlayer()
     {
@@ -30,6 +33,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
     #region 功能函数
 
+    
 
     #endregion
 

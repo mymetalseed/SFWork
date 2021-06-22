@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +7,10 @@ using UnityEngine;
 /// Player管理中心
 /// 离Monobehaviour
 /// </summary>
+[Serializable]
 public class PlayerManager : Singleton<PlayerManager>
 {
+    #region 参数
     private string PlayerCenterPath = "Assets/AssetPackage/Prefabs/Camera/PlayerCenter.prefab";
     private GameObject PlayerCenter;
     public GameObject GetPlayerCenter => (PlayerCenter);
@@ -16,6 +19,10 @@ public class PlayerManager : Singleton<PlayerManager>
     private RoleInfo playerInfo;
     private Player player;
     public Player GetPlayer => (player);
+
+    [SerializeField]
+    public PlayerController playerController;
+    #endregion
 
     public async void InitPlayer()
     {
@@ -29,11 +36,20 @@ public class PlayerManager : Singleton<PlayerManager>
         player.transform.localScale = Vector3.one;
         player.gameObject.SetActive(false);
         player.InitRole(playerInfo);
+
+        playerController = new PlayerController(this);
+        playerController.OnInit();
     }
 
     #region 功能函数
-
-    
+    public void StartMove()
+    {
+        playerController.StartControl();
+    }
+    public void StopMove()
+    {
+        playerController.StopConrtol();
+    }
 
     #endregion
 
@@ -56,6 +72,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public override void LateUpdate()
     {
         base.LateUpdate();
+        playerController.LateUpdate();
     }
 
     public override void OnDestroy()
@@ -81,6 +98,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public override void Update()
     {
         base.Update();
+        playerController.Update();
     }
 
     public override void Update(float elapseSeconds, float realElapseSeconds)

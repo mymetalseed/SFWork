@@ -53,6 +53,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     SceneManager sceneManager;
     QuestManager questManager;
     RoleManager roleManager;
+    [SerializeField]
     PlayerManager playerManager;
     SettingManager settingManager;
     #endregion

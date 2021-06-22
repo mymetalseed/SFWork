@@ -16,6 +16,7 @@ public class BaseCreature : BaseRole
     public float PlayerRadius => (playerraidus);
     #endregion
 
+    #region Unity callback
     protected override void Awake()
     {
         base.Awake();
@@ -23,6 +24,11 @@ public class BaseCreature : BaseRole
         _Anim = GetComponent<Animator>();
     }
 
+    protected override void Update()
+    {
+        base.Update();
+    }
+    #endregion
     public override void InitRole(RoleInfo role)
     {
         base.InitRole(role);

@@ -21,7 +21,7 @@ public class TutorialScene : IScene
 
     public void LeaveScene()
     {
-        throw new System.NotImplementedException();
+        SingletonManager.Instance.StopMove();
     }
 
     public async Task LoadAsset()
@@ -76,7 +76,7 @@ public class TutorialScene : IScene
 
     public async Task OnProgressDone()
     {
-        
+        SingletonManager.Instance.StartMove();
     }
 
     public void OnUpdate(float elapseSeconds, float realElapseSeconds)

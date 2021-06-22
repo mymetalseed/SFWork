@@ -54,5 +54,20 @@ public partial class SingletonManager
     {
         playerManager.InitPlayer();
     }
+    /// <summary>
+    /// 开启移动
+    /// </summary>
+    public void StartMove()
+    {
+        playerManager.StartMove();
+    }
+
+    /// <summary>
+    /// 关闭移动
+    /// </summary>
+    public void StopMove()
+    {
+        playerManager.StopMove();
+    }
     #endregion
 }

@@ -35,6 +35,7 @@ public class ProcedureManager : Singleton<ProcedureManager>
         AddProcedure(typeof(LoadConfigProcedure));
         AddProcedure(typeof(MenuProcedure));
         AddProcedure(typeof(ChangeSceneProcedure));
+        AddProcedure(typeof(TutorialProcedure));
 
         singletonManager.Procedure_Initialize(procedures.ToArray());
     }

@@ -124,6 +124,11 @@ public abstract class BaseRole : MonoBehaviour
     {
         SingletonManager.Instance.RemoveRole(this);
     }
+
+    protected virtual void Update()
+    {
+
+    }
     #endregion
 
 

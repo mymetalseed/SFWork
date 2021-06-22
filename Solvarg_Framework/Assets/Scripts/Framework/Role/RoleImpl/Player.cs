@@ -22,10 +22,17 @@ public class Player : BaseCreature
         //比如升级
     }
 
+    #region UNITY_callback
     protected override void Awake()
     {
         base.Awake();
 
     }
 
+    protected override void Update()
+    {
+        base.Update();
+
+    }
+    #endregion
 }

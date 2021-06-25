@@ -10,7 +10,6 @@ public class Solvarg_InkFade : PostEffectsBase
 {
     public Shader inkFadeShader;
     public Material inkFadeMaterial;
-    public float fadeRate=0.0f;
 
     public override bool CheckResources()
     {

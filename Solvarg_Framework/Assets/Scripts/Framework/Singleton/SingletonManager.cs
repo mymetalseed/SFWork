@@ -56,6 +56,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     [SerializeField]
     PlayerManager playerManager;
     SettingManager settingManager;
+    CameraManager cameraManager;
     #endregion
     /// <summary>
     /// 在这里进行所有单例的初始化
@@ -76,6 +77,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
         roleManager = RoleManager.Instance.InitSingleton(this);
         playerManager = PlayerManager.Instance.InitSingleton(this);
         settingManager = SettingManager.Instance.InitSingleton(this);
+        cameraManager = CameraManager.Instance.InitSingleton(this);
 
         OnInit();
         _singletonReleaseList.Add(delegate ()

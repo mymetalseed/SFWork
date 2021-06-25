@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 /// <summary>
 /// Player管理中心
@@ -24,6 +25,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public PlayerController playerController;
     #endregion
 
+
     public async void InitPlayer()
     {
         playerInfo = singletonManager.GetPlayerInfo();
@@ -45,10 +47,12 @@ public class PlayerManager : Singleton<PlayerManager>
     public void StartMove()
     {
         playerController.StartControl();
+        singletonManager.Enable3rdCamera();
     }
-    public void StopMove()
+    public void StopMove(Transform cameraPos= null)
     {
         playerController.StopConrtol();
+        singletonManager.Close3rdCamera(cameraPos);
     }
 
     #endregion
@@ -63,6 +67,9 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerCenter.transform.localRotation = Quaternion.identity;
         PlayerCenter.transform.localScale = Vector3.one;
         MainCamera = PlayerCenter.transform.Find("Main Camera").GetComponent<Camera>();
+
+        //初始化摄像机
+        CameraManager.Instance.InitCameraManager();
     }
     public override void FixedUpdate()
     {
@@ -72,7 +79,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public override void LateUpdate()
     {
         base.LateUpdate();
-        playerController.LateUpdate();
+        playerController?.LateUpdate();
     }
 
     public override void OnDestroy()
@@ -98,7 +105,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public override void Update()
     {
         base.Update();
-        playerController.Update();
+        playerController?.Update();
     }
 
     public override void Update(float elapseSeconds, float realElapseSeconds)

@@ -31,6 +31,7 @@ public class TutorialScene : IScene
         int count = sceneGlobalControl.modelPart.Count + sceneGlobalControl.rolePart.Count+1;
         int currentCnt = 1;
 
+
         List<ModelPart> mp = sceneGlobalControl.modelPart;
         foreach(ModelPart m in mp)
         {
@@ -76,7 +77,12 @@ public class TutorialScene : IScene
 
     public async Task OnProgressDone()
     {
-        SingletonManager.Instance.StartMove();
+        //先Start一下初始化
+        //SingletonManager.Instance.StartMove();
+        //SingletonManager.Instance.Enable3rdCamera();
+
+        //SingletonManager.Instance.StopMove();
+
     }
 
     public void OnUpdate(float elapseSeconds, float realElapseSeconds)

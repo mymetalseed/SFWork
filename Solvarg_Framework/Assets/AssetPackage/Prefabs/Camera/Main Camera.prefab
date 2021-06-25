@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5959578202615868303}
   - component: {fileID: 5959578202615868302}
   - component: {fileID: 5959578202615868301}
+  - component: {fileID: -3542559389890571866}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -91,7 +92,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5959578202615868297}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a6f0b0773f6fbe4ebaaa0eff2d31199, type: 3}
   m_Name: 
@@ -106,3 +107,18 @@ MonoBehaviour:
   threshold: 0.38
   edgesOnly: 0
   edgeDetectShader: {fileID: 4800000, guid: 25f3ae0d0271490419a188afd866a647, type: 3}
+--- !u!114 &-3542559389890571866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5959578202615868297}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67188ac858d42b34ba1437bec248cbeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inkFadeShader: {fileID: 4800000, guid: a15c805899e26934c84c3480d01348a9, type: 3}
+  inkFadeMaterial: {fileID: 2100000, guid: 09528bb304b3c1e49a483346346b8206, type: 2}
+  fadeRate: 0.56

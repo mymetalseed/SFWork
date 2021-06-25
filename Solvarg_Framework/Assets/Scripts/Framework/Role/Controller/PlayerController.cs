@@ -17,12 +17,12 @@ public class PlayerController
 
     private bool isActive;
 
-    float horizontal;
-    float vertical;
-    float speed;
+    public float horizontal;
+    public float vertical;
+    public float speed;
     float s1;
 
-    public float speedMulti=1.0f;
+    public float speedMulti=3.0f;
     #endregion
 
     public PlayerController(PlayerManager pm)

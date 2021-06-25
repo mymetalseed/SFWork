@@ -11,6 +11,7 @@ namespace UnityChan.ImageEffects
         protected bool  supportHDRTextures = true;
         protected bool  supportDX11 = false;
         protected bool  isSupported = true;
+        public float fadeRate = 0.0f;
 
         private List<Material> createdMaterials = new List<Material> ();
 

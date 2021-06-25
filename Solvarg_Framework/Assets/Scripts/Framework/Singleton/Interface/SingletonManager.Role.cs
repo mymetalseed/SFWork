@@ -65,9 +65,9 @@ public partial class SingletonManager
     /// <summary>
     /// 关闭移动
     /// </summary>
-    public void StopMove()
+    public void StopMove(Transform cameraReset=null)
     {
-        playerManager.StopMove();
+        playerManager.StopMove(cameraReset);
     }
     #endregion
 }

@@ -31,13 +31,16 @@
 - Dialog(运行时全局提示)
 - Google Poly Shader 特效集
 - Image Effect 与仿PR转场特效集
+	- 墨水风格转场实现完毕!
 - Setting (游戏配置)
 - Scene(场景加载与离开管理)
 - RoleManager(角色管理系统)
 - PlayerCenter(玩家中心)
+	- 角色管理系统
 - 成长系统
 - UI画布上的粒子系统(UIParticleSystem)
 - 玩法流程(基于Procedure和场景管理系统,实现多种玩法可以在一个项目下)
+- CameraManager(摄像机控制器)
 
 demo入口: Scenes/Loading 这个场景下!
 
@@ -56,3 +59,5 @@ demo入口: Scenes/Loading 这个场景下!
 
 # Solvarg...
 ![](ProgressDemo.jpg)
+
+![](InkDemo.png)

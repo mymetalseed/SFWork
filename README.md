@@ -32,6 +32,7 @@
 - Google Poly Shader 特效集
 - Image Effect 与仿PR转场特效集
 	- 墨水风格转场实现完毕!
+		- Shader需要加上 ZTest Always Cull Off ZWrite Off ,暂不知道为什么不加会导致UI粒子系统失效
 - Setting (游戏配置)
 - Scene(场景加载与离开管理)
 - RoleManager(角色管理系统)

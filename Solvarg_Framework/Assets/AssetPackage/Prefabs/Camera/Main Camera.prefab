@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6f0b0773f6fbe4ebaaa0eff2d31199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeRate: 0
   mode: 3
   sensitivityDepth: 1
   sensitivityNormals: 1
@@ -119,6 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67188ac858d42b34ba1437bec248cbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeRate: 0.56
   inkFadeShader: {fileID: 4800000, guid: a15c805899e26934c84c3480d01348a9, type: 3}
   inkFadeMaterial: {fileID: 2100000, guid: 09528bb304b3c1e49a483346346b8206, type: 2}
-  fadeRate: 0.56

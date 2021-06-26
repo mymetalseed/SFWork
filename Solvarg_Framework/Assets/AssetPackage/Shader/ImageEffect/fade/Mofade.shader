@@ -10,7 +10,7 @@
     {
         Tags { "RenderType"="Transparent" "PreviewType"="Plane" "Queue"="Transparent"}
         Blend SrcAlpha OneMinusSrcAlpha
-        LOD 100
+        ZTest Always Cull Off ZWrite Off
 
         Pass
         {
@@ -57,4 +57,6 @@
             ENDCG
         }
     }
+    Fallback off
+
 }

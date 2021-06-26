@@ -45,6 +45,7 @@ namespace UnityEngine.UI.Extensions
 
         protected bool Initialize()
         {
+            Debuger.LogError("初始化UI粒子系统");
             // initialize members
             if (_transform == null)
             {
@@ -76,6 +77,7 @@ namespace UnityEngine.UI.Extensions
 
                 if (material == null)
                 {
+                    Debuger.LogError("初始化Shader");
                     var foundShader = Shader.Find("UI Extensions/Particles/Additive");
                     if (foundShader)
                     {
@@ -86,6 +88,7 @@ namespace UnityEngine.UI.Extensions
                 currentMaterial = material;
                 if (currentMaterial && currentMaterial.HasProperty("_MainTex"))
                 {
+                    Debuger.LogError("初始化贴图");
                     currentTexture = currentMaterial.mainTexture;
                     if (currentTexture == null)
                         currentTexture = Texture2D.whiteTexture;
@@ -130,6 +133,23 @@ namespace UnityEngine.UI.Extensions
                 enabled = false;
         }
 
+        protected override void OnEnable()
+        {
+            Debuger.LogError(currentMaterial.shader.name);
+            var foundShader = Shader.Find("UI Extensions/Particles/Additive");
+            if (foundShader)
+            {
+                material = new Material(foundShader);
+            }
+            currentMaterial = material;
+            Debug.LogError(currentMaterial.shader.name);
+
+            pSystem.Simulate(Time.unscaledDeltaTime, false, false, true);
+            SetAllDirty();
+            pSystem = null;
+            Initialize();
+
+        }
 
         protected override void OnPopulateMesh(VertexHelper vh)
         {
@@ -142,6 +162,7 @@ namespace UnityEngine.UI.Extensions
                 }
             }
 #endif
+            Debuger.LogError("进入顶点绘制");
             // prepare vertices
             vh.Clear();
 
@@ -155,7 +176,7 @@ namespace UnityEngine.UI.Extensions
                 pSystem.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
                 isInitialised = true;
             }
-
+            Debuger.LogError("进入顶点绘制-初始化了");
             Vector2 temp = Vector2.zero;
             Vector2 corner1 = Vector2.zero;
             Vector2 corner2 = Vector2.zero;
@@ -238,7 +259,6 @@ namespace UnityEngine.UI.Extensions
                     particleUV.z = particleUV.x + textureSheetAnimationFrameSize.x;
                     particleUV.w = particleUV.y + textureSheetAnimationFrameSize.y;
                 }
-
                 temp.x = particleUV.x;
                 temp.y = particleUV.y;
 
@@ -334,6 +354,7 @@ namespace UnityEngine.UI.Extensions
                 }
 
                 vh.AddUIVertexQuad(_quad);
+
             }
         }
 
@@ -347,6 +368,7 @@ namespace UnityEngine.UI.Extensions
                 if ((currentMaterial != null && currentTexture != currentMaterial.mainTexture) ||
                     (material != null && currentMaterial != null && material.shader != currentMaterial.shader))
                 {
+                    Debuger.LogError("重启UI粒子系统");
                     pSystem = null;
                     Initialize();
                 }

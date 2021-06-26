@@ -30,9 +30,6 @@ public class SceneManager : Singleton<SceneManager>
 
         SingletonManager.Instance.OpenProgressUI();
 
-        //在这里开启转场特效,后面追加到各个场景, 而不是这里
-        singletonManager.PrepareCameraEffect(ImageEffectType.MaskFade);
-
         SceneConfig sc = singletonManager.GetSceneConfig(sceneName);
         if (sc.Type == EnumSceneType.Menu.ToString())
         {
@@ -89,6 +86,8 @@ public class SceneManager : Singleton<SceneManager>
             SingletonManager.Instance.ProgressUIInstance.CloseProgress();
             //加载关闭后处理
             //先执行转场特效
+            //在这里开启转场特效,后面追加到各个场景, 而不是这里
+            singletonManager.PrepareCameraEffect(ImageEffectType.MaskFade);
             singletonManager.StartCameraEffect(ImageEffectType.MaskFade, 2f, () =>
             {
                 //后进行场景自切换处理

@@ -115,7 +115,10 @@ public class CameraManager : Singleton<CameraManager>
             return;
         }
         singletonManager.Timer_Register(duration, 
-            ()=> { onComplete?.Invoke(); },
+            ()=> { 
+                effect.enabled = false;
+                onComplete?.Invoke(); 
+            },
             (progress,deltaTime) =>
             {
                 effect.fadeRate = progress;

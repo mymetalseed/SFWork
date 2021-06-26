@@ -35,6 +35,7 @@ public class UIProgress : BaseUI
         toolTip.text = "";
         slider.value = 0f;
         this._state = Defines.EnumObjectState.Ready;
+
     }
 
     protected override void OnUpdate(float deltaTime)

@@ -183,6 +183,7 @@ namespace UnityChan.ImageEffects
 
         protected void DrawBorder (RenderTexture dest, Material material)
 		{
+            Debuger.LogError("»ª±ß½ç");
             float x1;
             float x2;
             float y1;

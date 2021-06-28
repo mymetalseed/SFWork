@@ -21,8 +21,8 @@ public enum ConditionType
 
 public abstract class QuestBase
 {
-
-    public QuestBase(QuestInfo info) {
+    protected QuestBase(QuestInfo info) {
+        this.info = info;
         if (info.PreConditionType == ConditionType.Event.ToString())
         {
             preConditionType = ConditionType.Event;
@@ -32,75 +32,95 @@ public abstract class QuestBase
         {
             preConditionType = ConditionType.Event;
         }
+
+        Start();
     }
-    private QuestBase() { }
+    protected QuestBase() { }
 
     #region 参数
     protected ConditionType preConditionType;
     protected ConditionType procConditionType;
 
-    public virtual QuestInfo Info { get; }
+    private QuestInfo info;
+    public QuestInfo Info
+    {
+        get
+        {
+            return info;
+        }
+    }
 
-    public virtual QuestStatus currentStatus { get; }
+    private QuestStatus currentStatus;
+    public QuestStatus CurrentStatus {
+        get {
+            return currentStatus;
+        }
+    }
     #endregion
+
+    protected virtual void Start()
+    {
+        currentStatus = QuestStatus.Hide;
+        PreCondition();
+    }
+
     /// <summary>
     /// 任务完成后执行
     /// </summary>
-    public virtual void Reward() { }
+    public virtual void Reward() {
+        //在这里判断失败还是成功
+        currentStatus = QuestStatus.Complete;
+    }
     /// <summary>
     /// 任务先验
     /// </summary>
-    private void PreCondition() {
+    public virtual void PreCondition() {
+        
+        /*
         if (preConditionType == ConditionType.Event)
         {
             SingletonManager.Instance.Message_Subscribe(Info.PreConditionParam, PreConditionDone);
         }
+        */
+        
     }
 
     /// <summary>
     /// 任务过程验
     /// </summary>
-    private void ProcCondition() {
+    public virtual void ProcCondition() {
+        currentStatus = QuestStatus.Processing;
+        /*
         if (procConditionType == ConditionType.Event)
         {
             SingletonManager.Instance.Message_Subscribe(Info.ProcConditionParam, ProcConditionDone);
         }
+        */
     }
 
     /// <summary>
     /// 放弃任务
     /// </summary>
-    public virtual void DiscardQuest() { }
+    public virtual void DiscardQuest() {
+        currentStatus = QuestStatus.Discard;
+    }
 
-    private async void PreConditionDone(Message message)
+    public virtual async void PreConditionDone(Message message)
     {
+        /*
         SingletonManager.Instance.Message_UnSubscribe(Info.PreConditionParam, PreConditionDone);
         await OnPreConditionComplete(message);
+        */
+        currentStatus = QuestStatus.Prepare;
+        ProcCondition();
     }
 
-    private async void ProcConditionDone(Message message)
+    public virtual async void ProcConditionDone(Message message)
     {
+        /*
         SingletonManager.Instance.Message_UnSubscribe(Info.ProcConditionParam, ProcConditionDone);
         await OnProcConditionComplete(message);
+        */
     }
 
-    /// <summary>
-    /// 当任务进入待检测状态时触发
-    /// </summary>
-    /// <param name="message"></param>
-    /// <returns></returns>
-    public async virtual Task OnPreConditionComplete(Message message)
-    {
-
-    }
-
-    /// <summary>
-    /// 当任务进入执行时触发
-    /// </summary>
-    /// <param name="message"></param>
-    /// <returns></returns>
-    public async virtual Task OnProcConditionComplete(Message message)
-    {
-
-    }
 }

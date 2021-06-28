@@ -56,11 +56,39 @@ public class QuestManager : Singleton<QuestManager>
     public void InitQuest()
     {
         List<QuestInfo> first = GetFirstQuestList();
-        for(int i = 0; i < first.Count; ++i)
+        currentEdgeQuest = new List<KeyValuePair<string, QuestBase>>();
+        for (int i = 0; i < first.Count; ++i)
         {
-            
+            currentEdgeQuest.Add(
+                new KeyValuePair<string, QuestBase>(
+                    first[i].ID,
+                    //这点要判获取Quest的方式
+                    GetQuest(first[i])));
         }
+
+        //边缘列表的任务一开始就进入PreCondition了
     }
+
+    /// <summary>
+    /// 简易工厂函数
+    /// </summary>
+    /// <param name="info"></param>
+    /// <returns></returns>
+    public QuestBase GetQuest(QuestInfo info)
+    {
+        if (info.PreConditionType == ConditionType.Event.ToString())
+        {
+            return new EventQuest(info);
+        }
+        else
+        {
+            Debuger.LogError("不存在的任务类型");
+        }
+
+
+        return null;
+    }
+
 
     #endregion
 

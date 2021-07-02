@@ -135,7 +135,6 @@ namespace UnityEngine.UI.Extensions
 
         protected override void OnEnable()
         {
-            Debuger.LogError(currentMaterial.shader.name);
             var foundShader = Shader.Find("UI Extensions/Particles/Additive");
             if (foundShader)
             {

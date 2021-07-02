@@ -15,7 +15,7 @@ public class TutorialScene : IScene
     public async Task EnterScene()
     {
         Debuger.LogError("进入教程关卡");
-        await SingletonManager.Instance.EnterSceneByPath(sc.Path);
+        await SingletonManager.Instance.Scene_EnterSceneByPath(sc.Path);
         sceneGlobalControl = SceneGlobalControl.Instance;
     }
 

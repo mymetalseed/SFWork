@@ -57,6 +57,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     PlayerManager playerManager;
     SettingManager settingManager;
     CameraManager cameraManager;
+    DialoguesManager dialoguesManager;
     #endregion
     /// <summary>
     /// 在这里进行所有单例的初始化
@@ -78,6 +79,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
         playerManager = PlayerManager.Instance.InitSingleton(this);
         settingManager = SettingManager.Instance.InitSingleton(this);
         cameraManager = CameraManager.Instance.InitSingleton(this);
+        dialoguesManager = DialoguesManager.Instance.InitSingleton(this);
 
         OnInit();
         _singletonReleaseList.Add(delegate ()

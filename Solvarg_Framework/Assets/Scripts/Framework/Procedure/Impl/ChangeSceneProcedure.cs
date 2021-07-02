@@ -25,7 +25,7 @@ public class ChangeSceneProcedure : ProcedureBase
 
         currentSc = SingletonManager.Instance.GetSceneConfig(scName);
 
-        await SingletonManager.Instance.EnterScene(scName);
+        await SingletonManager.Instance.Scene_EnterScene(scName);
         if (currentSc.Type == EnumSceneType.Tutorial.ToString())
         {
             //进入教程流程

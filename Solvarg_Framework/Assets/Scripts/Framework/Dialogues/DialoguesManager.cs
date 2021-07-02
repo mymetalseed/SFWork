@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Dialogue;
+using System.Threading.Tasks;
 
 public class DialoguesManager : Singleton<DialoguesManager>
 {
@@ -24,13 +25,19 @@ public class DialoguesManager : Singleton<DialoguesManager>
     #region 参数
     private DialogueGraph currentDialog;
     public DialogueGraph CurrentDialog => (currentDialog);
+
+    private UIDialogue uiDialoguePanel;
+    public UIDialogue GetDialoguePanel=>(uiDialoguePanel);
     #endregion
 
     #region 方法
-    public async void StartDialogById(string id)
+    public async Task StartDialogById(string id)
     {
         if (!DialogPath.ContainsKey(id)) return;
         currentDialog = await singletonManager.LoadAsset<DialogueGraph>(pathPre+DialogPath.GetValueByKey(id));
+        await singletonManager.OpenUI(Defines.EnumUIName.Dialogue);
+        uiDialoguePanel = singletonManager.GetUIObject(Defines.EnumUIName.Dialogue).GetComponent<UIDialogue>();
+        uiDialoguePanel.StartDialogue(currentDialog);
     }
 
     #endregion

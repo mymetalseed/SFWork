@@ -22,5 +22,13 @@
     "ClickSoundID": "NULL",
     "CloseSoundID": "NULL",
     "OpenSoundID": "NULL"
+  },
+  {
+    "ID": 1003,
+    "Name": "Dialogue",
+    "Path": "Assets/AssetPackage/UI/Dialogue/UIDialogue.prefab",
+    "ClickSoundID": "NULL",
+    "CloseSoundID": "NULL",
+    "OpenSoundID": "NULL"
   }
 ]

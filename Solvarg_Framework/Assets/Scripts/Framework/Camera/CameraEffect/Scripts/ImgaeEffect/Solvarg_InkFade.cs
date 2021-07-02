@@ -21,7 +21,6 @@ public class Solvarg_InkFade : PostEffectsBase
     [ImageEffectAllowedInSceneView]
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        Debuger.LogError("在blit呢");
         if (CheckResources() == false)
         {
             Graphics.Blit(source, destination);

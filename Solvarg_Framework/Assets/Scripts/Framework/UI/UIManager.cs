@@ -61,16 +61,16 @@ public class UIManager : Singleton<UIManager>
         await OpenUI(false, _uiTypes, _uiParams);
     }
 
-    public void OpenUICloseOthers(EnumUIName[] _uiTypes)
+    public async void OpenUICloseOthers(EnumUIName[] _uiTypes)
     {
-        OpenUI(true, _uiTypes, null);
+        await OpenUI(true, _uiTypes, null);
     }
 
-    public void OpenUICloseOthers(EnumUIName _uiType,params object[] _uiParams)
+    public async void OpenUICloseOthers(EnumUIName _uiType,params object[] _uiParams)
     {
         EnumUIName[] _uiTypes = new EnumUIName[1];
         _uiTypes[0] = _uiType;
-        OpenUI(true, _uiTypes, _uiParams);
+        await OpenUI(true, _uiTypes, _uiParams);
     }
 
     public async Task OpenUI(bool _isCloseOthers,EnumUIName[] _uiTypes,params object[] _uiParams)

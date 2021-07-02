@@ -81,7 +81,7 @@ public class SceneManager : Singleton<SceneManager>
             currentScene.OnUpdate(elapseSeconds, realElapseSeconds);
         }
 
-        if (ProgressDone && Input.GetKeyDown(KeyCode.Space))
+        if (ProgressDone && singletonManager.ProgressUIInstance.gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Space))
         {
             SingletonManager.Instance.ProgressUIInstance.CloseProgress();
             //加载关闭后处理

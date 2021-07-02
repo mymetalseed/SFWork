@@ -161,7 +161,6 @@ namespace UnityEngine.UI.Extensions
                 }
             }
 #endif
-            Debuger.LogError("进入顶点绘制");
             // prepare vertices
             vh.Clear();
 
@@ -175,7 +174,6 @@ namespace UnityEngine.UI.Extensions
                 pSystem.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
                 isInitialised = true;
             }
-            Debuger.LogError("进入顶点绘制-初始化了");
             Vector2 temp = Vector2.zero;
             Vector2 corner1 = Vector2.zero;
             Vector2 corner2 = Vector2.zero;

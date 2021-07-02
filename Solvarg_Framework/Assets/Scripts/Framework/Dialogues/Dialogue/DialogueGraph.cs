@@ -20,7 +20,8 @@ namespace Dialogue
 
         public Chat AnswerQuestion(int i)
         {
-            current.AnswerQuestion(i);
+            bool suc = current.AnswerQuestion(i);
+            Debuger.LogError("下一个对话状态: " + suc);
             return current;
         }
     }

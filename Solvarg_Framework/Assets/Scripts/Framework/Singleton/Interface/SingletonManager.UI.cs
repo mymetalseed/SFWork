@@ -39,9 +39,9 @@ public partial class SingletonManager
     {
         await uiManager.OpenUI(_uiTypes);
     }
-    public void OpenUI(bool isClosethers,EnumUIName[] _uiTypes,params object[] _uiParams)
+    public async void OpenUI(bool isClosethers,EnumUIName[] _uiTypes,params object[] _uiParams)
     {
-        uiManager.OpenUI(isClosethers,_uiTypes, _uiParams);
+        await uiManager.OpenUI(isClosethers,_uiTypes, _uiParams);
     }
 
     public void OpenUICloseOthers(EnumUIName[] _uiTypes)
@@ -83,7 +83,7 @@ public partial class SingletonManager
     }
     public GameObject GetUIObject(Defines.EnumUIName _uiType)
     {
-        return GetUIObject(_uiType);
+        return uiManager.GetUIObject(_uiType);
     }
     #endregion
 

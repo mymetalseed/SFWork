@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public partial class SingletonManager
@@ -8,8 +9,17 @@ public partial class SingletonManager
     /// 根据dialogId更新当前的对话,然后开始对话
     /// </summary>
     /// <param name="dialogId"></param>
-    public void Dialogue_StartDialogById(string dialogId)
+    public async Task Dialogue_StartDialogById(string dialogId)
     {
-        dialoguesManager.StartDialogById(dialogId);
+        await dialoguesManager.StartDialogById(dialogId);
+    }
+
+    /// <summary>
+    /// 获得当前的DialoguePanel
+    /// </summary>
+    /// <returns></returns>
+    public UIDialogue GetDialoguePanel()
+    {
+        return dialoguesManager.GetDialoguePanel;
     }
 }

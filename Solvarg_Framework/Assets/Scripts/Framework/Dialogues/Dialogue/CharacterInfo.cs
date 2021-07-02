@@ -9,5 +9,6 @@ namespace Dialogue
     {
         public Color color;
         public string RoleId;
+        public Sprite roleAvatar; 
     }
 }

@@ -82,7 +82,7 @@ public class TutorialScene : IScene
         //SingletonManager.Instance.Enable3rdCamera();
 
         //SingletonManager.Instance.StopMove();
-
+        await SingletonManager.Instance.Dialogue_StartDialogById("T01");
     }
 
     public void OnUpdate(float elapseSeconds, float realElapseSeconds)

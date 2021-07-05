@@ -62,6 +62,13 @@ public class PlayerController
     {
         if (!CanMove()) return;
         SetPlayerAnimMovePam();
+
+        //#普通攻击
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            (player[ControllerType.Skill] as SkillController)
+                .CastSkill(SkillType.eAttack);
+        }
     }
 
     bool CanMove()

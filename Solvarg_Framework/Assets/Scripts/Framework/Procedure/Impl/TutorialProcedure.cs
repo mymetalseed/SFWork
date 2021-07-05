@@ -12,6 +12,8 @@ public class TutorialProcedure : ProcedureBase
     public override void OnEnter(IFsm<ProcedureManager> fsm)
     {
         base.OnEnter(fsm);
+        Debuger.LogError("进入教程流程");
+        SingletonManager.Instance.Message_Subscribe(MessageRouter.DialogueChatDone, ChatDone);
     }
 
     public override void OnInit(IFsm<ProcedureManager> fsm)
@@ -22,11 +24,21 @@ public class TutorialProcedure : ProcedureBase
     public override void OnLeave(IFsm<ProcedureManager> fsm, bool isShutDown)
     {
         base.OnLeave(fsm, isShutDown);
+        SingletonManager.Instance.Message_UnSubscribe(MessageRouter.DialogueChatDone, ChatDone);
     }
 
     public override void OnUpdate(IFsm<ProcedureManager> fsm, float elapseSeconds, float realElapseSeconds)
     {
         base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
+    }
+
+    private void ChatDone(Message message)
+    {
+        Debuger.Log("接收到了");
+        Debuger.Log(message["param"]);
+        SingletonManager.Instance.Enable3rdCamera();
+        SingletonManager.Instance.StartMove();
+
     }
 
 }

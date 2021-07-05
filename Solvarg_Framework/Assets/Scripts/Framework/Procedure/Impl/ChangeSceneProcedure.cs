@@ -29,7 +29,7 @@ public class ChangeSceneProcedure : ProcedureBase
         if (currentSc.Type == EnumSceneType.Tutorial.ToString())
         {
             //进入教程流程
-            //ChangeState<TutorialProcedure>(fsm)
+            ChangeState<TutorialProcedure>(fsm);
         }
         else
         {

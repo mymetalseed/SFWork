@@ -6,7 +6,7 @@ using static Defines;
 public abstract class  BaseUI : MonoBehaviour
 {
     #region 缓存
-    private GameObject _cacheGameObject;
+    protected GameObject _cacheGameObject;
     public GameObject CacheGameObject
     {
         get {
@@ -18,7 +18,7 @@ public abstract class  BaseUI : MonoBehaviour
         }
     }
 
-    private Transform _cacheTransform;
+    protected Transform _cacheTransform;
     public Transform CacheTransform
     {
         get
@@ -59,6 +59,8 @@ public abstract class  BaseUI : MonoBehaviour
 
     private void Start()
     {
+        _cacheGameObject = this.gameObject;
+        _cacheTransform = this.transform;
         OnStart();
     }
     private void Awake()

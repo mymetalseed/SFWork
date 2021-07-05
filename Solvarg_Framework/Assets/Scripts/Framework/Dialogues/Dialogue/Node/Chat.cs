@@ -24,7 +24,6 @@ namespace Dialogue
 
         public override void Trigger()
         {
-            Debuger.LogError(text);
             (graph as DialogueGraph).current = this;
         }
         /// <summary>
@@ -38,7 +37,6 @@ namespace Dialogue
             if(answers.Count == 0)
             {
                 port = GetOutputPort("output");
-                Debuger.LogError("进入这里了喔");
             }
             else
             {

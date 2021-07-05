@@ -86,11 +86,15 @@ public class UIDialogue : BaseUI
         int curCount;
         string curText;
         float progressPerText = 1.0f / textCount;
-
+        Timer timer = null;
         //这里加入字体缓动
-        SingletonManager.Instance.Timer_Register(duration,
+        timer = SingletonManager.Instance.Timer_Register(duration,
             () =>
             {
+                if(chatText.text.Length!= textCount)
+                {
+                    chatText.text = currentChat.text;
+                }
                 //最后把下一句话显示出来
                 chatNextBtn.SetActive(true);
                 //TODO: 加入选项
@@ -133,15 +137,28 @@ public class UIDialogue : BaseUI
         }
     }
 
-    public void StopChat()
+    public void StopChat(string param="")
     {
         canNext = false;
+        Debuger.LogError("对话结束");
+        this.gameObject.SetActive(false);
+        Message message = new Message(MessageRouter.DialogueChatDone, this);
+        message.Add("param", param);
+
+        SingletonManager.Instance.Message_FireAsync(message);
     }
 
     public void ResumeChat()
     {
         canNext = true;
     }
+
+    public void ChatDone(string param)
+    {
+        UIDialogue uIDialogue = SingletonManager.Instance.GetDialoguePanel();
+        uIDialogue.StopChat(param);
+    }
+
 
     protected override void OnUpdate(float deltaTime)
     {

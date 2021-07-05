@@ -40,6 +40,16 @@ public class DialoguesManager : Singleton<DialoguesManager>
         uiDialoguePanel.StartDialogue(currentDialog);
     }
 
+    /// <summary>
+    /// 这个函数后面由UIdialogue调用
+    /// 用于处理对话过程中的事件分发
+    /// </summary>
+    /// <param name="param"></param>
+    public void Trigger(string param)
+    {
+
+    }
+
     #endregion
 
     #region Unity Callback

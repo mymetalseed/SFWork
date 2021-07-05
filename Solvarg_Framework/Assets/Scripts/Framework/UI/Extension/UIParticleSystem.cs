@@ -141,8 +141,6 @@ namespace UnityEngine.UI.Extensions
                 material = new Material(foundShader);
             }
             currentMaterial = material;
-            Debug.LogError(currentMaterial.shader.name);
-
             pSystem.Simulate(Time.unscaledDeltaTime, false, false, true);
             SetAllDirty();
             pSystem = null;

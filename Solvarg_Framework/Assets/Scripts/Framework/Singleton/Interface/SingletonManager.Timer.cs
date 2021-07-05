@@ -10,4 +10,9 @@ public partial class SingletonManager
         Timer timer = timerManager.Register(_duration, onCompelte, onUpdate, _isIgnoreTimeScale, _isRepeate, _onCheckInterrupt, _onInterrupt, _isAutoDestroy);
         return timer;
     }
+
+    public void Timer_UnRegister(Timer timer)
+    {
+        timerManager.UnRegister(timer);
+    }
 }

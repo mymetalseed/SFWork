@@ -9,6 +9,12 @@ public class Player : BaseCreature
     public override void InitRole(RoleInfo role)
     {
         base.InitRole(role);
+        AnimatorController anim = RegisterController(ControllerType.Animator) as AnimatorController;
+        SkillController skillCon = RegisterController(ControllerType.Skill) as SkillController;
+
+        //配置最大连击次数(根据动画来决定)
+        skillCon.MaxAnimAttackIndex = 2;
+
     }
 
     public void LevelUp()

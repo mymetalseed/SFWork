@@ -46,6 +46,11 @@ public static class MessageRouter
     public static string ProgressOpen = "progress.open";
     #endregion
 
+    #region DialogueHandler
+    public static string DialogueChatDone = "dialogue.chatDone";
+    #endregion
+
+
     #region 测试
     public static string TestHandler = "test.test1";
     #endregion

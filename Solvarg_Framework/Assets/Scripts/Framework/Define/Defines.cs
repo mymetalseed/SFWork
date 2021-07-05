@@ -121,3 +121,31 @@ public enum PlayerSide
     Boss
 }
 #endregion
+
+#region Animator And Skill Define
+public enum AnimTrigState
+{
+    TrigBegin,
+    TrigEnd
+}
+
+public enum SkillStateID
+{
+    eNULL = -1,
+    eIdle = 0,
+    eChase = 1,
+    eAttack = 2,
+    eGetHit = 3,
+    eFlyAway = 4,//击飞
+    eDie = 5,
+    eTaunting = 6,//嘲笑
+    eWalkBack = 7,//后退
+    eVictory = 8,
+}
+
+public enum SkillType
+{
+    eAttack = 0,
+    eSkill,
+}
+#endregion

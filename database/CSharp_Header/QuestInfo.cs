@@ -6,7 +6,7 @@
 
 // Generate From E:\Framework\SFWork\database\excel_database\QuestInfo.xlsx.xlsx
 
-public class Main
+public class QuestInfo
 {
 	public string ID; // 编号
 	public string QuestTitle; // 任务标题

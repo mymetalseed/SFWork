@@ -39,6 +39,12 @@ public static class MessageRouter
 
     public static string LoadRoleInfoSuccess = "config.loadRoleInfoSuccess";
     public static string LoadRoleInfoFailure = "config.loadRoleInfoFailure";
+
+    public static string LoadIconInfoSuccess = "config.loadIconInfoSuccess";
+    public static string LoadIconInfoFailure = "config.loadIconInfoFailure";
+
+    public static string LoadItemInfoSuccess = "config.loadItemInfoSuccess";
+    public static string LoadItemInfoFailure = "config.loadItemInfoFailure";
     #endregion
 
     #region ProgressHandler

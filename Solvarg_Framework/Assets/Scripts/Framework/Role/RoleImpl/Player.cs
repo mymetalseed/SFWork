@@ -15,6 +15,7 @@ public class Player : BaseCreature
         //配置最大连击次数(根据动画来决定)
         skillCon.MaxAnimAttackIndex = 2;
 
+
     }
 
     public void LevelUp()

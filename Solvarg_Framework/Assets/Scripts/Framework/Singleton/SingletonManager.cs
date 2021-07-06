@@ -59,6 +59,8 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     CameraManager cameraManager;
     DialoguesManager dialoguesManager;
     AnimatorManager animatorManager;
+    IconManager iconManager;
+    ItemManager itemManager;
     #endregion
     /// <summary>
     /// 在这里进行所有单例的初始化
@@ -82,6 +84,8 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
         cameraManager = CameraManager.Instance.InitSingleton(this);
         dialoguesManager = DialoguesManager.Instance.InitSingleton(this);
         animatorManager = AnimatorManager.Instance.InitSingleton(this);
+        iconManager = IconManager.Instance.InitSingleton(this);
+        itemManager = ItemManager.Instance.InitSingleton(this);
 
         OnInit();
         _singletonReleaseList.Add(delegate ()

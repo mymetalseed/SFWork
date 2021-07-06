@@ -28,7 +28,10 @@ public class LoadConfigProcedure : ProcedureBase
         SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadQuestInfoFailure, OnLoadConfigFailure);
         SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadRoleInfoSuccess, OnRoleInfoSuccess);
         SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadRoleInfoFailure, OnLoadConfigFailure);
-
+        SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadIconInfoSuccess, OnIconInfoSuccess);
+        SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadIconInfoFailure, OnLoadConfigFailure);
+        SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadItemInfoSuccess, OnItemInfoSuccess);
+        SingletonManager.Instance.Message_Subscribe(MessageRouter.LoadItemInfoFailure, OnLoadConfigFailure);
 
         PreloadResources();
     }
@@ -43,6 +46,8 @@ public class LoadConfigProcedure : ProcedureBase
 
         m_LoadedFlag.Add("QuestInfo", false);
         m_LoadedFlag.Add("RoleInfo",false);
+        m_LoadedFlag.Add("IconInfo",false);
+        m_LoadedFlag.Add("ItemInfo", false);
     }
 
     public override void OnLeave(ProcedureOwner fsm, bool isShutDown)
@@ -60,6 +65,10 @@ public class LoadConfigProcedure : ProcedureBase
         SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadQuestInfoFailure, OnLoadConfigFailure);
         SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadRoleInfoSuccess, OnRoleInfoSuccess);
         SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadRoleInfoFailure, OnLoadConfigFailure);
+        SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadIconInfoSuccess, OnIconInfoSuccess);
+        SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadIconInfoFailure, OnLoadConfigFailure);
+        SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadItemInfoSuccess, OnItemInfoSuccess);
+        SingletonManager.Instance.Message_UnSubscribe(MessageRouter.LoadItemInfoFailure, OnLoadConfigFailure);
 
         Debuger.LogError("离开配置流程");
     }
@@ -86,6 +95,10 @@ public class LoadConfigProcedure : ProcedureBase
         await LoadModelConfig();
         await LoadQuestInfo();
         await LoadRoleInfo();
+        await LoadIconInfo();
+
+        //后面简易加载就用模板加载
+        await LoadInfo<ItemInfo>(MessageRouter.LoadItemInfoSuccess,MessageRouter.LoadItemInfoFailure);
     }
 
     #region 加载ApplicationCfonig
@@ -282,6 +295,78 @@ public class LoadConfigProcedure : ProcedureBase
         m_LoadedFlag["RoleInfo"] = true;
     }
     #endregion
+
+    #region 加载IconInfo
+    private async Task LoadIconInfo()
+    {
+        //加载配置
+        Debuger.Log("加载icon信息文件");
+        List<IconInfo> co = await JsonHelper.DeserializeFromPath<List<IconInfo>>
+            ("Assets/AssetPackage/database/json_database/IconInfo.json");
+        if (co != null)
+        {
+            Message message = new Message(MessageRouter.LoadIconInfoSuccess, this);
+            message.Add("msg", "Icon信息加载完毕");
+            message.Add("data", co);
+            SingletonManager.Instance.Message_FireAsync(message);
+        }
+        else
+        {
+            Message message = new Message(MessageRouter.LoadIconInfoFailure, this);
+            message.Add("msg", "Icon信息加载失敗");
+            SingletonManager.Instance.Message_FireAsync(message);
+        }
+    }
+
+    private void OnIconInfoSuccess(Message message)
+    {
+        //配置文件加载完毕
+        Debuger.Log("Icon信息加载完毕" + message["msg"]);
+        List<IconInfo> co = message["data"] as List<IconInfo>;
+        SingletonManager.Instance.InitIconInfo(co);
+        m_LoadedFlag["IconInfo"] = true;
+    }
+    #endregion
+
+    #region 加载ItemInfo
+
+    private void OnItemInfoSuccess(Message message)
+    {
+        //配置文件加载完毕
+        Debuger.Log("IItem信息加载完毕" + message["msg"]);
+        List<ItemInfo> co = message["data"] as List<ItemInfo>;
+        SingletonManager.Instance.InitItemInfo(co);
+        m_LoadedFlag["ItemInfo"] = true;
+    }
+    #endregion
+
+    /// <summary>
+    /// 简易读取数据模板
+    /// </summary>
+    /// <typeparam name="T">泛型</typeparam>
+    /// <param name="successRoute">成功路由</param>
+    /// <param name="failureRoute">失败路由</param>
+    /// <returns></returns>
+    private async Task LoadInfo<T>(string successRoute,string failureRoute) where T:class
+    {
+        //加载配置
+        Debuger.Log(string.Format("加载{0}信息文件", typeof(T).Name));
+        List<T> co = await JsonHelper.DeserializeFromPath<List<T>>
+            (string.Format("Assets/AssetPackage/database/json_database/{0}.json", typeof(T).Name));
+        if (co != null)
+        {
+            Message message = new Message(successRoute, this);
+            message.Add("msg", typeof(T).Name+"信息加载完毕");
+            message.Add("data", co);
+            SingletonManager.Instance.Message_FireAsync(message);
+        }
+        else
+        {
+            Message message = new Message(failureRoute, this);
+            message.Add("msg", typeof(T).Name + "信息加载失敗");
+            SingletonManager.Instance.Message_FireAsync(message);
+        }
+    }
 
     private void OnLoadConfigFailure(Message message)
     {

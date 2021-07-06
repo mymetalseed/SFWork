@@ -1,0 +1,16 @@
+[
+  {
+    "ID": 1,
+    "Name": "月刃",
+    "Description": "传说中,这把刀是某个狼族战士在一场旷日战争之后打造的利刃,刀刃之上寄宿了无数狼族勇士的灵魂。坊间又流传，刀刃上的灵魂似乎都在追寻着一个虚无缥缈的梦想…",
+    "Icon": 1001,
+    "Type": "Weapon",
+    "Rarity": 5,
+    "RequireLevel": -1,
+    "MaxCount": 1,
+    "BuyPrice": 999999,
+    "SellPrice": 1,
+    "CanSell": 0,
+    "ModelId": 1003
+  }
+]

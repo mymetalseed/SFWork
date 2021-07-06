@@ -8,5 +8,15 @@
     "ID": 1001,
     "Name": "Player",
     "Path": "Assets/AssetPackage/Role/DogKnight/Prefab/Player.prefab"
+  },
+  {
+    "ID": 1002,
+    "Name": "Jungle",
+    "Path": "Assets/AssetPackage/Model/Jungle/Prefab/Jungle.prefab"
+  },
+  {
+    "ID": 1003,
+    "Name": "MoonSword",
+    "Path": "Assets/AssetPackage/Item/Weapon/Prefab/MoonSword.prefab"
   }
 ]

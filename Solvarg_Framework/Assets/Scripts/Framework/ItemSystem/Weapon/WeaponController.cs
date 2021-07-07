@@ -12,6 +12,7 @@ public class WeaponController : BaseController
     /// </summary>
     public void TryReleaseWeapon()
     {
+        currentWeapon.Release();
         currentWeapon = null;
         //TODO: 执行release后的操作,比如播放武器被夺去走的动画
 

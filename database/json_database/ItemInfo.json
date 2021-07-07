@@ -12,5 +12,19 @@
     "SellPrice": 1,
     "CanSell": 0,
     "ModelId": 1003
+  },
+  {
+    "ID": 2,
+    "Name": "初始之刃",
+    "Description": "使用坚固的石头打造出来的刀刃,看起来挺贵的。",
+    "Icon": 1002,
+    "Type": "Weapon",
+    "Rarity": 1,
+    "RequireLevel": 0,
+    "MaxCount": 1,
+    "BuyPrice": 10,
+    "SellPrice": 10,
+    "CanSell": 1,
+    "ModelId": 1004
   }
 ]

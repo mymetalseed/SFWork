@@ -43,9 +43,17 @@ public class WeaponManager : Singleton<WeaponManager>
             WeaponController weaponController = role[ControllerType.Weapon] as WeaponController;
             if (weaponController != null)
             {
-                //先让旧的武器持有者丢弃武器
+                //先让旧的持有者丢弃武器
+                if (weaponController.currentWeapon != null)
+                {
+                    Debug.LogError("开始尝试释放武器");
+                    weaponController?.TryReleaseWeapon();
+                }
+
+                //如果是旧的武器直接过来
                 if (weapon.owner != null)
                 {
+                    Debug.LogError("开始尝试释放武器");
                     WeaponController oldWeaponController = weapon.owner[ControllerType.Weapon] as WeaponController;
                     oldWeaponController?.TryReleaseWeapon();
                 }

@@ -19,7 +19,9 @@ public class Weapon : ItemBase
     /// </summary>
     public void Release()
     {
-        ItemModel.transform.parent = null;
+        //ItemModel.transform.parent;
+        Debuger.LogError("释放武器");
+        ItemModel.transform.parent = SingletonManager.Instance.GetWorldTrans;
     }
 
     public override void Excute()

@@ -18,5 +18,10 @@
     "ID": 1003,
     "Name": "MoonSword",
     "Path": "Assets/AssetPackage/Item/Weapon/Prefab/MoonSword.prefab"
+  },
+  {
+    "ID": 1004,
+    "Name": "GreatSword",
+    "Path": "Assets/AssetPackage/Item/Weapon/Prefab/SwordPolyart.prefab"
   }
 ]

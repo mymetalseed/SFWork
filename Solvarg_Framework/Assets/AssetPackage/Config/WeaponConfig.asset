@@ -26,3 +26,16 @@ MonoBehaviour:
       Mp: 0
       ActionPower: 50
       Attack: 20
+  - weaponName: "\u521D\u59CB\u4E4B\u5203"
+    weaponId: 1
+    itemId: 2
+    weaponType: 0
+    weaponPos: {x: 0, y: 0, z: 0}
+    weaponRot: {x: -180, y: 0, z: 0}
+    weaponSacale: {x: 1, y: 1, z: 1}
+    targetSpineNode: Weapon
+    weaponAttr:
+      Hp: 10
+      Mp: 0
+      ActionPower: 10
+      Attack: 5

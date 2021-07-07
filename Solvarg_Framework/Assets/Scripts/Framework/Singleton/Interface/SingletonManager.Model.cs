@@ -5,6 +5,9 @@ using UnityEngine;
 
 public partial class SingletonManager
 {
+    public Transform GetWorldTrans => (this.transform.parent);
+
+
     /// <summary>
     /// 通过模型Id获取模型实体
     /// </summary>

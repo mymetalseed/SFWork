@@ -3,5 +3,10 @@
     "ID": 1001,
     "Description": "月刃武器模板",
     "Path": "Assets/AssetPackage/Icon/Item/Weapon/moonK.jpg"
+  },
+  {
+    "ID": 1002,
+    "Description": "初始之刃模板",
+    "Path": "Assets/AssetPackage/Icon/Item/Weapon/defaultK.jpg"
   }
 ]

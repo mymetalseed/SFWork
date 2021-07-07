@@ -61,6 +61,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     AnimatorManager animatorManager;
     IconManager iconManager;
     ItemManager itemManager;
+    WeaponManager weaponManager;
     #endregion
     /// <summary>
     /// 在这里进行所有单例的初始化
@@ -86,6 +87,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
         animatorManager = AnimatorManager.Instance.InitSingleton(this);
         iconManager = IconManager.Instance.InitSingleton(this);
         itemManager = ItemManager.Instance.InitSingleton(this);
+        weaponManager = WeaponManager.Instance.InitSingleton(this);
 
         OnInit();
         _singletonReleaseList.Add(delegate ()

@@ -17,7 +17,7 @@ public abstract class ItemBase
     public Texture2D icon;
     public GameObject ItemModel;
 
-    private ItemBase() { }
+    protected ItemBase() { }
     public static async Task<T> GetItem<T>(ItemInfo info) where T : ItemBase,new()
     {
         T item = new T();

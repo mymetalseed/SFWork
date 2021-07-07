@@ -63,6 +63,12 @@
 - Icon系统
 	- icon工厂,生成对应icon的Texture2D
 	- 后面可以添加其他方法,来控制icon的表现,比如加边缘光,置灰之类的
+- 武器系统
+	- 强依赖于物品系统
+	- 基于Scriptobject做武器挂点系统,在这里关联ItemId利用DoubleMap关联武器Id和物品Id)
+	- 挂点系统强依赖与角色系统
+	- 模块化武器,可以丢弃,拾取,夺取,切换
+	- 将会反作用成长系统中的属性
 
 demo入口: Scenes/Loading 这个场景下!
 
@@ -70,16 +76,18 @@ demo入口: Scenes/Loading 这个场景下!
 ## 暂时计划添加功能
 
 - 移植技能系统到这里(基于动画状态机,进行中)  
+	- 动画系统完成
+	- 连击完成
 - 背包系统
 	- 强依赖与物品系统和UI系统
 	- 还有强依赖与大部分物品系统延伸子系统,诸如武器系统
 - 战斗系统(仿命运之轮(一个古早手机游戏))
+	- 计划写两个,一个回合
+	- 一个ACT
+	- 尽量保证两个系统强关联
 - 存档系统
+	- 打算直接用PlayerPrefabs做
 - 本地化
-- 武器系统
-	- 强依赖于物品系统
-	- 基于Scriptobject做武器挂点系统,在这里关联ItemId利用DoubleMap关联武器Id和物品Id)
-	- 将会反作用成长系统中的属性
 
 
 # Solvarg...
@@ -88,3 +96,7 @@ demo入口: Scenes/Loading 这个场景下!
 ![](InkDemo.png)
 
 ![](Dialogue.png)
+
+![](WeaponSystem.jpg)
+
+![](Attack.jpg)

@@ -39,6 +39,9 @@ public class TutorialProcedure : ProcedureBase
         SingletonManager.Instance.Enable3rdCamera();
         SingletonManager.Instance.StartMove();
 
+        //尝试给角色添加武器
+        SingletonManager.Instance.LinkWeaponToRole(SingletonManager.Instance.PlayerInst,0);
+
     }
 
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public enum ControllerType
 {
     Animator,
-    Skill
+    Skill,
+    Weapon
 }
 
 

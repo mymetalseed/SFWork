@@ -67,7 +67,6 @@ public class BaseCreature : BaseRole
     }
     #endregion
 
-
     #region 动画StateMachine相关注册,所有的Event都需要以Creature为中心回调
     void EventSkillReady()
     {
@@ -86,6 +85,11 @@ public class BaseCreature : BaseRole
     #endregion
 
     #region Controller组件调度中心
+    /// <summary>
+    /// 注册的时候需要在这里添加引用
+    /// </summary>
+    /// <param name="controllerType"></param>
+    /// <returns></returns>
     public BaseController RegisterController(ControllerType controllerType)
     {
         BaseController control=null;
@@ -98,6 +102,9 @@ public class BaseCreature : BaseRole
         }else if (controllerType == ControllerType.Skill)
         {
             control = new SkillController();
+        }else if(controllerType == ControllerType.Weapon)
+        {
+            control = new WeaponController();
         }
 
         //初始化对应的Controller

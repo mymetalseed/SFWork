@@ -149,3 +149,12 @@ public enum SkillType
     eSkill,
 }
 #endregion
+
+#region Weapon
+
+public enum WeaponType
+{
+    Sword
+}
+
+#endregion

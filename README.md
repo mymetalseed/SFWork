@@ -100,3 +100,5 @@ demo入口: Scenes/Loading 这个场景下!
 ![](WeaponSystem.jpg)
 
 ![](Attack.jpg)
+
+![](WeaponRelease.jpg)

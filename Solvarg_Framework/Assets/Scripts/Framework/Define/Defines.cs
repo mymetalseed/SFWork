@@ -148,6 +148,20 @@ public enum SkillType
     eAttack = 0,
     eSkill,
 }
+
+public enum TriggerType
+{
+    eAuto=0,
+    eCondition
+}
+
+public enum SkillBindType
+{
+    eEffectWorld,
+    eEffectOwner,
+    eDamageOwner
+}
+
 #endregion
 
 #region Weapon

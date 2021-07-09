@@ -149,4 +149,8 @@ public partial class SingletonManager
         progressUI.gameObject.SetActive(false);
     }
     #endregion
+
+    #region UI 功能性函数
+
+    #endregion
 }

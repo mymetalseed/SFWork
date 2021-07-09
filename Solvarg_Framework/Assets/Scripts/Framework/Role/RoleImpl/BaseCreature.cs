@@ -5,8 +5,14 @@ using UnityEngine;
 public class BaseCreature : BaseRole
 {
     #region 参数
+
+    #region 受击点
     public Vector2[] AnimPerArray;
     public Vector2[] AnimSkillPerArray;
+    [HideInInspector]
+    public Vector3 ClosestHitPoint;
+    #endregion
+
     protected Animator _Anim;
     public Animator Anim => (_Anim);
     private CharacterController characterCtrl;

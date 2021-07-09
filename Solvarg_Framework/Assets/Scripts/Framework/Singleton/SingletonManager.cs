@@ -7,6 +7,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
 {
     private GameObject _rootObj;
     private List<IMonoBehaviour> singltonList;
+    private List<IApplication> singltonList_Application;
 
     private static List<Action> _singletonReleaseList = new List<Action>();
 
@@ -21,6 +22,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
 #endif
         Debuger.debugerEnable = true;
         singltonList = new List<IMonoBehaviour>();
+        singltonList_Application = new List<IApplication>();
         _rootObj = gameObject;
         GameObject.DontDestroyOnLoad(_rootObj);
     }
@@ -39,6 +41,11 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     public void SetToSingletonList(IMonoBehaviour manager)
     {
         singltonList.Add(manager);
+    }
+
+    public void SetToApplicationControlList(IApplication manager)
+    {
+        singltonList_Application.Add(manager);
     }
 
     #region 单例集
@@ -62,6 +69,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     IconManager iconManager;
     ItemManager itemManager;
     WeaponManager weaponManager;
+    MouseManager mouseManager;
     #endregion
     /// <summary>
     /// 在这里进行所有单例的初始化
@@ -88,6 +96,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
         iconManager = IconManager.Instance.InitSingleton(this);
         itemManager = ItemManager.Instance.InitSingleton(this);
         weaponManager = WeaponManager.Instance.InitSingleton(this);
+        mouseManager = MouseManager.Instance.InitSingleton(this);
 
         OnInit();
         _singletonReleaseList.Add(delegate ()
@@ -186,5 +195,31 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
             }
         }
     }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (singltonList_Application != null)
+        {
+            foreach (var subManager in singltonList_Application)
+            {
+                if (subManager != null)
+                    subManager.OnApplicationFocus(focus);
+            }
+        }
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (singltonList_Application != null)
+        {
+            foreach (var subManager in singltonList_Application)
+            {
+                if (subManager != null)
+                    subManager.OnApplicationPause(pause);
+            }
+        }
+    }
+
+    
     #endregion
 }

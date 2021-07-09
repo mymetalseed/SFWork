@@ -21,6 +21,11 @@ public abstract class Singleton<T>: IMonoBehaviour where T : class,new()
     {
         this.singletonManager = singletonManager;
         singletonManager.SetToSingletonList(this);
+
+        if(this is IApplication)
+        {
+            singletonManager.SetToApplicationControlList((IApplication)this);
+        }
         return Instance;
     }
 

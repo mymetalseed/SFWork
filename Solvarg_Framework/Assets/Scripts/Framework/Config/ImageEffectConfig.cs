@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using NaughtyAttributes;
+
 public enum ImageEffectType {
     None=-1,
     Clock_1,//钟1
@@ -28,8 +30,14 @@ public enum ImageEffectType {
 [Serializable]
 public class ImageEffectInfo
 {
+    [AllowNesting]
+    [Label("特效类型")]
     public ImageEffectType effectType;
+    [AllowNesting]
+    [Label("特效触发Shader")]
     public Shader shader;
+    [AllowNesting]
+    [Label("特效名称")]
     public string name;
 }
 
@@ -37,6 +45,9 @@ public class ImageEffectInfo
 public class ImageEffectConfig : ScriptableObject
 {
     [SerializeField]
+    [Foldout("图片切换特效集")]
+    [Label("图片切换特效集")]
+    [ReorderableList]
     public List<ImageEffectInfo> imageEffect;
 
     private Dictionary<ImageEffectType, ImageEffectInfo> effectType=null;

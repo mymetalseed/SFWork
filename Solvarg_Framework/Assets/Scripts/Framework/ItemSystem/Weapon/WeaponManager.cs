@@ -66,7 +66,7 @@ public class WeaponManager : Singleton<WeaponManager>
                 weaponTrans.parent = targetTrans;
                 weaponTrans.localPosition = weapon.WeaponInfo.weaponPos;
                 weaponTrans.localRotation = Quaternion.Euler(weapon.WeaponInfo.weaponRot);
-                weaponTrans.localScale = weapon.WeaponInfo.weaponSacale;
+                weaponTrans.localScale = weapon.WeaponInfo.weaponScale;
             }
         }
     }

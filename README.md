@@ -1,3 +1,5 @@
+[toc]
+
 # SFWork
 
 冬狼的游戏堆栈库
@@ -75,11 +77,14 @@
 	- 更改鼠标样式
 	- 控制不同条件下鼠标样式的切换
 	- 后面会拓展按下时触发的事件,以及获取当前鼠标位置等状态
+- FPS显示
 
 demo入口: Scenes/Loading 这个场景下!
 
 
 ## 暂时计划添加功能
+
+技能系统准备大量重构,基于XMLIB的思路,将技能编辑器和AI编辑器结合起来
 
 - 移植技能系统到这里(基于动画状态机,进行中)  
 	- 动画系统完成
@@ -96,12 +101,33 @@ demo入口: Scenes/Loading 这个场景下!
 	- 打算直接用PlayerPrefabs做
 - 本地化
 - Base于骨骼节点的装饰系统
+- 服务端(基于C#和Protobuf,这个最后开始做,可能暂时的Demo中不会有)
+- 技能编辑器 <本来打算用XNode硬写数据,但是后面可能会将XMLIB这个开源的加进来>
 
 ## Demo级企划
 
 > 作为Demo,这个项目将会实现各种各样的游戏系统,但是当第一歌游戏系统的原型做出来后,后续的开发将会闭源
 >> 当然,暂时只是企划,目前主要做的Demo是项目原型
 >> 当项目原型完毕后这个仓库就会开始长期其他类型游戏的Demo开发
+
+
+# 致敬 <开源项目参考列表>
+
+PeterXiang : https://github.com/PxGame
+
+Ellan Jiang <GameFramework> : https://github.com/EllanJiang
+
+tanghai <ET> : https://github.com/egametang
+
+Thor Brigsted <XNode> : https://github.com/Siccity    
+Thor Brigsted <Dialogue> : https://github.com/Siccity/Dialogue
+
+Denis Rizov <NaughtyAttributes> : https://github.com/dbrizov/NaughtyAttributes
+
+GooglePoly : 虽然关掉了
+
+jiuyueqiji123 <转场> : https://gitee.com/jiuyueqiji123/shader-effects_-pr
+
 
 
 # Solvarg...

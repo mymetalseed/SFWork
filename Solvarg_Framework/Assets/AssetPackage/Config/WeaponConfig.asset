@@ -17,10 +17,10 @@ MonoBehaviour:
     weaponId: 0
     itemId: 1
     weaponType: 0
+    targetSpineNode: Weapon
     weaponPos: {x: 0.016, y: 0.069, z: 0}
     weaponRot: {x: -90, y: 0, z: 0}
-    weaponSacale: {x: 1, y: 1, z: 1}
-    targetSpineNode: Weapon
+    weaponScale: {x: 1, y: 1, z: 1}
     weaponAttr:
       Hp: 20
       Mp: 0
@@ -30,10 +30,10 @@ MonoBehaviour:
     weaponId: 1
     itemId: 2
     weaponType: 0
+    targetSpineNode: Weapon
     weaponPos: {x: 0, y: 0, z: 0}
     weaponRot: {x: -180, y: 0, z: 0}
-    weaponSacale: {x: 1, y: 1, z: 1}
-    targetSpineNode: Weapon
+    weaponScale: {x: 1, y: 1, z: 1}
     weaponAttr:
       Hp: 10
       Mp: 0

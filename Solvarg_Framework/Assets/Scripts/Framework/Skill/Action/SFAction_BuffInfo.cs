@@ -9,18 +9,18 @@ public class SFAction_BuffInfo : SFAction_BaseAction
 {
     public override void TrigAction()
     {
-        Destroy(gameObject);
+        GameObject.Destroy(owner.gameObject);
     }
 
     public void SetOwner(GameObject owner,GameObject target)
     {
-        SFAction_DataStore[] ses = gameObject.GetComponentsInChildren<SFAction_DataStore>();
-
+        /*设置owner
         for (int i = 0; i < ses.Length; ++i)
         {
             ses[i].owner = owner;
             ses[i].buffInfo = this;
             ses[i].target = target;
         }
+        */
     }
 }

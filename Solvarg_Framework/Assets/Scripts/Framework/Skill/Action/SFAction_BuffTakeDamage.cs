@@ -14,10 +14,8 @@ public class SFAction_BuffTakeDamage : SFAction_BaseAction
      */ 
     public override void TrigAction()
     {
-        SFAction_DataStore ds = GetDataStore();
-
-        BaseCreature attacker = ds.owner.GetComponent<BaseCreature>();
-        BaseCreature defencer = ds.target.GetComponent<BaseCreature>();
+        BaseCreature attacker = owner.GetComponent<BaseCreature>();
+        BaseCreature defencer = target.GetComponent<BaseCreature>();
 
         //1 : hp
         //2 : attack

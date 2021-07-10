@@ -9,7 +9,6 @@ public class SFAction_TrigBuff : SFAction_BaseAction
 
     public async override void TrigAction()
     {
-        SFAction_DataStore ae = GetDataStore();
 
         //实例化Buff
 
@@ -23,6 +22,6 @@ public class SFAction_TrigBuff : SFAction_BaseAction
 
         //攻击者 : 即这个技能持有者
         //防御者 : 即这个技能碰到的合法敌人
-        buffInfo.SetOwner(ae.owner,ae.target);
+        buffInfo.SetOwner(owner,target);
     }
 }

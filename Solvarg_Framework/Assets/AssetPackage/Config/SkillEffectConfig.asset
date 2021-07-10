@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: SkillEffectConfig
+  m_EditorClassIdentifier: Assembly-CSharp::SkillEffectConfig
+  infoList:
+  - effectName: MagicChargeBlue
+    effectId: 1
+    effectPath: Assets/AssetPackage/Particles/Prefab/MagicChargeBlue.prefab
+  - effectName: MagicChargeRed
+    effectId: 2
+    effectPath: Assets/AssetPackage/Particles/Prefab/MagicChargeRed.prefab
+  - effectName: PowerupActivateBlue
+    effectId: 3
+    effectPath: Assets/AssetPackage/Particles/Prefab/PowerupActivateBlue.prefab
+  - effectName: PowerupActivateRed
+    effectId: 4
+    effectPath: Assets/AssetPackage/Particles/Prefab/PowerupActivateRed.prefab
+  - effectName: SwordSlash1
+    effectId: 5
+    effectPath: Assets/AssetPackage/Particles/Prefab/SwordSlash1.prefab
+  - effectName: SwordSlash2
+    effectId: 6
+    effectPath: Assets/AssetPackage/Particles/Prefab/SwordSlash2.prefab

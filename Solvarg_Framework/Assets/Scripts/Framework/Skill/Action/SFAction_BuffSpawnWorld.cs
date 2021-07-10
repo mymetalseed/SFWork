@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SFAction_BuffSpawnWorld : SFAction_BaseAction
 {
-    SFAction_DataStore se;
-
     [HideInInspector]
     private GameObject effectSpawnInst;
     public string effectId;
@@ -18,9 +16,7 @@ public class SFAction_BuffSpawnWorld : SFAction_BaseAction
 
     public async override void TrigAction()
     {
-        se = GetComponent<SFAction_DataStore>();
-
-        GameObject defencer = se.target;
+        GameObject defencer = target;
         BaseCreature defencerBaseCreature = defencer.GetComponent<BaseCreature>();
 
         //spawn effectTODO,这里要加入effect的路径
@@ -30,7 +26,7 @@ public class SFAction_BuffSpawnWorld : SFAction_BaseAction
         SFAction_Destruction des = effect.GetComponent<SFAction_Destruction>();
         if (null != des)
         {
-            des.duration = effectDestroyDelay;
+            des.dataNode.duration = effectDestroyDelay;
             des.OnStart();
         }
 

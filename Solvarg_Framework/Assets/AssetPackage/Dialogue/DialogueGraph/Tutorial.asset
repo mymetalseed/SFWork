@@ -270,7 +270,11 @@ MonoBehaviour:
   output: {fileID: 0}
   character: {fileID: 11400000, guid: 0a3a807dc8d7e534182c95c27023642f, type: 2}
   text: "\u5B83\u4E5F\u50AC\u751F\u51FA\u4E86\u65E0\u6570\u540D\u4E3A\"\u7EDD\u671B\"\u7684\"\u75DB\u82E6\u6839\u6E90\"\u3002"
-  answers: []
+  answers:
+  - text: 
+    voiceClip: {fileID: 0}
+  - text: 
+    voiceClip: {fileID: 0}
 --- !u!114 &5469301587083842364
 MonoBehaviour:
   m_ObjectHideFlags: 0

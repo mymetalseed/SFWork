@@ -16,7 +16,6 @@ public class SFActionDamage_BindOwner : SFAction_BaseAction
     [HideInInspector]
     public Vector3 offRot;
 
-    GameObject owner;
     bool isTriggered = false;
 
     BoxCollider bc;
@@ -43,15 +42,6 @@ public class SFActionDamage_BindOwner : SFAction_BaseAction
     {
         base.TrigAction();
 
-        SFAction_DataStore ds = GetDataStore();
-        if (ds == null)
-        {
-            Debuger.LogError("Error Logic");
-            return;
-        }
-
-        owner = ds.owner;
-
         Transform socket = GameObjectTools.FindTheChild(owner,socketName);
 
         if (socket == null)
@@ -59,11 +49,11 @@ public class SFActionDamage_BindOwner : SFAction_BaseAction
             socket = owner.transform;
         }
 
-        transform.parent = socket.transform;
-        transform.localPosition = offSet;
-        transform.localRotation = Quaternion.Euler(offRot);
+        owner.transform.parent = socket.transform;
+        owner.transform.localPosition = offSet;
+        owner.transform.localRotation = Quaternion.Euler(offRot);
 
-        bc = GetComponent<BoxCollider>();
+        bc = owner.GetComponent<BoxCollider>();
         anim = owner.GetComponent<Animator>();
 
         if(anim == null)
@@ -91,8 +81,7 @@ public class SFActionDamage_BindOwner : SFAction_BaseAction
         {
             BaseCreature ba = baList[0];
             baList.Remove(ba);
-            SFAction_DataStore ds = GetDataStore();
-            ds.target = ba.gameObject;
+            target = ba.gameObject;
 
             //trig Buff -> 实例化我们的buff
             trigBuffInst.OnStart();
@@ -111,7 +100,7 @@ public class SFActionDamage_BindOwner : SFAction_BaseAction
         }else if (curPer > endCollidePercent && lastPer <= endCollidePercent)
         {
             bc.enabled = false;
-            Destroy(gameObject);
+            GameObject.Destroy(owner.gameObject);
         }
 
         lastPer = curPer;

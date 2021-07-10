@@ -1,19 +1,30 @@
-﻿using System.Collections;
+﻿using SolvargSkill;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SFAction_BaseAction : MonoBehaviour
+public class SFAction_BaseAction 
 {
-    [HideInInspector]
-    public TriggerType trigType;
-    [HideInInspector]
-    public float duration;
+    public SFAction_BaseActionNode dataNode;
+
     float startTime = 0f;
     bool isTriggered = false;
 
+    [HideInInspector]
+    public GameObject owner;
+
+    [HideInInspector]
+    public GameObject target;
+
+    [HideInInspector]
+    public SFAction_SkillInfo skillInfo;
+    [HideInInspector]
+    public SFAction_BuffInfo buffInfo;
+
+
     private void Start()
     {
-        if(trigType == TriggerType.eAuto)
+        if(dataNode.trigType == TriggerType.eAuto)
         {
             startTime = Time.time;
             isTriggered = true;
@@ -25,7 +36,7 @@ public class SFAction_BaseAction : MonoBehaviour
     /// </summary>
     public virtual void OnStart()
     {
-        if(trigType == TriggerType.eCondition)
+        if(dataNode.trigType == TriggerType.eCondition)
         {
             startTime = Time.time;
             isTriggered = true;
@@ -36,7 +47,7 @@ public class SFAction_BaseAction : MonoBehaviour
     {
         if (!isTriggered)
             return;
-        if(Time.time - startTime >= duration)
+        if(Time.time - startTime >= dataNode.duration)
         {
             isTriggered = false;
 
@@ -51,13 +62,4 @@ public class SFAction_BaseAction : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// 获取当前对象上的数据缓存
-    /// </summary>
-    /// <returns></returns>
-    public SFAction_DataStore GetDataStore()
-    {
-        SFAction_DataStore ds = gameObject.GetComponent<SFAction_DataStore>();
-        return ds;
-    }
 }

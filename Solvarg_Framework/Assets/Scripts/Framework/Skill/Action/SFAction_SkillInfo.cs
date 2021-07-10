@@ -22,19 +22,19 @@ public class SFAction_SkillInfo : SFAction_BaseAction
 
     public override void TrigAction()
     {
-        Destroy(gameObject);
+        GameObject.Destroy(owner.gameObject);
     }
 
     public void SetOwner(GameObject owner)
-    {
-        SFAction_DataStore[] ses = gameObject.GetComponentsInChildren<SFAction_DataStore>();
-        
+    {   
+        /*给每个子SkillInfo赋上owner的值
         for(int i = 0; i < ses.Length; ++i)
         {
             ses[i].owner = owner;
             ses[i].skillInfo = this;
             dsList.Add(ses[i].gameObject);
         }
+        */
     }
 
     public void DestroyAllInst()
@@ -43,7 +43,7 @@ public class SFAction_SkillInfo : SFAction_BaseAction
         {
             GameObject tmp = dsList[0];
             dsList.Remove(tmp);
-            Destroy(tmp);
+            GameObject.Destroy(tmp);
         }
     }
 

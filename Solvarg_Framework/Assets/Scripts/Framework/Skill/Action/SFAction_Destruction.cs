@@ -9,6 +9,6 @@ public class SFAction_Destruction : SFAction_BaseAction
 {
     public override void TrigAction()
     {
-        Destroy(gameObject);
+        GameObject.Destroy(owner.gameObject);
     }
 }

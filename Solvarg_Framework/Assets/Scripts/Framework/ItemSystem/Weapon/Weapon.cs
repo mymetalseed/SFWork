@@ -21,7 +21,7 @@ public class Weapon : ItemBase
     {
         //ItemModel.transform.parent;
         Debuger.LogError("释放武器");
-        ItemModel.transform.parent = SingletonManager.Instance.GetWorldTrans;
+        ItemModel.transform.parent = null;
     }
 
     public override void Excute()

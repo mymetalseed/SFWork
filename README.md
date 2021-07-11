@@ -134,7 +134,7 @@ GooglePoly : 虽然关掉了
 jiuyueqiji123 <转场> : https://gitee.com/jiuyueqiji123/shader-effects_-pr
 
 # Solvarg...
-![](Capture/SkillEditor_XNode_Demo1.jpg)_
+![](Capture/SkillEditor_XNode_Demo2.jpg)_
 
 ![](Capture/ProgressDemo.jpg)
 

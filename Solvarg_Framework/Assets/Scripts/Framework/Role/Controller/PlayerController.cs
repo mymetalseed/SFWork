@@ -11,18 +11,18 @@ public class PlayerController
     #region 参数
     Animator anim;
     Player player;
-    //Rigidbody rig;
-    CharacterController characterController;
     Camera camera;
 
     private bool isActive;
-
-    public float horizontal;
-    public float vertical;
-    public float moveRate;
+    float horizontal;
+    float vertical;
     float s1;
-
     public float speedMulti=3.0f;
+
+    public LayerMask groundMask = LayerMask.NameToLayer("Ground");
+
+    private bool _isGround;
+    public bool isGround => _isGround && Mathf.Approximately(rigid.velocity.y, 0);
 
     private Rigidbody rigid;
     public Rigidbody Rigid => (rigid);
@@ -41,8 +41,6 @@ public class PlayerController
     {
         player = playerManager.GetPlayer;
         anim = player.Anim;
-        //rig = player.GetComponent<Rigidbody>();
-        characterController = player.GetComponent<CharacterController>();
         camera = playerManager.GetCamera;
         rigid = player.Rigid;
         collider = player.Collider;
@@ -66,6 +64,12 @@ public class PlayerController
         
     }
 
+    public void FixedUpdate()
+    {
+        if (!CanMove()) return;
+        CheckGround();
+    }
+
     public void Update()
     {
         if (!CanMove()) return;
@@ -79,6 +83,13 @@ public class PlayerController
         }
     }
 
+    private void CheckGround()
+    {
+        float length = 0.02f;
+        _isGround = rigid.velocity.y > 0 ? false : Physics.Raycast(player.transform.position + length * Vector3.up, Vector3.down, length * 2, groundMask);
+    }
+
+
     bool CanMove()
     {
         if (!isActive) return false;
@@ -91,21 +102,18 @@ public class PlayerController
 
         if (InputData.HasEvent(InputEvents.Moving))
         {
+            
             horizontal = InputData.axisValue.normalized.x;
             vertical = InputData.axisValue.normalized.y;
-            s1 = Mathf.Sqrt(horizontal * horizontal + vertical * vertical); ;
+            
+            s1 = Mathf.Sqrt(horizontal * horizontal + vertical * vertical);
 
-            moveRate = s1;
-
-            anim.SetFloat("IdleAndRun", 1);
-
-            if (moveRate > 0.01f)
+            if (s1 > 0.01f)
             {
                 PlayerCtrlMovement(horizontal, vertical);
             }
         }
         anim.SetFloat("IdleAndRun", rigid.velocity.magnitude);
-
     }
 
     void PlayerCtrlMovement(float horizon,float vertical)

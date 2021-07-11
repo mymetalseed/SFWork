@@ -74,6 +74,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public override void FixedUpdate()
     {
         base.FixedUpdate();
+        playerController?.FixedUpdate();
     }
 
     public override void LateUpdate()

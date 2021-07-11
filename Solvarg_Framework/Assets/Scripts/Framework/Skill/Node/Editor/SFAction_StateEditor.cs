@@ -25,7 +25,6 @@ namespace SolvargActionEditor
             serializedObject.Update();
             NodeEditorGUILayout.PortField(target.GetInputPort("input"));
             _target.stateName = EditorGUILayoutEx.DrawObject("状态名", _target.stateName);
-            NodeEditorGUILayout.PortField(new GUIContent("行为"), target.GetOutputPort("output"));
             _target.animNames = EditorGUILayoutEx.DrawObject("动画名", _target.animNames);
 
             _target.fadeTime = EditorGUILayoutEx.DrawObject("过渡时间", _target.fadeTime);
@@ -37,9 +36,14 @@ namespace SolvargActionEditor
                 _target.nextAnimIndex = EditorGUILayoutEx.DrawObject("下一个状态动画序号", _target.nextAnimIndex);
             }
 
+            NodeEditorGUILayout.PortField(new GUIContent("行为"), target.GetOutputPort("output"));
 
             serializedObject.ApplyModifiedProperties();
         }
 
+        public override Color GetTint()
+        {
+            return new Color(0.3294118f, 0.4627451f, 0.372549f, 1);
+        }
     }
 }

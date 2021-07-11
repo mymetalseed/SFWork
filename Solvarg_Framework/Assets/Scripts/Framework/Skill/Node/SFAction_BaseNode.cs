@@ -29,5 +29,7 @@ namespace SolvargAction
         {
             return null;
         }
+
+        public abstract void Execute();
     }
 }

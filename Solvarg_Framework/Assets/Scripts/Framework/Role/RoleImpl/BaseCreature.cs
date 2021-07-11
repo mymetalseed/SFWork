@@ -15,9 +15,6 @@ public class BaseCreature : BaseRole
 
     protected Animator _Anim;
     public Animator Anim => (_Anim);
-    private CharacterController characterCtrl;
-
-    public CharacterController CharacCtrl => (characterCtrl);
     private float playerraidus;
     public float PlayerRadius => (playerraidus);
 
@@ -64,7 +61,6 @@ public class BaseCreature : BaseRole
     protected override void Awake()
     {
         base.Awake();
-        characterCtrl = GetComponent<CharacterController>();
         _Anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();

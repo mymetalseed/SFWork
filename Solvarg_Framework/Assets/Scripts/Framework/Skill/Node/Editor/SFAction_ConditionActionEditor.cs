@@ -30,7 +30,6 @@ namespace SolvargAction
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("提示: 该行为为一个行为组", GUI.skin.GetStyle("PR Ping"));
             EditorGUILayout.Space();
-            NodeEditorGUILayout.PortField(new GUIContent("下一个状态"), target.GetOutputPort("output"));
             _target.priority = EditorGUILayoutEx.DrawObject("优先级", _target.priority);
             //_target.stateName = EditorGUILayoutEx.DRAW("跳转状态名", _target.stateName);
 
@@ -84,6 +83,7 @@ namespace SolvargAction
                 }
             }
             EditorGUILayout.EndVertical();
+            NodeEditorGUILayout.PortField(new GUIContent("下一个状态"), target.GetOutputPort("output"));
 
             serializedObject.ApplyModifiedProperties();
         }

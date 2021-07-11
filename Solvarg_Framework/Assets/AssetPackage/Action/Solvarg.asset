@@ -1,0 +1,489 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8766652684939277002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318d221c5d2e0c745b38b1769084fc72, type: 3}
+  m_Name: SF Action_Move Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -120, y: 56}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -8766652684939277002}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 541087146945258639}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -8766652684939277002}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  moveSpeed: 3
+--- !u!114 &-8485563702285740924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68367deb1ad63d54bab667c0260e676c, type: 3}
+  m_Name: SF Action_Condition Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -360, y: 56}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -8485563702285740924}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 541087146945258639}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -8485563702285740924}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -1286017208262959927}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  stateName: 
+  priority: 0
+  checker:
+  - id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: SFAction_Condition, ns: SolvargAction, asm: Assembly-CSharp}
+      data:
+        cType: 1
+        condition:
+          id: 1
+    00000001:
+      type: {class: KeyCodeChecker, ns: SolvargAction, asm: Assembly-CSharp}
+      data:
+        inputEvents: 1
+        isNot: 1
+        fullMatch: 0
+--- !u!114 &-6852799616241330052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1666f43a88683d84fb778080a7925f83, type: 3}
+  m_Name: SF Action_State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -616, y: 408}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -6852799616241330052}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 304849449200440928}
+        reroutePoints: []
+      - fieldName: output
+        node: {fileID: -4546523622093392656}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -6852799616241330052}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  stateName: "Attack(\u8FDE\u51FB)"
+  defaultAnimIndex: 0
+  animNames:
+  - Base Layer.Attack1
+  - Base Layer.Attack2
+  fadeTime: 0.05
+  enableLoop: 0
+  nextStateName: Idle
+  nextAnimIndex: -1
+--- !u!114 &-4546523622093392656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68367deb1ad63d54bab667c0260e676c, type: 3}
+  m_Name: SF Action_Condition Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 232, y: 328}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -4546523622093392656}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -1286017208262959927}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -4546523622093392656}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -6852799616241330052}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  stateName: 
+  priority: 0
+  checker:
+  - id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: SFAction_Condition, ns: SolvargAction, asm: Assembly-CSharp}
+      data:
+        cType: 1
+        condition:
+          id: 1
+    00000001:
+      type: {class: KeyCodeChecker, ns: SolvargAction, asm: Assembly-CSharp}
+      data:
+        inputEvents: 2
+        isNot: 0
+        fullMatch: 0
+--- !u!114 &-1286017208262959927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1666f43a88683d84fb778080a7925f83, type: 3}
+  m_Name: SF Action_State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 216, y: -56}
+  ports:
+    keys:
+    - output
+    - input
+    values:
+    - _fieldName: output
+      _node: {fileID: -1286017208262959927}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -210278869710299845}
+        reroutePoints: []
+      - fieldName: input
+        node: {fileID: -4546523622093392656}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+    - _fieldName: input
+      _node: {fileID: -1286017208262959927}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -8485563702285740924}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  stateName: Idle
+  defaultAnimIndex: 0
+  animNames:
+  - IdleAndRun
+  fadeTime: 0.05
+  enableLoop: 1
+  nextStateName: 
+  nextAnimIndex: -1
+--- !u!114 &-210278869710299845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68367deb1ad63d54bab667c0260e676c, type: 3}
+  m_Name: SF Action_Condition Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -120, y: -312}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -210278869710299845}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -1286017208262959927}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -210278869710299845}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 541087146945258639}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  stateName: 
+  priority: 0
+  checker:
+  - id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: SFAction_Condition, ns: SolvargAction, asm: Assembly-CSharp}
+      data:
+        cType: 1
+        condition:
+          id: 1
+    00000001:
+      type: {class: KeyCodeChecker, ns: SolvargAction, asm: Assembly-CSharp}
+      data:
+        inputEvents: 1
+        isNot: 0
+        fullMatch: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d89c3b537c8896c41bc663e964dfe310, type: 3}
+  m_Name: Solvarg
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -1286017208262959927}
+  - {fileID: -210278869710299845}
+  - {fileID: 541087146945258639}
+  - {fileID: -8766652684939277002}
+  - {fileID: -6852799616241330052}
+  - {fileID: -8485563702285740924}
+  - {fileID: 304849449200440928}
+  - {fileID: -4546523622093392656}
+  roleId: R01
+  startState: {fileID: -1286017208262959927}
+--- !u!114 &304849449200440928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68367deb1ad63d54bab667c0260e676c, type: 3}
+  m_Name: SF Action_Condition Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -616, y: 56}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 304849449200440928}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 541087146945258639}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 304849449200440928}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -6852799616241330052}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  stateName: 
+  priority: 0
+  checker:
+  - id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: SFAction_Condition, ns: SolvargAction, asm: Assembly-CSharp}
+      data:
+        cType: 1
+        condition:
+          id: 1
+    00000001:
+      type: {class: KeyCodeChecker, ns: SolvargAction, asm: Assembly-CSharp}
+      data:
+        inputEvents: 2
+        isNot: 0
+        fullMatch: 0
+--- !u!114 &541087146945258639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1666f43a88683d84fb778080a7925f83, type: 3}
+  m_Name: SF Action_State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -488, y: -312}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 541087146945258639}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -210278869710299845}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 541087146945258639}
+      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -8766652684939277002}
+        reroutePoints: []
+      - fieldName: input
+        node: {fileID: -8485563702285740924}
+        reroutePoints: []
+      - fieldName: input
+        node: {fileID: 304849449200440928}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 4
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  stateName: Move
+  defaultAnimIndex: 0
+  animNames:
+  - IdleAndRun
+  fadeTime: 0.05
+  enableLoop: 1
+  nextStateName: 
+  nextAnimIndex: -1

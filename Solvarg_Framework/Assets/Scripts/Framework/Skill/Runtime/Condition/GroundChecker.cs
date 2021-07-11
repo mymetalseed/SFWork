@@ -12,9 +12,6 @@ namespace SolvargAction
         [AllowNesting]
         [Label("是否取反")]
         public bool isNot;
-        [AllowNesting]
-        [Label("地面Layer")]
-        public LayerMask groundMask;
 
         public override SFAction_ConditionType conditionType => SFAction_ConditionType.Ground;
 
@@ -22,7 +19,8 @@ namespace SolvargAction
 
         public override bool Execute(SF_ActionNode action)
         {
-            return base.Execute(action);
+            PlayerController controller = SingletonManager.Instance._PlayerController;
+            return isNot ? !controller.isGround : controller.isGround;
         }
     }
 }

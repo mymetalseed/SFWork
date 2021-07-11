@@ -7,6 +7,7 @@ public partial class SingletonManager
     public GameObject PlayerCenter => (playerManager.GetPlayerCenter);
     public Player PlayerInst => (playerManager.GetPlayer);
     public Camera MainCamera => (playerManager.GetCamera);
+    public PlayerController _PlayerController => playerManager.playerController;
 
     #region 所有角色相关
     /// <summary>

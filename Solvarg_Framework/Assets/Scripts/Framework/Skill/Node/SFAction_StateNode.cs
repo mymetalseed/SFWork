@@ -39,5 +39,9 @@ namespace SolvargAction
             return animNames?.Count > index ? animNames[index] : string.Empty;
         }
 
+        public override void Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

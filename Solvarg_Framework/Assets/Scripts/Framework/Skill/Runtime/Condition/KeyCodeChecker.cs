@@ -14,7 +14,7 @@ namespace SolvargAction
         /// </summary>
         [AllowNesting]
         [Label("响应按键")]
-        public KeyCode inputEvents;
+        public InputEvents inputEvents;
         [AllowNesting]
         [Label("是否")]
         public bool isNot;
@@ -26,7 +26,8 @@ namespace SolvargAction
 
         public override bool Execute(SF_ActionNode action)
         {
-            throw new NotImplementedException();
+            bool result = InputData.HasEvent(inputEvents, fullMatch);
+            return isNot ? !result : result;
         }
         public override Type _Type => typeof(KeyCodeChecker);
     }

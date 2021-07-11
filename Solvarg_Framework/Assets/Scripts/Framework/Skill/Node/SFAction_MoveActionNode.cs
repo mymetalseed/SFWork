@@ -12,5 +12,10 @@ namespace SolvargAction
         [Label("移动速度")]
         public float moveSpeed;
         public override SF_NodeType GetNodeType => SF_NodeType.Behaviour;
+
+        public override void Execute()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

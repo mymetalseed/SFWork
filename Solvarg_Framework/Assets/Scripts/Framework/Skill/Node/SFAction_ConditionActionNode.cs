@@ -21,6 +21,11 @@ namespace SolvargAction
         public List<SFAction_Condition> checker;
 
         public override SF_NodeType GetNodeType => SF_NodeType.Condition;
+
+        public override void Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     [Serializable]

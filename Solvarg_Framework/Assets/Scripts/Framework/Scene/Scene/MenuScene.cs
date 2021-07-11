@@ -51,7 +51,7 @@ public class MenuScene : IScene
     {
         SingletonManager.Instance.Message_UnSubscribe(MessageRouter.ProgressClose, OnProgressDone);
 
-        SingletonManager.Instance.ProgressUIInstance.SetProgressToolTip("加载完了,请按Space跳过XD");
+        SingletonManager.Instance.ProgressUIInstance.SetProgressToolTip("加载完了,请按Enter跳过XD");
 
         ProgressDone = true;
     }

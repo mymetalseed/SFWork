@@ -43,7 +43,7 @@ namespace SolvargSkill
             }
         }
         [SerializeReference]
-        public ActionConditionBase condition;
+        public ActionConditionConfigBase condition;
 
         public Type GetConditionType()
         {
@@ -52,10 +52,12 @@ namespace SolvargSkill
 
         public void ResetCondition()
         {
-            Debug.LogError("跳转");
             if (cType == SFAction_ConditionType.KeyCode)
             {
                 condition = new KeyCodeChecker();
+            }else if(cType == SFAction_ConditionType.Ground)
+            {
+                condition = new GroundChecker();
             }
         }
     }

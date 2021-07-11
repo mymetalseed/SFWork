@@ -73,17 +73,17 @@ namespace SolvargSkill
                 }
                 if (GUILayout.Button(GUIContent.none, GUI.skin.GetStyle("OL Plus"), GUILayout.Height(20)))
                 {
-                    _target.checker.Add(new SFAction_Condition());
+                    if (_target != null)
+                    {
+                        _target.checker.Add(new SFAction_Condition());
+                    }
+                    else
+                    {
+                        _target.checker = new List<SFAction_Condition>();
+                    }
                 }
             }
             EditorGUILayout.EndVertical();
-
-
-            if (GUILayout.Button("保存"))
-            {
-                SaveAsset();
-
-            }
 
             serializedObject.ApplyModifiedProperties();
         }

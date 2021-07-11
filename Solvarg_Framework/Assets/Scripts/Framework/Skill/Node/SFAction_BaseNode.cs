@@ -9,7 +9,8 @@ namespace SolvargSkill
     public enum SF_NodeType
     {
         State,
-        Condition
+        Condition,
+        Behaviour
     }
 
     public abstract class SFAction_BaseNode : Node

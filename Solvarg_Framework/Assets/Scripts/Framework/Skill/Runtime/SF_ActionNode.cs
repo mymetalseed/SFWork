@@ -6,6 +6,6 @@ namespace SolvargSkill
 {
     public class SF_ActionNode
     {
-        
+        public object config;
     }
 }

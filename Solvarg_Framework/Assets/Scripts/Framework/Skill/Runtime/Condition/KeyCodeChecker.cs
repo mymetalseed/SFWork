@@ -3,37 +3,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using XMLib;
 
 namespace SolvargSkill
 {
-    public enum SFAction_ConditionType
-    {
-        None,
-        KeyCode
-    }
-
     [Serializable]
-    public class ActionConditionBase
+    public class KeyCodeChecker : ActionConditionConfigBase
     {
-        public virtual SFAction_ConditionType conditionType {
-            get;
-        }
-        public virtual bool Execute(SF_ActionNode action) { return false; }
-        public virtual Type _Type=>typeof(ActionConditionBase);
-    }
-    public class SF_Condition
-    {
-      
-
-    }
-
-    [Serializable]
-    public class KeyCodeChecker : ActionConditionBase
-    {
+        /// <summary>
+        /// 这个后面会改成输入事件
+        /// </summary>
+        [AllowNesting]
+        [Label("响应按键")]
+        public KeyCode inputEvents;
         [AllowNesting]
         [Label("是否")]
         public bool isNot;
+        [AllowNesting]
+        [Label("完全匹配")]
         public bool fullMatch;
 
         public override SFAction_ConditionType conditionType => SFAction_ConditionType.KeyCode;
@@ -44,5 +30,4 @@ namespace SolvargSkill
         }
         public override Type _Type => typeof(KeyCodeChecker);
     }
-
 }

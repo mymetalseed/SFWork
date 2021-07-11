@@ -10,7 +10,7 @@
 
 [http://146.56.209.11:90/%e6%b8%b8%e8%ae%be-solvarg/](http://146.56.209.11:90/%e6%b8%b8%e8%ae%be-solvarg/)
 
-![](MenuDemo.jpg)
+![](Capture/MenuDemo.jpg)
 
 ## 目前包含的功能
 
@@ -132,17 +132,17 @@ jiuyueqiji123 <转场> : https://gitee.com/jiuyueqiji123/shader-effects_-pr
 
 
 # Solvarg...
-![](SkillEditor_XNode.jpg)_
+![](Capture/SkillEditor_XNode_Demo1.jpg)_
 
-![](ProgressDemo.jpg)
+![](Capture/ProgressDemo.jpg)
 
-![](InkDemo.png)
+![](Capture/InkDemo.png)
 
-![](Dialogue.png)
+![](Capture/Dialogue.png)
 
-![](WeaponSystem.jpg)
+![](Capture/WeaponSystem.jpg)
 
-![](Attack.jpg)
+![](Capture/Attack.jpg)
 
-![](WeaponRelease.jpg)
+![](Capture/WeaponRelease.jpg)
 

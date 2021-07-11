@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace SolvargSkill
 {
-    public class SFAction_SpawnEffectNode : SFAction_BaseActionNode
+    public class SF_ActionNode
     {
-
+        
     }
 }

@@ -1,0 +1,200 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4773685571875689131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68367deb1ad63d54bab667c0260e676c, type: 3}
+  m_Name: SF Action_Condition Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -88, y: -280}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -4773685571875689131}
+      _typeQualifiedName: SolvargSkill.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -4773685571875689131}
+      _typeQualifiedName: SolvargSkill.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  stateName: 
+  priority: 0
+  checker:
+  - id: 0
+  - id: 1
+  - id: 2
+  references:
+    version: 1
+    00000000:
+      type: {class: SFAction_Condition, ns: SolvargSkill, asm: Assembly-CSharp}
+      data:
+        cType: 1
+        condition:
+          id: 3
+    00000001:
+      type: {class: SFAction_Condition, ns: SolvargSkill, asm: Assembly-CSharp}
+      data:
+        cType: 1
+        condition:
+          id: 4
+    00000002:
+      type: {class: SFAction_Condition, ns: SolvargSkill, asm: Assembly-CSharp}
+      data:
+        cType: 0
+        condition:
+          id: 5
+    00000003:
+      type: {class: KeyCodeChecker, ns: SolvargSkill, asm: Assembly-CSharp}
+      data:
+        isNot: 1
+        fullMatch: 0
+    00000004:
+      type: {class: KeyCodeChecker, ns: SolvargSkill, asm: Assembly-CSharp}
+      data:
+        isNot: 0
+        fullMatch: 1
+    00000005:
+      type: {class: , ns: , asm: }
+--- !u!114 &-2852922592587152166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1666f43a88683d84fb778080a7925f83, type: 3}
+  m_Name: SF Action_State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 216, y: -264}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -2852922592587152166}
+      _typeQualifiedName: SolvargSkill.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -2852922592587152166}
+      _typeQualifiedName: SolvargSkill.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  stateName: State
+  defaultAnimIndex: 0
+  animNames:
+  - 
+  fadeTime: 0.05
+  enableLoop: 0
+  nextStateName: 
+  nextAnimIndex: -1
+--- !u!114 &-2834352603008227547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68367deb1ad63d54bab667c0260e676c, type: 3}
+  m_Name: SF Action_Condition Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 545, y: -235}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -2834352603008227547}
+      _typeQualifiedName: SolvargSkill.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -2834352603008227547}
+      _typeQualifiedName: SolvargSkill.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  stateName: 
+  priority: 0
+  checker:
+  - id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: SFAction_Condition, ns: SolvargSkill, asm: Assembly-CSharp}
+      data:
+        cType: 1
+        condition:
+          id: 1
+    00000001:
+      type: {class: KeyCodeChecker, ns: SolvargSkill, asm: Assembly-CSharp}
+      data:
+        isNot: 1
+        fullMatch: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d89c3b537c8896c41bc663e964dfe310, type: 3}
+  m_Name: Solvarg
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -2852922592587152166}
+  - {fileID: -4773685571875689131}
+  - {fileID: -2834352603008227547}
+  skillId: 
+  startState: {fileID: 0}

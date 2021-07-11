@@ -103,6 +103,7 @@ demo入口: Scenes/Loading 这个场景下!
 - Base于骨骼节点的装饰系统
 - 服务端(基于C#和Protobuf,这个最后开始做,可能暂时的Demo中不会有)
 - 技能编辑器 <本来打算用XNode硬写数据,但是后面可能会将XMLIB这个开源的加进来>
+	- XNode技能编辑器框架搭建完毕
 
 ## Demo级企划
 
@@ -131,6 +132,8 @@ jiuyueqiji123 <转场> : https://gitee.com/jiuyueqiji123/shader-effects_-pr
 
 
 # Solvarg...
+![](SkillEditor_XNode.jpg)_
+
 ![](ProgressDemo.jpg)
 
 ![](InkDemo.png)
@@ -142,3 +145,4 @@ jiuyueqiji123 <转场> : https://gitee.com/jiuyueqiji123/shader-effects_-pr
 ![](Attack.jpg)
 
 ![](WeaponRelease.jpg)
+

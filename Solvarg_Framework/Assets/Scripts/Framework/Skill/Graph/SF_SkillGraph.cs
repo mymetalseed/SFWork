@@ -8,6 +8,7 @@ namespace SolvargSkill
     public class SF_SkillGraph : NodeGraph
     {
         public string skillId;
+        public SFAction_StateNode startState;
         public void SatrtAction()
         {
 

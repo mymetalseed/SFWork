@@ -16,7 +16,8 @@ public enum QuestStatus
 public enum ConditionType
 {
     None,
-    Event
+    Event,
+    KeyCode
 }
 
 public abstract class QuestBase

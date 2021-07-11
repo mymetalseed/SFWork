@@ -26,7 +26,7 @@ public class SFAction_BuffSpawnWorld : SFAction_BaseAction
         SFAction_Destruction des = effect.GetComponent<SFAction_Destruction>();
         if (null != des)
         {
-            des.dataNode.duration = effectDestroyDelay;
+            //des.dataNode.duration = effectDestroyDelay;
             des.OnStart();
         }
 

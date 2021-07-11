@@ -1,4 +1,5 @@
 ﻿using NaughtyAttributes;
+using SolvargSkill;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ public class SkillEffectConfig : ScriptableObject
 
     [HideInInspector]
     public Dictionary<string, SkillEffectInfo> infoDict;
+
     /// <summary>
     /// 运行时初始化
     /// </summary>

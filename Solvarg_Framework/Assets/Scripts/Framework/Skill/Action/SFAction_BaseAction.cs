@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class SFAction_BaseAction 
 {
-    public SFAction_BaseActionNode dataNode;
-
     float startTime = 0f;
     bool isTriggered = false;
 
@@ -24,11 +22,13 @@ public class SFAction_BaseAction
 
     private void Start()
     {
+        /*
         if(dataNode.trigType == TriggerType.eAuto)
         {
             startTime = Time.time;
             isTriggered = true;
         }
+        */
     }
 
     /// <summary>
@@ -36,15 +36,18 @@ public class SFAction_BaseAction
     /// </summary>
     public virtual void OnStart()
     {
+        /*
         if(dataNode.trigType == TriggerType.eCondition)
         {
             startTime = Time.time;
             isTriggered = true;
         }
+        */
     }
 
     protected virtual void Update()
     {
+        /*
         if (!isTriggered)
             return;
         if(Time.time - startTime >= dataNode.duration)
@@ -52,6 +55,7 @@ public class SFAction_BaseAction
             isTriggered = false;
 
         }
+        */
     }
 
     /// <summary>

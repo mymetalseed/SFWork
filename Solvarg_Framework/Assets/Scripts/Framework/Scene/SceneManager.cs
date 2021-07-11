@@ -81,7 +81,7 @@ public class SceneManager : Singleton<SceneManager>
             currentScene.OnUpdate(elapseSeconds, realElapseSeconds);
         }
 
-        if (ProgressDone && singletonManager.ProgressUIInstance.gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Space))
+        if (ProgressDone && singletonManager.ProgressUIInstance.gameObject.activeInHierarchy && InputData.Confirm)
         {
             SingletonManager.Instance.ProgressUIInstance.CloseProgress();
             //加载关闭后处理
@@ -98,7 +98,7 @@ public class SceneManager : Singleton<SceneManager>
 
     private async void OnProgressDone(Message message)
     {
-        SingletonManager.Instance.ProgressUIInstance.SetProgressToolTip("加载完了,请按Space跳过XD");
+        SingletonManager.Instance.ProgressUIInstance.SetProgressToolTip("加载完了,请按Enter跳过XD");
         
         ProgressDone = true;
     }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using XNodeEditor;
 using XNode;
-using SolvargSkill;
+using SolvargAction;
 using XMLib;
 
-namespace SolvargSkillEditor
+namespace SolvargActionEditor
 {
     [CustomNodeEditor(typeof(SFAction_MoveActionNode))]
     public class SFAction_MoveActionEditor : NodeEditor

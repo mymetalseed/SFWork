@@ -56,7 +56,7 @@
 - 技能系统中普攻的连击部分
 - 将Controller等抽象成组件,每个组件都会被回调注册Owner,即Player或者Enemy等等
 	- AnimatorController
-	- SkillController
+	- ActionController
 	- WeaponController
 - 物品系统 (武器系统和背包系统之类的要依赖于物品系统)
 	- 依赖Icon系统
@@ -78,6 +78,7 @@
 	- 控制不同条件下鼠标样式的切换
 	- 后面会拓展按下时触发的事件,以及获取当前鼠标位置等状态
 - FPS显示
+- InputManager 多终端键鼠映射 (基于NewInputSystem)
 
 demo入口: Scenes/Loading 这个场景下!
 
@@ -111,8 +112,11 @@ demo入口: Scenes/Loading 这个场景下!
 >> 当然,暂时只是企划,目前主要做的Demo是项目原型
 >> 当项目原型完毕后这个仓库就会开始长期其他类型游戏的Demo开发
 
+## 操作说明
 
-# 致敬 <开源项目参考列表>
+加载界面和对话按Enter跳过,按F1切换武器,QERF改变视角
+
+# 致谢 <开源项目参考列表>
 
 PeterXiang : https://github.com/PxGame
 
@@ -128,8 +132,6 @@ Denis Rizov <NaughtyAttributes> : https://github.com/dbrizov/NaughtyAttributes
 GooglePoly : 虽然关掉了
 
 jiuyueqiji123 <转场> : https://gitee.com/jiuyueqiji123/shader-effects_-pr
-
-
 
 # Solvarg...
 ![](Capture/SkillEditor_XNode_Demo1.jpg)_

@@ -131,7 +131,7 @@ MonoBehaviour:
   - {fileID: 2694167015634930222}
   - {fileID: -3217229179658478489}
   - {fileID: 5469301587083842364}
-  current: {fileID: 2694167015634930222}
+  current: {fileID: 5469301587083842364}
   DialogId: T01
 --- !u!114 &378446064503980661
 MonoBehaviour:
@@ -211,8 +211,6 @@ MonoBehaviour:
     - answers
     - input
     - output
-    - answers 0
-    - answers 1
     values:
     - _fieldName: answers
       _node: {fileID: 2694167015634930222}
@@ -248,33 +246,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: answers 0
-      _node: {fileID: 2694167015634930222}
-      _typeQualifiedName: Dialogue.Chat+Answer, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: answers 1
-      _node: {fileID: 2694167015634930222}
-      _typeQualifiedName: Dialogue.Chat+Answer, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
   input: {fileID: 0}
   output: {fileID: 0}
   character: {fileID: 11400000, guid: 0a3a807dc8d7e534182c95c27023642f, type: 2}
   text: "\u5B83\u4E5F\u50AC\u751F\u51FA\u4E86\u65E0\u6570\u540D\u4E3A\"\u7EDD\u671B\"\u7684\"\u75DB\u82E6\u6839\u6E90\"\u3002"
-  answers:
-  - text: 
-    voiceClip: {fileID: 0}
-  - text: 
-    voiceClip: {fileID: 0}
+  answers: []
 --- !u!114 &5469301587083842364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,5 +308,5 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   character: {fileID: 11400000, guid: 0a3a807dc8d7e534182c95c27023642f, type: 2}
-  text: "\u8BD5\u7740\u6309'1'\u548C'2'\u6765\u5207\u6362\u6B66\u5668\u5427!"
+  text: "\u8BD5\u7740\u6309'F1'\u6765\u5207\u6362\u6B66\u5668\u5427!"
   answers: []

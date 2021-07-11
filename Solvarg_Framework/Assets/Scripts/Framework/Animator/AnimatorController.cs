@@ -65,6 +65,6 @@ public class AnimatorController : BaseController
 
     public override void OnUpdate()
     {
-        throw new NotImplementedException();
+
     }
 }

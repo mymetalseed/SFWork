@@ -5,7 +5,7 @@ using UnityEngine;
 using XNode;
 using System;
 
-namespace SolvargSkill
+namespace SolvargAction
 {
     [CreateNodeMenu("状态/State")]
     public class SFAction_StateNode : SFAction_BaseNode
@@ -18,7 +18,7 @@ namespace SolvargSkill
         public int defaultAnimIndex = 0;
 
         [AllowNesting]
-        [Label("动画名称")]
+        [Label("Trigger名称")]
         public List<string> animNames;
 
         [AllowNesting]

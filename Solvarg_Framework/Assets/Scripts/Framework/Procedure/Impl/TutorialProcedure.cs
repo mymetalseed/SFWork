@@ -27,20 +27,27 @@ public class TutorialProcedure : ProcedureBase
         SingletonManager.Instance.Message_UnSubscribe(MessageRouter.DialogueChatDone, ChatDone);
     }
 
+    int cnt = 0;
+
     public override void OnUpdate(IFsm<ProcedureManager> fsm, float elapseSeconds, float realElapseSeconds)
     {
         base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (InputData.SwitchWeapon)
         {
-            //尝试给角色添加武器月刃
-            SingletonManager.Instance.LinkWeaponToRole(SingletonManager.Instance.PlayerInst, 0);
-        }
+            if(cnt == 0)
+            {
+                cnt = ~cnt;
+                //尝试给角色添加武器月刃
+                SingletonManager.Instance.LinkWeaponToRole(SingletonManager.Instance.PlayerInst, 0);
+            }
+            else
+            {
+                cnt = ~cnt;
+                //尝试给角色添加武器初始之刃
+                SingletonManager.Instance.LinkWeaponToRole(SingletonManager.Instance.PlayerInst, 1);
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            //尝试给角色添加武器初始之刃
-            SingletonManager.Instance.LinkWeaponToRole(SingletonManager.Instance.PlayerInst, 1);
+            }
         }
 
     }

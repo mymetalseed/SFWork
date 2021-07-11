@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XNode;
-namespace SolvargSkill
+namespace SolvargAction
 {
-    [CreateAssetMenu(menuName = "Solvarg/Skill/New Skill Graph", order = 0)]
-    public class SF_SkillGraph : NodeGraph
+    [CreateAssetMenu(menuName = "Solvarg/Action/New Action Graph", order = 0)]
+    public class SF_ActionGraph : NodeGraph
     {
-        public string skillId;
+        public string roleId;
         public SFAction_StateNode startState;
         public void SatrtAction()
         {

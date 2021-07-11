@@ -18,7 +18,7 @@ public class MouseManager : Singleton<MouseManager>, IApplication
     void SetCursorTexture()
     {
         Ray ray = singletonManager.MainCamera.ScreenPointToRay(Input.mousePosition);
-
+        
         if(Physics.Raycast(ray,out hitInfo))
         {
             switch (hitInfo.collider.gameObject.tag)
@@ -28,13 +28,16 @@ public class MouseManager : Singleton<MouseManager>, IApplication
                     break;
             }
         }
+        
     }
     void MouseControl()
     {
+        
         if (Input.GetMouseButtonDown(0) && hitInfo.collider != null)
         {
             //触发Invoke,但是这里先空着,似乎没啥必要
         }
+        
     }
 
 

@@ -1,5 +1,5 @@
 ﻿using NaughtyAttributes;
-using SolvargSkill;
+using SolvargAction;
 using System;
 using System.Collections;
 using System.Collections.Generic;

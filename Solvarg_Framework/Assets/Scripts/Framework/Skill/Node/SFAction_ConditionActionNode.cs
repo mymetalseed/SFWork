@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace SolvargSkill
+namespace SolvargAction
 {
     [CreateNodeMenu("触发条件")]
     public class SFAction_ConditionActionNode : SFAction_BaseNode

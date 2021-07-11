@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SkillManager : Singleton<SkillManager>
 {
+
     #region 参数
     //特效路径-ID映射
     SkillEffectConfig effectConfig;

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XNodeEditor;
-using SolvargSkill;
+using SolvargAction;
 using XMLib;
 using UnityEditor;
 
-namespace SolvargSkillEditor
+namespace SolvargActionEditor
 {
     [CustomNodeEditor(typeof(SFAction_StateNode))]
     public class SFAction_StateEditor : NodeEditor
@@ -23,7 +23,7 @@ namespace SolvargSkillEditor
             //base.OnBodyGUI();
             _target = target as SFAction_StateNode;
             serializedObject.Update();
-            NodeEditorGUILayout.PortField(target.GetInputPort("input")) ;
+            NodeEditorGUILayout.PortField(target.GetInputPort("input"));
             _target.stateName = EditorGUILayoutEx.DrawObject("状态名", _target.stateName);
             NodeEditorGUILayout.PortField(new GUIContent("行为"), target.GetOutputPort("output"));
             _target.animNames = EditorGUILayoutEx.DrawObject("动画名", _target.animNames);

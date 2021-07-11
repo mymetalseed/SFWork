@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XNode;
 
-namespace SolvargSkill
+namespace SolvargAction
 {
     public enum SF_NodeType
     {
@@ -15,9 +15,9 @@ namespace SolvargSkill
 
     public abstract class SFAction_BaseNode : Node
     {
-        [Input(backingValue = ShowBackingValue.Always)]
+        [Input(backingValue = ShowBackingValue.Always,typeConstraint =TypeConstraint.InheritedAny)]
         public SFAction_BaseNode input;
-        [Output(backingValue = ShowBackingValue.Always)]
+        [Output(backingValue = ShowBackingValue.Always, typeConstraint = TypeConstraint.InheritedAny)]
         public SFAction_BaseNode output;
 
         public abstract SF_NodeType GetNodeType

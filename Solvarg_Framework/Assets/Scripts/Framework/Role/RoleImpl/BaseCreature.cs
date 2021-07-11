@@ -26,6 +26,12 @@ public class BaseCreature : BaseRole
     private bool isGetHit=false;
     public bool IsGetHit => (isGetHit);
 
+    private Rigidbody rigid;
+    public Rigidbody Rigid => (rigid);
+
+    private Collider collider;
+    public Collider Collider => (collider);
+
     #endregion
 
     /// <summary>
@@ -60,6 +66,8 @@ public class BaseCreature : BaseRole
         base.Awake();
         characterCtrl = GetComponent<CharacterController>();
         _Anim = GetComponent<Animator>();
+        rigid = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
     }
 
     protected override void Update()
@@ -105,9 +113,9 @@ public class BaseCreature : BaseRole
             {
                 control = new AnimatorController();
             }
-        }else if (controllerType == ControllerType.Skill)
+        }else if (controllerType == ControllerType.Action)
         {
-            control = new SkillController();
+            control = new ActionController();
         }else if(controllerType == ControllerType.Weapon)
         {
             control = new WeaponController();

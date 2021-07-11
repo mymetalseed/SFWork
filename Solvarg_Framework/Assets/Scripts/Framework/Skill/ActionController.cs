@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillController : BaseController
+public class ActionController : BaseController
 {
     #region 参数
     bool _IsPlaying;
@@ -18,9 +18,7 @@ public class SkillController : BaseController
     public int MaxAnimAttackIndex = 3;
 
     string curAnimName;
-    string AttackPre="Base Layer.Attack";
-
-    
+    string AttackPre="Base Layer.Attack";  
     #endregion
 
     public override void OnStart(BaseCreature role)

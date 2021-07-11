@@ -6,7 +6,7 @@ using XNode;
 using XMLib;
 using UnityEditor;
 
-namespace SolvargSkill
+namespace SolvargAction
 {
     [CustomNodeEditor(typeof(SFAction_ConditionActionNode))]
     public class SFAction_ConditionActionEditor : NodeEditor
@@ -73,7 +73,7 @@ namespace SolvargSkill
                 }
                 if (GUILayout.Button(GUIContent.none, GUI.skin.GetStyle("OL Plus"), GUILayout.Height(20)))
                 {
-                    if (_target != null)
+                    if (_target.checker != null)
                     {
                         _target.checker.Add(new SFAction_Condition());
                     }

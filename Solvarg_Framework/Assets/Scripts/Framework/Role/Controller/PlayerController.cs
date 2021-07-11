@@ -19,10 +19,16 @@ public class PlayerController
 
     public float horizontal;
     public float vertical;
-    public float speed;
+    public float moveRate;
     float s1;
 
     public float speedMulti=3.0f;
+
+    private Rigidbody rigid;
+    public Rigidbody Rigid => (rigid);
+
+    private Collider collider;
+    public Collider Collider => (collider);
     #endregion
 
     public PlayerController(PlayerManager pm)
@@ -34,10 +40,12 @@ public class PlayerController
     public void OnInit()
     {
         player = playerManager.GetPlayer;
-        anim = player.GetComponent<Animator>();
+        anim = player.Anim;
         //rig = player.GetComponent<Rigidbody>();
         characterController = player.GetComponent<CharacterController>();
         camera = playerManager.GetCamera;
+        rigid = player.Rigid;
+        collider = player.Collider;
 
         isActive = false;
     }
@@ -64,9 +72,9 @@ public class PlayerController
         SetPlayerAnimMovePam();
 
         //#普通攻击
-        if (Input.GetKeyDown(KeyCode.J))
+        if (InputData.HasEvent(InputEvents.Attack))
         {
-            (player[ControllerType.Skill] as SkillController)
+            (player[ControllerType.Action] as ActionController)
                 .CastSkill(SkillType.eAttack);
         }
     }
@@ -80,29 +88,39 @@ public class PlayerController
 
     void SetPlayerAnimMovePam()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
 
-        s1 = Mathf.Sqrt(horizontal * horizontal + vertical * vertical); ;
-
-        speed = s1;
-
-        anim.SetFloat("IdleAndRun",speed);
-
-        if (speed > 0.01f)
+        if (InputData.HasEvent(InputEvents.Moving))
         {
-            PlayerCtrlMovement(horizontal, vertical);
+            horizontal = InputData.axisValue.normalized.x;
+            vertical = InputData.axisValue.normalized.y;
+            s1 = Mathf.Sqrt(horizontal * horizontal + vertical * vertical); ;
+
+            moveRate = s1;
+
+            anim.SetFloat("IdleAndRun", 1);
+
+            if (moveRate > 0.01f)
+            {
+                PlayerCtrlMovement(horizontal, vertical);
+            }
         }
+        anim.SetFloat("IdleAndRun", rigid.velocity.magnitude);
+
     }
 
     void PlayerCtrlMovement(float horizon,float vertical)
     {
         Vector3 dir = camera.transform.right * horizon + vertical * camera.transform.forward;
-
         dir.y = 0f;
         player.transform.forward = dir;
 
-        characterController.SimpleMove(speed * dir * speedMulti);
+        var velocity = rigid.velocity;
+        var move = dir * 3;
+
+        velocity.x = move.x;
+        velocity.z = move.z;
+
+        rigid.velocity = velocity;
     }
 
 }

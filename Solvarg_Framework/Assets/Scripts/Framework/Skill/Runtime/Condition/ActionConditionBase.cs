@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace SolvargSkill
+namespace SolvargAction
 {
     public enum SFAction_ConditionType
     {

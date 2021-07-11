@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SolvargSkill
+namespace SolvargAction
 {
     [CreateNodeMenu("行为/移动Action")]
     public class SFAction_MoveActionNode : SFAction_BaseNode

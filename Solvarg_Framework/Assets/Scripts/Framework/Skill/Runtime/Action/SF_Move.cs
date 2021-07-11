@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SolvargSkill
+namespace SolvargAction
 {
     [Serializable]
     public class MoveConfig
@@ -15,18 +15,17 @@ namespace SolvargSkill
     {
         public void Enter(SF_ActionNode node)
         {
-            throw new System.NotImplementedException();
         }
 
         public void Exit(SF_ActionNode node)
         {
-            throw new System.NotImplementedException();
         }
 
         public void Update(SF_ActionNode node, float deltaTime)
         {
             MoveConfig config = node.config as MoveConfig;
             //do移动
+
         }
     }
 }

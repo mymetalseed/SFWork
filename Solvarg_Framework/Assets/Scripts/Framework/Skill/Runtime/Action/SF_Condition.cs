@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XMLib;
 
-namespace SolvargSkill
+namespace SolvargAction
 {
     public class SF_Condition : IActionHandler
     {

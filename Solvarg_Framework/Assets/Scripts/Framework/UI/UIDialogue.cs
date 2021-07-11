@@ -163,7 +163,8 @@ public class UIDialogue : BaseUI
     protected override void OnUpdate(float deltaTime)
     {
         base.OnUpdate(deltaTime);
-        if (canNext && Input.GetKeyDown(KeyCode.O))
+        //if (canNext && Input.GetKeyDown(KeyCode.O))
+        if (canNext && InputData.Confirm)
         {
             AnswerQuestion();
         }

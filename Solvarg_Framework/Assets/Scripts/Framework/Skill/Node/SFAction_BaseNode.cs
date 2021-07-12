@@ -15,11 +15,6 @@ namespace SolvargAction
 
     public abstract class SFAction_BaseNode : Node
     {
-        [Input(backingValue = ShowBackingValue.Always,typeConstraint =TypeConstraint.InheritedAny)]
-        public SFAction_BaseNode input;
-        [Output(backingValue = ShowBackingValue.Always, typeConstraint = TypeConstraint.InheritedAny)]
-        public SFAction_BaseNode output;
-
         private SF_ActionGraph _graph;
 
         protected SF_ActionGraph Graph

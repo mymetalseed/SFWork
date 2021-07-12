@@ -17,31 +17,20 @@ MonoBehaviour:
   ports:
     keys:
     - input
-    - output
     values:
     - _fieldName: input
       _node: {fileID: -8766652684939277002}
-      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: SolvargAction.SFAction_BaseActionNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: output
         node: {fileID: 541087146945258639}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
-      _typeConstraint: 4
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: -8766652684939277002}
-      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 4
+      _typeConstraint: 2
       _dynamic: 0
   input: {fileID: 0}
-  output: {fileID: 0}
   moveSpeed: 3
 --- !u!114 &-6852799616241330052
 MonoBehaviour:
@@ -56,7 +45,7 @@ MonoBehaviour:
   m_Name: SF Action_State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -616, y: 488}
+  position: {x: -616, y: 472}
   ports:
     keys:
     - input
@@ -64,24 +53,24 @@ MonoBehaviour:
     values:
     - _fieldName: input
       _node: {fileID: -6852799616241330052}
-      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+      _typeQualifiedName: SolvargAction.SFAction_StateNode, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: output
+      - fieldName: nextState
         node: {fileID: 304849449200440928}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
-      _typeConstraint: 4
+      _typeConstraint: 2
       _dynamic: 0
     - _fieldName: output
       _node: {fileID: -6852799616241330052}
-      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: SolvargAction.SFAction_BaseActionNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
-      _typeConstraint: 4
+      _typeConstraint: 2
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
@@ -131,23 +120,23 @@ MonoBehaviour:
   ports:
     keys:
     - input
-    - output
+    - nextState
     values:
     - _fieldName: input
       _node: {fileID: 304849449200440928}
-      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: SolvargAction.SFAction_BaseActionNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: output
         node: {fileID: 541087146945258639}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
-      _typeConstraint: 4
+      _typeConstraint: 2
       _dynamic: 0
-    - _fieldName: output
+    - _fieldName: nextState
       _node: {fileID: 304849449200440928}
-      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+      _typeQualifiedName: SolvargAction.SFAction_StateNode, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: input
@@ -155,12 +144,12 @@ MonoBehaviour:
         reroutePoints: []
       _direction: 1
       _connectionType: 0
-      _typeConstraint: 4
+      _typeConstraint: 2
       _dynamic: 0
   input: {fileID: 0}
-  output: {fileID: 0}
   stateName: 
   priority: 0
+  nextState: {fileID: 0}
   checker:
   - id: 0
   references:
@@ -198,27 +187,27 @@ MonoBehaviour:
     values:
     - _fieldName: input
       _node: {fileID: 541087146945258639}
-      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
+      _typeQualifiedName: SolvargAction.SFAction_StateNode, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
-      _typeConstraint: 4
+      _typeConstraint: 2
       _dynamic: 0
     - _fieldName: output
       _node: {fileID: 541087146945258639}
-      _typeQualifiedName: SolvargAction.SFAction_BaseNode, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: SolvargAction.SFAction_BaseActionNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: input
-        node: {fileID: -8766652684939277002}
-        reroutePoints: []
       - fieldName: input
         node: {fileID: 304849449200440928}
         reroutePoints: []
+      - fieldName: input
+        node: {fileID: -8766652684939277002}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
-      _typeConstraint: 4
+      _typeConstraint: 2
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}

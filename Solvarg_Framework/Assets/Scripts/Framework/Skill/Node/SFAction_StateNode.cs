@@ -10,6 +10,13 @@ namespace SolvargAction
     [CreateNodeMenu("状态/State")]
     public class SFAction_StateNode : SFAction_BaseNode
     {
+
+        [Input(backingValue = ShowBackingValue.Always, typeConstraint = TypeConstraint.Strict)]
+        public SFAction_StateNode input;
+
+        [Output(backingValue = ShowBackingValue.Always, typeConstraint = TypeConstraint.Strict)]
+        public SFAction_BaseActionNode output;
+
         [AllowNesting]
         [Label("状态名")]
         public string stateName="State";

@@ -7,6 +7,9 @@ namespace SolvargAction
 {
     public abstract class SFAction_BaseActionNode : SFAction_BaseNode
     {
+        [Input(backingValue = ShowBackingValue.Always, typeConstraint = TypeConstraint.Strict)]
+        public SFAction_BaseActionNode input;
+
         private SFAction_StateNode baseState;
         public SFAction_StateNode BaseState {
             get

@@ -83,7 +83,7 @@ namespace SolvargAction
                 }
             }
             EditorGUILayout.EndVertical();
-            NodeEditorGUILayout.PortField(new GUIContent("下一个状态"), target.GetOutputPort("output"));
+            NodeEditorGUILayout.PortField(new GUIContent("下一个状态"), target.GetOutputPort("nextState"));
 
             serializedObject.ApplyModifiedProperties();
         }

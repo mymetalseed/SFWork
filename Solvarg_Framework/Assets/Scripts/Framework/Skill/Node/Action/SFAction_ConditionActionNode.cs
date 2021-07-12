@@ -17,6 +17,9 @@ namespace SolvargAction
         [Label("优先级")]
         public int priority;
 
+        [Output(backingValue = ShowBackingValue.Always, typeConstraint = TypeConstraint.Strict)]
+        public SFAction_StateNode nextState;
+
         [SerializeReference]
         public List<SFAction_Condition> checker;
 
@@ -33,7 +36,10 @@ namespace SolvargAction
                     if (checker[i].cType != SFAction_ConditionType.None)
                     {
                         res = checker[i].condition.Execute(this);
-                        if (res) return true;
+                        if (res)
+                        {
+                            return true;
+                        }
                     }
                 }
             }

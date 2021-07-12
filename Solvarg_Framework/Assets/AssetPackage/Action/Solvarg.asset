@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SF Action_Condition Action
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -232, y: 216}
+  position: {x: -488, y: 136}
   ports:
     keys:
     - nextState
@@ -49,6 +49,7 @@ MonoBehaviour:
   nextState: {fileID: 0}
   checker:
   - id: 0
+  - id: 1
   references:
     version: 1
     00000000:
@@ -56,13 +57,23 @@ MonoBehaviour:
       data:
         cType: 1
         condition:
-          id: 1
+          id: 2
     00000001:
+      type: {class: SFAction_Condition, ns: SolvargAction, asm: Assembly-CSharp}
+      data:
+        cType: 3
+        condition:
+          id: 3
+    00000002:
       type: {class: KeyCodeChecker, ns: SolvargAction, asm: Assembly-CSharp}
       data:
         inputEvents: 2
         isNot: 0
         fullMatch: 0
+    00000003:
+      type: {class: PlayerReadyChecker, ns: SolvargAction, asm: Assembly-CSharp}
+      data:
+        isNot: 0
 --- !u!114 &-8227855566470117895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,7 +87,7 @@ MonoBehaviour:
   m_Name: SF Action_Move Action
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 35, y: 212.5}
+  position: {x: -248, y: 136}
   ports:
     keys:
     - input
@@ -108,7 +119,7 @@ MonoBehaviour:
   m_Name: SF Action_State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -232, y: -152}
+  position: {x: -488, y: -136}
   ports:
     keys:
     - input
@@ -162,7 +173,7 @@ MonoBehaviour:
   m_Name: SF Action_State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -216, y: 584}
+  position: {x: 40, y: -136}
   ports:
     keys:
     - input
@@ -193,7 +204,9 @@ MonoBehaviour:
   output: {fileID: 0}
   stateName: Attack
   defaultAnimIndex: 0
-  animNames: []
+  animNames:
+  - Base Layer.Attack1
+  - Base Layer.Attack2
   fadeTime: 0.05
   enableLoop: 0
   backToIdleState: 1
@@ -218,3 +231,4 @@ MonoBehaviour:
   - {fileID: -1751030605948371041}
   roleId: R01
   startState: {fileID: -7850147902848933170}
+  _currentState: {fileID: -7850147902848933170}

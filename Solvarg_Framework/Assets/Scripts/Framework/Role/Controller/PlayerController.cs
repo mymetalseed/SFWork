@@ -16,6 +16,10 @@ public class PlayerController
     string _idleName;
 
     private bool isActive;
+    /// <summary>
+    /// 角色是否允许运动,或其他操作
+    /// </summary>
+    public bool IsActive=>(isActive);
     float horizontal;
     float vertical;
     float s1;

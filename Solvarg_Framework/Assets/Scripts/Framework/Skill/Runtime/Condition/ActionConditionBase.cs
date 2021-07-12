@@ -8,7 +8,8 @@ namespace SolvargAction
     {
         None,
         KeyCode,
-        Ground
+        Ground,
+        PlayerReady
     }
 
     [Serializable]

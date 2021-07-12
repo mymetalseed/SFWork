@@ -29,28 +29,31 @@ namespace SolvargAction
         public override bool DoAction()
         {
             //检测每个条件
-            bool res = false;
+            bool pass = true;
             if (checker != null)
             {
                 for (int i = 0; i < checker.Count; ++i)
                 {
                     if (checker[i].cType != SFAction_ConditionType.None)
                     {
-                        res = checker[i].condition.Execute(this);
-                        if (res)
+                        if (!checker[i].condition.Execute(this))
                         {
-                            NodePort output = GetOutputPort("nextState");
-                            if (output != null)
-                            {
-                                SFAction_StateNode nextState = output.GetConnection(0).node as SFAction_StateNode;
-                                Graph.ForceChangeState(BaseState, nextState);
-                            }
-                            return true;
+                            pass = false;
                         }
                     }
                 }
             }
-            return false;
+            if (pass)
+            {
+                NodePort output = GetOutputPort("nextState");
+                if (output != null)
+                {
+                    SFAction_StateNode nextState = output.GetConnection(0).node as SFAction_StateNode;
+                    Graph.ForceChangeState(BaseState, nextState);
+                }
+            }
+            //如果通过检测的话,自动跳转到下一个状态,然后返回true
+            return pass;
         }
     }
 
@@ -89,6 +92,10 @@ namespace SolvargAction
             }else if(cType == SFAction_ConditionType.Ground)
             {
                 condition = new GroundChecker();
+            }
+            else if (cType == SFAction_ConditionType.PlayerReady)
+            {
+                condition = new PlayerReadyChecker();
             }
         }
     }

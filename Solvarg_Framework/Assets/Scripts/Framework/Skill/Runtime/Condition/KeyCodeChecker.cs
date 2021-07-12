@@ -24,7 +24,7 @@ namespace SolvargAction
 
         public override SFAction_ConditionType conditionType => SFAction_ConditionType.KeyCode;
 
-        public override bool Execute(SF_ActionNode action)
+        public override bool Execute(SFAction_BaseActionNode action)
         {
             bool result = InputData.HasEvent(inputEvents, fullMatch);
             return isNot ? !result : result;

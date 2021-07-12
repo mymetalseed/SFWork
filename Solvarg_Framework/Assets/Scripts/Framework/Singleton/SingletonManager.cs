@@ -71,6 +71,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     WeaponManager weaponManager;
     MouseManager mouseManager;
     InputManager inputManager;
+    ActionManager actionManager;
     #endregion
     /// <summary>
     /// 在这里进行所有单例的初始化
@@ -99,7 +100,8 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
         weaponManager = WeaponManager.Instance.InitSingleton(this);
         mouseManager = MouseManager.Instance.InitSingleton(this);
         inputManager = InputManager.Instance.InitSingleton(this);
-
+        actionManager = ActionManager.Instance.InitSingleton(this);
+;
         OnInit();
         _singletonReleaseList.Add(delegate ()
         {

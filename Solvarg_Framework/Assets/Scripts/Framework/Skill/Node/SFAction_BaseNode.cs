@@ -20,6 +20,20 @@ namespace SolvargAction
         [Output(backingValue = ShowBackingValue.Always, typeConstraint = TypeConstraint.InheritedAny)]
         public SFAction_BaseNode output;
 
+        private SF_ActionGraph _graph;
+
+        protected SF_ActionGraph Graph
+        {
+            get
+            {
+                if (_graph == null)
+                {
+                    _graph = graph as SF_ActionGraph;
+                }
+                return _graph;
+            }
+        }
+
         public abstract SF_NodeType GetNodeType
         {
             get;
@@ -29,7 +43,6 @@ namespace SolvargAction
         {
             return null;
         }
-
         public abstract void Execute();
     }
 }

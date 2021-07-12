@@ -72,9 +72,6 @@ public class PlayerController
 
     public void Update()
     {
-        if (!CanMove()) return;
-        SetPlayerAnimMovePam();
-
         //#普通攻击
         if (InputData.HasEvent(InputEvents.Attack))
         {
@@ -86,9 +83,17 @@ public class PlayerController
     private void CheckGround()
     {
         float length = 0.02f;
-        _isGround = rigid.velocity.y > 0 ? false : Physics.Raycast(player.transform.position + length * Vector3.up, Vector3.down, length * 2, groundMask);
+        //_isGround = rigid.velocity.y > 0 ? false : Physics.Raycast(player.transform.position + length * Vector3.up, Vector3.down, length * 2, groundMask);
     }
 
+    /// <summary>
+    /// 检测是否可以移动,如果可以,根据当前输入缓冲中的数据进行移动
+    /// </summary>
+    public void CheckMove(string idleName = "IdleAndRun")
+    {
+        if (!CanMove()) return;
+        SetPlayerAnimMovePam(idleName);
+    }
 
     bool CanMove()
     {
@@ -97,7 +102,7 @@ public class PlayerController
         return true;
     }
 
-    void SetPlayerAnimMovePam()
+    void SetPlayerAnimMovePam(string idleName = "IdleAndRun")
     {
 
         if (InputData.HasEvent(InputEvents.Moving))
@@ -113,7 +118,7 @@ public class PlayerController
                 PlayerCtrlMovement(horizontal, vertical);
             }
         }
-        anim.SetFloat("IdleAndRun", rigid.velocity.magnitude);
+        anim.SetFloat(idleName, rigid.velocity.magnitude);
     }
 
     void PlayerCtrlMovement(float horizon,float vertical)

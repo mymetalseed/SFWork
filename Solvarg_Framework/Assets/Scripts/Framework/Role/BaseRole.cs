@@ -96,6 +96,9 @@ public abstract class BaseRole : MonoBehaviour
         this.CurrentHp = GetCurrentMaxHp;
         this.CurrentMp = GetCurrentMaxMp;
         this.CurrentExp = 0;
+        
+        SingletonManager.Instance.AddRole(this);
+
         isInitial = true;
     }
 
@@ -117,7 +120,6 @@ public abstract class BaseRole : MonoBehaviour
     protected virtual void Awake()
     {
         isInitial = false;
-        SingletonManager.Instance.AddRole(this);
     }
 
     protected virtual void OnDestroy()

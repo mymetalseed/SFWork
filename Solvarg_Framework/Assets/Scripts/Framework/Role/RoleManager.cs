@@ -11,6 +11,7 @@ public class RoleManager : Singleton<RoleManager>
     private RoleInfo playerInfo;
 
     private List<BaseRole> currentRoleList;
+    private Dictionary<string, BaseRole> currentRoleDict;
     #endregion
 
     #region 功能函数
@@ -40,11 +41,20 @@ public class RoleManager : Singleton<RoleManager>
     public void AddRole(BaseRole role)
     {
         currentRoleList.Add(role);
+        if (currentRoleDict.ContainsKey(role.info.ID))
+        {
+            currentRoleDict[role.info.ID] = role;
+        }
+        else currentRoleDict.Add(role.info.ID, role);
     }
 
     public void RemoveRole(BaseRole role)
     {
         currentRoleList.Remove(role);
+        if (currentRoleDict.ContainsKey(role.info.ID))
+        {
+            currentRoleDict.Remove(role.info.ID);
+        }
     }
 
     /// <summary>
@@ -63,6 +73,7 @@ public class RoleManager : Singleton<RoleManager>
     {
         base.Awake();
         currentRoleList = new List<BaseRole>();
+        currentRoleDict = new Dictionary<string, BaseRole>();
     }
 
     public override void FixedUpdate()

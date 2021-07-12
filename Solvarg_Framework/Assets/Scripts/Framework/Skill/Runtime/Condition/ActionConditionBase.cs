@@ -18,7 +18,7 @@ namespace SolvargAction
         {
             get;
         }
-        public virtual bool Execute(SF_ActionNode action) { return false; }
+        public virtual bool Execute(SFAction_BaseActionNode action) { return false; }
         public virtual Type _Type => typeof(ActionConditionConfigBase);
     }
 }

@@ -1,4 +1,11 @@
-[toc]
+[SFWork](#SFWork)  
+[截图](#截图)  
+[设计图](#设计图)  
+[目前包含的功能](#目前包含的功能)  
+[暂时计划添加功能](#暂时计划添加功能)  
+[Demo级企划](#Demo级企划)  
+[操作说明](#操作说明)  
+[致谢 <开源项目参考列表>](#致谢 <开源项目参考列表>)
 
 # SFWork
 
@@ -6,11 +13,35 @@
 
 这个库是会一直更新到游戏Demo出来(完整的代码),这个公开库内的资源都将会是免费和开源的以及部分自己做的.(真正的效果Demo会用自己买的资源)
 
-设计图在这 - 
-
-[http://146.56.209.11:90/%e6%b8%b8%e8%ae%be-solvarg/](http://146.56.209.11:90/%e6%b8%b8%e8%ae%be-solvarg/)
-
 ![](Capture/MenuDemo.jpg)
+
+## 截图
+
+> 一个基本的移动和攻击示例
+
+![](Capture/Normal.jpg)_
+
+![](Capture/SkillEditor_XNode_Demo2.jpg)_
+
+![](Capture/ProgressDemo.jpg)
+
+![](Capture/InkDemo.png)
+
+![](Capture/Dialogue.png)
+
+![](Capture/WeaponSystem.jpg)
+
+![](Capture/Attack.jpg)
+
+![](Capture/WeaponRelease.jpg)
+
+## 设计图
+
+> Action系统设计图
+![](Capture/Action_Design.jpg)
+
+其余系统级简单设计(很久没更新了)
+[http://146.56.209.11:90/%e6%b8%b8%e8%ae%be-solvarg/](http://146.56.209.11:90/%e6%b8%b8%e8%ae%be-solvarg/)
 
 ## 目前包含的功能
 
@@ -79,6 +110,11 @@
 	- 后面会拓展按下时触发的事件,以及获取当前鼠标位置等状态
 - FPS显示
 - InputManager 多终端键鼠映射 (基于NewInputSystem)
+- Action编辑器 <基于XNode的可跳转有限状态机,但是后面可能会将XMLIB这个开源的加进来>
+	- XNode技能编辑器框架搭建完毕
+	- 可用于技能系统和AI,准确来说AI的框架已经搭好了
+- Action管理器,控制整个Action的生命周期,配合ActionController完成数据化的角色控制器
+
 
 demo入口: Scenes/Loading 这个场景下!
 
@@ -87,9 +123,9 @@ demo入口: Scenes/Loading 这个场景下!
 
 技能系统准备大量重构,基于XMLIB的思路,将技能编辑器和AI编辑器结合起来
 
-- 移植技能系统到这里(基于动画状态机,进行中)  
+- 移植技能系统到这里(基于Action有限状态机和动画系统,进行中)  
 	- 动画系统完成
-	- 连击完成
+	- Action系统和可视化编辑器完成
 	- 原本基于Mono配置的技能系统丢进来了,准备重构成数据驱动
 - 背包系统
 	- 强依赖与物品系统和UI系统
@@ -103,8 +139,7 @@ demo入口: Scenes/Loading 这个场景下!
 - 本地化
 - Base于骨骼节点的装饰系统
 - 服务端(基于C#和Protobuf,这个最后开始做,可能暂时的Demo中不会有)
-- 技能编辑器 <本来打算用XNode硬写数据,但是后面可能会将XMLIB这个开源的加进来>
-	- XNode技能编辑器框架搭建完毕
+
 
 ## Demo级企划
 
@@ -134,17 +169,3 @@ GooglePoly : 虽然关掉了
 jiuyueqiji123 <转场> : https://gitee.com/jiuyueqiji123/shader-effects_-pr
 
 # Solvarg...
-![](Capture/SkillEditor_XNode_Demo2.jpg)_
-
-![](Capture/ProgressDemo.jpg)
-
-![](Capture/InkDemo.png)
-
-![](Capture/Dialogue.png)
-
-![](Capture/WeaponSystem.jpg)
-
-![](Capture/Attack.jpg)
-
-![](Capture/WeaponRelease.jpg)
-

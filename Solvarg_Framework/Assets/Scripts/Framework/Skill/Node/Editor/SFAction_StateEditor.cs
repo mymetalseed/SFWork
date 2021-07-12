@@ -32,8 +32,12 @@ namespace SolvargActionEditor
             _target.enableLoop = EditorGUILayoutEx.DrawObject("循环", _target.enableLoop);
             if (!_target.enableLoop)
             {
-                _target.nextStateName = EditorGUILayoutEx.DrawObject("下一个状态", _target.nextStateName);
-                _target.nextAnimIndex = EditorGUILayoutEx.DrawObject("下一个状态动画序号", _target.nextAnimIndex);
+                _target.backToIdleState = EditorGUILayoutEx.DrawObject("返回Idle状态", _target.backToIdleState);
+                if (!_target.backToIdleState)
+                {
+                    _target.nextStateName = EditorGUILayoutEx.DrawObject("下一个状态", _target.nextStateName);
+                    _target.nextAnimIndex = EditorGUILayoutEx.DrawObject("下一个状态动画序号", _target.nextAnimIndex);
+                }
             }
 
             NodeEditorGUILayout.PortField(new GUIContent("行为"), target.GetOutputPort("output"));

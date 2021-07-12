@@ -10,19 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Prefab
+  m_Name: Action
   m_EditorClassIdentifier: 
-  m_GroupName: Prefab
+  m_GroupName: Action
   m_Data:
     m_SerializedData: []
-  m_GUID: 6d9560d52a50ff242a077655677e4c21
+  m_GUID: e7d45d098dbcdad4a8093705300e6d54
   m_SerializeEntries:
-  - m_GUID: 2ac3a62d125a1c94680a26557b8c08e8
-    m_Address: Assets/AssetPackage/Test/Cube.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
   - m_GUID: 9c494bebe534631439f97d3774feb615
     m_Address: Assets/AssetPackage/Action
     m_ReadOnly: 0
@@ -33,5 +27,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 967dc34150edee14ba38f8bc53749cfd, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 942c62b43a5aaa2439f4b727b03d6396, type: 2}
-    - {fileID: 11400000, guid: 95241861ea764af45808cc8237855ebd, type: 2}
+    - {fileID: 11400000, guid: 60b1baef21426264ca93f04a69de432c, type: 2}
+    - {fileID: 11400000, guid: fe3df71cb1eec5649824a11c0d218358, type: 2}

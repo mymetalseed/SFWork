@@ -8,7 +8,7 @@ using UnityEngine;
 namespace SolvargAction
 {
     [CreateNodeMenu("触发条件")]
-    public class SFAction_ConditionActionNode : SFAction_BaseNode
+    public class SFAction_ConditionActionNode : SFAction_BaseActionNode
     {
         [AllowNesting]
         [Label("跳转状态名")]
@@ -22,9 +22,22 @@ namespace SolvargAction
 
         public override SF_NodeType GetNodeType => SF_NodeType.Condition;
 
-        public override void Execute()
+        public override bool DoAction()
         {
-            throw new NotImplementedException();
+            //检测每个条件
+            bool res = false;
+            if (checker != null)
+            {
+                for (int i = 0; i < checker.Count; ++i)
+                {
+                    if (checker[i].cType != SFAction_ConditionType.None)
+                    {
+                        res = checker[i].condition.Execute(this);
+                        if (res) return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 

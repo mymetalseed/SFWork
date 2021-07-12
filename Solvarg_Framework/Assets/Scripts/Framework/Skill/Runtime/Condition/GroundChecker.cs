@@ -17,7 +17,7 @@ namespace SolvargAction
 
         public override Type _Type => typeof(GroundChecker);
 
-        public override bool Execute(SF_ActionNode action)
+        public override bool Execute(SFAction_BaseActionNode action)
         {
             PlayerController controller = SingletonManager.Instance._PlayerController;
             return isNot ? !controller.isGround : controller.isGround;

@@ -22,6 +22,11 @@ namespace SolvargActionEditor
         {
             //base.OnBodyGUI();
             _target = target as SFAction_StateNode;
+            if (_target.IsRunning)
+            {
+                EditorGUILayout.LabelField("该状态正在运行中...", GUI.skin.GetStyle("PR Ping"));
+            }
+
             serializedObject.Update();
             NodeEditorGUILayout.PortField(target.GetInputPort("input"));
             _target.stateName = EditorGUILayoutEx.DrawObject("状态名", _target.stateName);

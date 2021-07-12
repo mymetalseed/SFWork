@@ -36,7 +36,7 @@ public class ActionManager : Singleton<ActionManager>
     {
         SF_ActionGraph entity = null;
         if (info != null) {
-            entity = GameObject.Instantiate(await singletonManager.LoadAsset<SF_ActionGraph>(info.path));
+            entity = await singletonManager.LoadAsset<SF_ActionGraph>(info.path);
         }
         return entity;
     }

@@ -79,7 +79,7 @@ namespace XNode {
 
         protected virtual void OnDestroy() {
             // Remove all nodes prior to graph destruction
-            Clear();
+            //Clear();
         }
 
 #region Attributes

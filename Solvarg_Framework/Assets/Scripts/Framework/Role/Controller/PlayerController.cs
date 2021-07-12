@@ -13,6 +13,8 @@ public class PlayerController
     Player player;
     Camera camera;
 
+    string _idleName;
+
     private bool isActive;
     float horizontal;
     float vertical;
@@ -72,12 +74,16 @@ public class PlayerController
 
     public void Update()
     {
+        anim.SetFloat(_idleName, rigid.velocity.magnitude);
+
         //#普通攻击
+        /*
         if (InputData.HasEvent(InputEvents.Attack))
         {
             (player[ControllerType.Action] as ActionController)
                 .CastSkill(SkillType.eAttack);
         }
+        */
     }
 
     private void CheckGround()
@@ -104,7 +110,7 @@ public class PlayerController
 
     void SetPlayerAnimMovePam(string idleName = "IdleAndRun")
     {
-
+        if (this._idleName != idleName) this._idleName = idleName;
         if (InputData.HasEvent(InputEvents.Moving))
         {
             

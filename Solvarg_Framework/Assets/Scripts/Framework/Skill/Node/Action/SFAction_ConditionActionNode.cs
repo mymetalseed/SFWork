@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using XNode;
 
 namespace SolvargAction
 {
@@ -38,6 +39,12 @@ namespace SolvargAction
                         res = checker[i].condition.Execute(this);
                         if (res)
                         {
+                            NodePort output = GetOutputPort("nextState");
+                            if (output != null)
+                            {
+                                SFAction_StateNode nextState = output.GetConnection(0).node as SFAction_StateNode;
+                                Graph.ForceChangeState(BaseState, nextState);
+                            }
                             return true;
                         }
                     }

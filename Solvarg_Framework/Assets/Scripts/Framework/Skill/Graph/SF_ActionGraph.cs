@@ -13,7 +13,18 @@ namespace SolvargAction
         #region 运行时
         [HideInInspector]
         public ActionController controller;
-        private SFAction_StateNode currentState;
+        public SFAction_StateNode _currentState;
+        private SFAction_StateNode currentState
+        {
+            set
+            {
+                _currentState = value;
+            }
+            get
+            {
+                return _currentState;
+            }
+        }
         private bool isRunning=false;
         private Dictionary<string, SFAction_StateNode> stateDict;
 
@@ -35,10 +46,10 @@ namespace SolvargAction
 
         public void ForceChangeState(SFAction_StateNode oldState,SFAction_StateNode newState = null)
         {
-            currentState = null;
+            this.currentState = null;
             newState = newState ? newState : startState;
             oldState.ExitState();
-            currentState = newState;
+            this.currentState = newState;
             newState.StartState();
         }
 

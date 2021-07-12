@@ -10,18 +10,15 @@ namespace SolvargAction
         [Input(backingValue = ShowBackingValue.Always, typeConstraint = TypeConstraint.Strict)]
         public SFAction_BaseActionNode input;
 
-        private SFAction_StateNode baseState;
         public SFAction_StateNode BaseState {
             get
             {
-                if(baseState == null)
+                SFAction_StateNode baseState=null;
+                NodePort port = null;
+                port = GetInputPort("input");
+                if(port != null)
                 {
-                    NodePort port = null;
-                    port = GetInputPort("input");
-                    if(port != null)
-                    {
-                        baseState = port.GetConnection(0).node as SFAction_StateNode;
-                    }
+                    baseState = port.GetConnection(0).node as SFAction_StateNode;
                 }
                 return baseState;
             }    

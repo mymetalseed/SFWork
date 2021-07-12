@@ -53,36 +53,39 @@ namespace SolvargAction
         /// <summary>
         /// 获取所有的action
         /// </summary>
-        private List<SFAction_BaseActionNode> actions;
         private List<SFAction_BaseActionNode> Actions
         {
             get
             {
-                if (actions == null)
+                List<SFAction_BaseActionNode> actions = new List<SFAction_BaseActionNode>();
+                NodePort port = null;
+                port = GetOutputPort("output");
+                for (int i = 0; i < port.ConnectionCount; ++i)
                 {
-                    actions = new List<SFAction_BaseActionNode>();
-                    NodePort port = null;
-                    port = GetOutputPort("output");
-                    for (int i = 0; i < port.ConnectionCount; ++i)
-                    {
-                        NodePort connection = port.GetConnection(i);
-                        actions.Add((connection.node as SFAction_BaseActionNode));
-                    }
-                    return actions;
+                    NodePort connection = port.GetConnection(i);
+                    actions.Add((connection.node as SFAction_BaseActionNode));
                 }
-                else return actions;
+                return actions;
             }
         }
 
 
         #region 运行时
         private bool isRunning = false;
+        public bool IsRunning => (isRunning);
+
+        private void Awake()
+        {
+            isRunning = false;
+        }
+
         /// <summary>
         /// 初次进入状态初始化
         /// </summary>
         public void StartState()
         {
             isRunning = true;
+            Debuger.Log("当前Action系统进入状态: " + stateName);
         }
 
         /// <summary>

@@ -25,5 +25,13 @@ namespace SolvargAction
 
             return false;
         }
+
+        public override void EnterAction()
+        {
+        }
+
+        public override void ExitAction()
+        {
+        }
     }
 }

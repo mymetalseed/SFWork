@@ -37,6 +37,8 @@ namespace SolvargAction
         /// </summary>
         /// <returns></returns>
         public abstract bool DoAction();
+        public abstract void EnterAction();
+        public abstract void ExitAction();
 
         public override void Execute()
         {

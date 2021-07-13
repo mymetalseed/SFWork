@@ -7,6 +7,14 @@ using System;
 
 namespace SolvargAction
 {
+    public enum SFAction_TriggerType{
+        None,
+        Auto,
+        Trigger
+    }
+
+
+
     [CreateNodeMenu("状态/State")]
     public class SFAction_StateNode : SFAction_BaseNode
     {
@@ -31,8 +39,20 @@ namespace SolvargAction
         [AllowNesting]
         [Label("过渡时间")]
         public Single fadeTime = 1 / (Single)20;
+
+        [AllowNesting]
+        [Label("冷却时间")]
+        public Single coolDownTime = 1 / (Single)10;
+
+        [AllowNesting]
+        [Label("循环")]
         public bool enableLoop = false;
-        public bool backToIdleState = true;
+        [AllowNesting]
+        [Label("返回Idle的方式")]
+        public SFAction_TriggerType backToIdleState = SFAction_TriggerType.Auto;
+
+        private bool backIdleTrigger = false;
+
         /// <summary>
         /// 基本上下一个状态都是Idle
         /// </summary>
@@ -74,6 +94,8 @@ namespace SolvargAction
         private bool isRunning = false;
         public bool IsRunning => (isRunning);
 
+        public float startTime;
+
         private void Awake()
         {
             isRunning = false;
@@ -84,6 +106,17 @@ namespace SolvargAction
         /// </summary>
         public void StartState()
         {
+            if (backToIdleState == SFAction_TriggerType.Trigger)
+            {
+                backIdleTrigger = false;
+            }
+
+            //初始化Action
+            foreach (SFAction_BaseActionNode actionNode in Actions)
+            {
+                actionNode.EnterAction();
+            }
+            startTime = Time.time;
             isRunning = true;
             Debuger.Log("当前Action系统进入状态: " + stateName);
         }
@@ -110,14 +143,26 @@ namespace SolvargAction
             //如果不能循环,且没有跳转,则一次Execute之后就进入下一个状态
             if (!enableLoop)
             {
-                if (backToIdleState)
+                bool changeSuccess=false;
+                if (backToIdleState==SFAction_TriggerType.Auto)
                 {
                     //回到Idle状态
-                    Graph.ForceChangeState(this);
+                    changeSuccess = Graph.ForceChangeState(this);
                     return;
+                }else if(backToIdleState == SFAction_TriggerType.Trigger)
+                {
+                    if (backIdleTrigger)
+                    {
+                        //根据Trigger判断
+                        changeSuccess = Graph.ForceChangeState(this);
+                        //TODO: 这里是按照Trigger的方式转换的,如果失败的话该怎么处理.?
+                    }
                 }
-                //否则强行回到某一个状态
-                Graph.ForceChangeState(this);
+                else
+                {
+                    //否则强行回到某一个状态
+                    changeSuccess = Graph.ForceChangeState(this);
+                }
             }
         }
 
@@ -126,7 +171,20 @@ namespace SolvargAction
         /// </summary>
         public void ExitState()
         {
+            foreach (SFAction_BaseActionNode actionNode in Actions)
+            {
+                actionNode.ExitAction();
+            }
+
             isRunning = false;
+        }
+
+        /// <summary>
+        /// 有连击的技能或普攻在这里设置为执行完毕
+        /// </summary>
+        public void SetComboTrigger()
+        {
+            backIdleTrigger = true;
         }
 
         #endregion

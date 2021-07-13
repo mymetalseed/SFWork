@@ -38,6 +38,14 @@ public partial class SingletonManager
     }
 
     /// <summary>
+    /// 获得Role
+    /// </summary>
+    /// <param name="role"></param>
+    public BaseRole GeRole(string roleId)
+    {
+        return roleManager.GetRole(roleId);
+    }
+    /// <summary>
     /// 移除Role
     /// </summary>
     /// <param name="role"></param>

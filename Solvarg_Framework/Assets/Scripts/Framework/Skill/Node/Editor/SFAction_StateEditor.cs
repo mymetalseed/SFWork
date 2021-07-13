@@ -33,12 +33,13 @@ namespace SolvargActionEditor
             _target.animNames = EditorGUILayoutEx.DrawObject("动画名", _target.animNames);
 
             _target.fadeTime = EditorGUILayoutEx.DrawObject("过渡时间", _target.fadeTime);
+            _target.coolDownTime = EditorGUILayoutEx.DrawObject("状态冷却时间", _target.coolDownTime);
 
             _target.enableLoop = EditorGUILayoutEx.DrawObject("循环", _target.enableLoop);
             if (!_target.enableLoop)
             {
-                _target.backToIdleState = EditorGUILayoutEx.DrawObject("返回Idle状态", _target.backToIdleState);
-                if (!_target.backToIdleState)
+                _target.backToIdleState = EditorGUILayoutEx.DrawObject("返回Idle方式", _target.backToIdleState);
+                if (_target.backToIdleState==SFAction_TriggerType.None)
                 {
                     _target.nextStateName = EditorGUILayoutEx.DrawObject("下一个状态", _target.nextStateName);
                     _target.nextAnimIndex = EditorGUILayoutEx.DrawObject("下一个状态动画序号", _target.nextAnimIndex);

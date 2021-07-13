@@ -49,11 +49,23 @@ namespace SolvargAction
                 if (output != null)
                 {
                     SFAction_StateNode nextState = output.GetConnection(0).node as SFAction_StateNode;
-                    Graph.ForceChangeState(BaseState, nextState);
+                    if (!Graph.ForceChangeState(BaseState, nextState))
+                    {
+                        //尝试切换状态失败,比如下一个状态的冷却时间没达到
+                        pass = false;
+                    }
                 }
             }
             //如果通过检测的话,自动跳转到下一个状态,然后返回true
             return pass;
+        }
+
+        public override void EnterAction()
+        {
+        }
+
+        public override void ExitAction()
+        {
         }
     }
 

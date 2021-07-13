@@ -8,6 +8,8 @@ namespace SolvargAction
     public class SF_ActionGraph : NodeGraph
     {
         public string roleId;
+        [HideInInspector]
+        public BaseRole owner;
         public SFAction_StateNode startState;
 
         #region 运行时
@@ -42,15 +44,22 @@ namespace SolvargAction
                     stateDict.Add(cur.stateName, cur);
                 }
             }
+            owner = SingletonManager.Instance.GeRole(roleId);
         }
 
-        public void ForceChangeState(SFAction_StateNode oldState,SFAction_StateNode newState = null)
+        public bool ForceChangeState(SFAction_StateNode oldState,SFAction_StateNode newState = null)
         {
+            if(Time.time - oldState.startTime < oldState.coolDownTime)
+            {
+                //当前状态冷却时间未达到
+                return false;
+            }
             this.currentState = null;
             newState = newState ? newState : startState;
             oldState.ExitState();
-            this.currentState = newState;
             newState.StartState();
+            this.currentState = newState;
+            return true;
         }
 
         /// <summary>

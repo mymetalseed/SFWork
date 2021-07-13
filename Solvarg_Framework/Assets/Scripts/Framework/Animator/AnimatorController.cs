@@ -33,7 +33,7 @@ public class AnimatorController : BaseController
         this._animInst = animInst;
     }
 
-    public void EventSkillReady()
+    public void  EventSkillReady()
     {
         skillReadyInst();
     }

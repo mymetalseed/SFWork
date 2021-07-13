@@ -156,6 +156,7 @@ MonoBehaviour:
   animNames:
   - IdleAndRun
   fadeTime: 0.05
+  coolDownTime: 0.05
   enableLoop: 1
   backToIdleState: 1
   nextStateName: 
@@ -195,21 +196,25 @@ MonoBehaviour:
       _node: {fileID: -1751030605948371041}
       _typeQualifiedName: SolvargAction.SFAction_BaseActionNode, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: 150533953382974099}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 2
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  stateName: Attack
+  stateName: "Attack(\u8FDE\u51FB)"
   defaultAnimIndex: 0
   animNames:
   - Base Layer.Attack1
   - Base Layer.Attack2
   fadeTime: 0.05
+  coolDownTime: 1
   enableLoop: 0
-  backToIdleState: 1
+  backToIdleState: 2
   nextStateName: 
   nextAnimIndex: -1
 --- !u!114 &11400000
@@ -229,6 +234,43 @@ MonoBehaviour:
   - {fileID: -8834082011189316194}
   - {fileID: -8227855566470117895}
   - {fileID: -1751030605948371041}
+  - {fileID: 150533953382974099}
   roleId: R01
+  owner: {fileID: 0}
   startState: {fileID: -7850147902848933170}
   _currentState: {fileID: -7850147902848933170}
+--- !u!114 &150533953382974099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6fff245fc64c8418da43c0d228b281, type: 3}
+  m_Name: SF Action_Cast Skill Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 344, y: -104}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: 150533953382974099}
+      _typeQualifiedName: SolvargAction.SFAction_BaseActionNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -1751030605948371041}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 2
+      _dynamic: 0
+  input: {fileID: 0}
+  isCombo: 1
+  comboType: 0
+  comboEvents: 0200000002000000
+  skillId: []

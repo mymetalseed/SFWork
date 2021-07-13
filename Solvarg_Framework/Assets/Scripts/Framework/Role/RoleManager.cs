@@ -48,6 +48,16 @@ public class RoleManager : Singleton<RoleManager>
         else currentRoleDict.Add(role.info.ID, role);
     }
 
+    /// <summary>
+    /// 获取角色
+    /// </summary>
+    public BaseRole GetRole(string roleId)
+    {
+        BaseRole role;
+        currentRoleDict.TryGetValue(roleId,out role);
+        return role;
+    }
+
     public void RemoveRole(BaseRole role)
     {
         currentRoleList.Remove(role);

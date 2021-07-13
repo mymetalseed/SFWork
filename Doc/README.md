@@ -21,6 +21,10 @@
 
 ![](Capture/Normal.jpg)_
 
+> 基于Action系统的连击(包括技能连击)和技能系统基石搭建完毕
+
+![](Capture/Combo.jpb)
+
 ![](Capture/SkillEditor_XNode_Demo2.jpg)_
 
 ![](Capture/ProgressDemo.jpg)
@@ -34,6 +38,8 @@
 ![](Capture/Attack.jpg)
 
 ![](Capture/WeaponRelease.jpg)
+
+
 
 ## 设计图
 
@@ -128,6 +134,7 @@ demo入口: Scenes/Loading 这个场景下!
 	- 动画系统完成
 	- Action系统和可视化编辑器完成
 	- 原本基于Mono配置的技能系统丢进来了,准备重构成数据驱动
+	- 基于Action的基石搭建完毕
 - 背包系统
 	- 强依赖与物品系统和UI系统
 	- 还有强依赖与大部分物品系统延伸子系统,诸如武器系统
@@ -140,6 +147,7 @@ demo入口: Scenes/Loading 这个场景下!
 - 本地化
 - Base于骨骼节点的装饰系统
 - 服务端(基于C#和Protobuf,这个最后开始做,可能暂时的Demo中不会有)
+- Buff系统(包括互斥,冲突检测)
 
 
 ## Demo级企划

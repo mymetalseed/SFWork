@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static SkillConfig;
 
 namespace SolvargAction
 {
@@ -30,7 +31,7 @@ namespace SolvargAction
         /// 这里只负责在动画某一个时间节点上进行技能的释放,具体释放逻辑后面再写
         /// 碰撞体偏移数据放在这里进行
         /// </summary>
-        public List<string> skillId;
+        public List<SkillConfig> skillConfigs;
 
         private BaseCreature _owner;
         private BaseCreature owner
@@ -118,8 +119,25 @@ namespace SolvargAction
             { 
                 isReady = false;
                 curAnimSkillIndex++;
-            } 
+            }
             //加载特效
+            int eIndex = skillCount > 1 ? curAnimSkillIndex - 1 : 0;
+            if(skillConfigs!=null && skillConfigs.Count>= eIndex && skillConfigs[eIndex] !=null)
+            {
+                SkillConfig skill = skillConfigs[eIndex];
+                List<SkillEffectDisplayInfo> effectInfo = skill.displayInfo;
+
+                for(int i = 0; i < effectInfo.Count; ++i)
+                {
+                    SkillEffectDisplayInfo info = effectInfo[i];
+                    SingletonManager.Instance.Timer_Register(info.duration, ()=> {
+                        //不等待
+                        SingletonManager.Instance.DoSkillEffect(info,owner);
+                    }); 
+                }
+
+            }
+
             //加载技能等
         }
         void CastSkillEnd1()

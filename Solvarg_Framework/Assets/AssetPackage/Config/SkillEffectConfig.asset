@@ -12,4 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f38de3f4682c74eb2a502b730a7955, type: 3}
   m_Name: SkillEffectConfig
   m_EditorClassIdentifier: 
-  infoList: []
+  infoList:
+  - effectName: MagicChargeBlue
+    effectId: E1
+    effectPath: Assets/AssetPackage/Particles/Prefab/MagicChargeBlue.prefab
+  - effectName: MagicChargeRed
+    effectId: E2
+    effectPath: Assets/AssetPackage/Particles/Prefab/MagicChargeRed.prefab
+  - effectName: PowerupActivateBlue
+    effectId: E3
+    effectPath: Assets/AssetPackage/Particles/Prefab/PowerupActivateBlue.prefab
+  - effectName: PowerupActivateRed
+    effectId: E4
+    effectPath: Assets/AssetPackage/Particles/Prefab/PowerupActivateRed.prefab
+  - effectName: SwordSlash1
+    effectId: E5
+    effectPath: Assets/AssetPackage/Particles/Prefab/SwordSlash1.prefab
+  - effectName: SwordSlash2
+    effectId: E6
+    effectPath: Assets/AssetPackage/Particles/Prefab/SwordSlash2.prefab

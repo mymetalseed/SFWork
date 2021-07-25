@@ -5,6 +5,7 @@ using XNodeEditor;
 using XNode;
 using SolvargAction;
 using XMLib;
+using UnityEditor;
 
 namespace SolvargActionEditor
 {
@@ -28,14 +29,36 @@ namespace SolvargActionEditor
 
             if (_target.isCombo)
             {
-                _target.comboType = EditorGUILayoutEx.DrawObject("连击触发方式",_target.comboType);
+                _target.comboType = EditorGUILayoutEx.DrawObject("触发连击方式", _target.comboType);
                 if(_target.comboType == ComboEventType.InputEvents)
                 {
-                    EditorGUILayoutEx.DrawObject("触发输入事件",_target.comboEvents);
+                    EditorGUILayoutEx.DrawObject("触发事件",_target.comboEvents);
+                }
+
+
+                if (_target.skillConfigs == null || _target.skillConfigs.Count != _target.BaseState.animNames.Count)
+                {
+                    _target.skillConfigs = new List<SkillConfig>();
+                    for (int i = 0; i < _target.BaseState.animNames.Count; ++i)
+                    {
+                        _target.skillConfigs.Add(null);
+                    }
+                    Debug.LogError("出错了");
+                }
+                for (int i = 0; i < _target.skillConfigs.Count; ++i)
+                {
+                    _target.skillConfigs[i] = EditorGUILayout.ObjectField("技能" + i.ToString(), _target.skillConfigs[i], typeof(SkillConfig), allowSceneObjects: true) as SkillConfig;
                 }
             }
 
+
+
             serializedObject.ApplyModifiedProperties();
+        }
+
+        public override int GetWidth()
+        {
+            return 250;
         }
     }
 }

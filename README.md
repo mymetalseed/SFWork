@@ -21,6 +21,8 @@
 
 ![](Doc/Capture/Attack.jpg)
 
+![](Doc/Capture/SkillEffect.jpg)
+
 ![](Doc/Capture/WeaponRelease.jpg)
 
 

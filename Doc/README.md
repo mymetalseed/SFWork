@@ -35,6 +35,8 @@
 
 ![](Capture/WeaponSystem.jpg)
 
+![](Capture/SkillEffect.jpg)
+
 ![](Capture/Attack.jpg)
 
 ![](Capture/WeaponRelease.jpg)
@@ -135,6 +137,7 @@ demo入口: Scenes/Loading 这个场景下!
 	- Action系统和可视化编辑器完成
 	- 原本基于Mono配置的技能系统丢进来了,准备重构成数据驱动
 	- 基于Action的基石搭建完毕
+	- 特效搭建完毕
 - 背包系统
 	- 强依赖与物品系统和UI系统
 	- 还有强依赖与大部分物品系统延伸子系统,诸如武器系统

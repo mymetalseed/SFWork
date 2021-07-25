@@ -12,9 +12,6 @@ public class Player : BaseCreature
         AnimatorController anim = RegisterController(ControllerType.Animator) as AnimatorController;
         ActionController action = RegisterController(ControllerType.Action) as ActionController;
         WeaponController weapon = RegisterController(ControllerType.Weapon) as WeaponController;
-
-        //配置最大连击次数(根据动画来决定)
-        action.MaxAnimAttackIndex = 2;
     }
 
     public void LevelUp()

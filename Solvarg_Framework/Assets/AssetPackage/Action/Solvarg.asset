@@ -161,6 +161,7 @@ MonoBehaviour:
   backToIdleState: 1
   nextStateName: 
   nextAnimIndex: -1
+  startTime: 0
 --- !u!114 &-1751030605948371041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +175,7 @@ MonoBehaviour:
   m_Name: SF Action_State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 40, y: -136}
+  position: {x: 8, y: -136}
   ports:
     keys:
     - input
@@ -217,6 +218,7 @@ MonoBehaviour:
   backToIdleState: 2
   nextStateName: 
   nextAnimIndex: -1
+  startTime: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +254,7 @@ MonoBehaviour:
   m_Name: SF Action_Cast Skill Action
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 344, y: -104}
+  position: {x: 296, y: -184}
   ports:
     keys:
     - input
@@ -273,4 +275,6 @@ MonoBehaviour:
   isCombo: 1
   comboType: 0
   comboEvents: 0200000002000000
-  skillId: []
+  skillConfigs:
+  - {fileID: 11400000, guid: e5976d0cb201b9742bf9c240d94c0e31, type: 2}
+  - {fileID: 11400000, guid: e5976d0cb201b9742bf9c240d94c0e31, type: 2}

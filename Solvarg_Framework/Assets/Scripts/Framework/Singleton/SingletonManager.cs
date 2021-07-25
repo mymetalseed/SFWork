@@ -73,6 +73,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     InputManager inputManager;
     ActionManager actionManager;
     MusicManager musicManager;
+    SkillManager skillManager;
     #endregion
     /// <summary>
     /// 在这里进行所有单例的初始化
@@ -103,7 +104,8 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
         inputManager = InputManager.Instance.InitSingleton(this);
         actionManager = ActionManager.Instance.InitSingleton(this);
         musicManager = MusicManager.Instance.InitSingleton(this);
-;
+;       skillManager = SkillManager.Instance.InitSingleton(this);
+
         OnInit();
         _singletonReleaseList.Add(delegate ()
         {

@@ -34,7 +34,7 @@ public class ActionController : BaseController
         currentActionGraph?.StopActionGraph();
         actionGraph.controller = this;
         currentActionGraph = actionGraph;
-        currentActionGraph?.InitGraph();
+        currentActionGraph?.InitGraph(owner);
     }
 
     /// <summary>

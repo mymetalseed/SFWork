@@ -36,7 +36,9 @@ public class ActionManager : Singleton<ActionManager>
     {
         SF_ActionGraph entity = null;
         if (info != null) {
-            entity = await singletonManager.LoadAsset<SF_ActionGraph>(info.path);
+            var real = await singletonManager.LoadAsset<SF_ActionGraph>(info.path);
+            real.StopActionGraph();
+            entity = real.Copy() as SF_ActionGraph;
         }
         return entity;
     }

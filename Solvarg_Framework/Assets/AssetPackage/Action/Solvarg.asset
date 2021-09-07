@@ -161,7 +161,7 @@ MonoBehaviour:
   backToIdleState: 1
   nextStateName: 
   nextAnimIndex: -1
-  startTime: 0
+  startTime: 1.8282768
 --- !u!114 &-1751030605948371041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,8 +239,8 @@ MonoBehaviour:
   - {fileID: 150533953382974099}
   roleId: R01
   owner: {fileID: 0}
-  startState: {fileID: -7850147902848933170}
-  _currentState: {fileID: -7850147902848933170}
+  startStateName: Idle
+  _currentState: {fileID: 0}
 --- !u!114 &150533953382974099
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ namespace SolvargAction
         public string roleId;
         [HideInInspector]
         public BaseRole owner;
-        public SFAction_StateNode startState;
+        public string startStateName;
 
         #region 运行时
         [HideInInspector]
@@ -33,7 +33,7 @@ namespace SolvargAction
         /// <summary>
         /// 首次进入Action图初始化
         /// </summary>
-        public void InitGraph()
+        public void InitGraph(BaseRole role)
         {
             stateDict = new Dictionary<string, SFAction_StateNode>();
             foreach (Node node in nodes)
@@ -44,7 +44,13 @@ namespace SolvargAction
                     stateDict.Add(cur.stateName, cur);
                 }
             }
-            owner = SingletonManager.Instance.GeRole(roleId);
+            owner = role;
+            isRunning = false;
+        }
+
+        public SFAction_StateNode GetStartState()
+        {
+            return stateDict[startStateName];
         }
 
         public bool ForceChangeState(SFAction_StateNode oldState,SFAction_StateNode newState = null)
@@ -55,7 +61,7 @@ namespace SolvargAction
                 return false;
             }
             this.currentState = null;
-            newState = newState ? newState : startState;
+            newState = newState ? newState : GetStartState();
             oldState.ExitState();
             newState.StartState();
             this.currentState = newState;
@@ -67,7 +73,7 @@ namespace SolvargAction
         /// </summary>
         public void StartActionGraph()
         {
-            currentState = startState;
+            currentState = GetStartState();
             currentState.StartState();//第一次进入要初始化首结点
             isRunning = true;
         }
@@ -78,7 +84,7 @@ namespace SolvargAction
         public void StopActionGraph()
         {
             isRunning = false;
-            currentState.ExitState();
+            currentState?.ExitState();
         }
 
         public void Release()

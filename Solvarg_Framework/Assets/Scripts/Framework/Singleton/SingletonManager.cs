@@ -25,6 +25,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
         singltonList_Application = new List<IApplication>();
         _rootObj = gameObject;
         GameObject.DontDestroyOnLoad(_rootObj);
+
     }
 
     /// <summary>
@@ -49,6 +50,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     }
 
     #region 单例集
+    LuaManager luaManager;
     MessageDispatcher messageDispatcher;
     TimerManager timerManager;
     ResManager resManager;
@@ -81,6 +83,7 @@ public partial class SingletonManager : MonoSingleton<SingletonManager>
     /// <returns></returns>
     public void InitSingletons()
     {
+        luaManager = LuaManager.Instance.InitSingleton(this);
         messageDispatcher = MessageDispatcher.Instance.InitSingleton(this);
         timerManager = TimerManager.Instance.InitSingleton(this);
         resManager = ResManager.Instance.InitSingleton(this);
